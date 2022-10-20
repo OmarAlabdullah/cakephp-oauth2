@@ -1,0 +1,11 @@
+#!/bin/sh
+
+echo "### Generating phpdoc... ###"
+composer phpdoc && printf '
+
+'
+echo "### Generating Swagger API doc ###"
+php ./gen-swagger.php && printf '
+
+'
+echo "### committing as $(git config user.name) ###"

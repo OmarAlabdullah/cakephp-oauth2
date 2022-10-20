@@ -1,0 +1,10 @@
+vendor
+/tmp
+/logs
+.idea
+/build
+/webroot/logs
+*.cache
+.phpdoc
+webroot/api-docs
+templates/Pages/swagger/v1/*.yml.*
