@@ -1,4 +1,4 @@
-# CakePHP Application Template
+# Oauth2
 
 A Template for creating applications with [CakePHP](https://cakephp.org) 4.1
 

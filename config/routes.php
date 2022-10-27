@@ -71,20 +71,24 @@ return static function (RouteBuilder $routes) {
 
             // Login routes
             $routes->connect('/login',
-                ['controller' => 'IAM', 'action' => 'login', '_method' => 'POST']
+                ['controller' => 'Oauth', 'action' => 'login', '_method' => 'POST']
             );
 
             // register routes
             $routes->connect('/register',
-                ['controller' => 'IAM', 'action' => 'register', '_method' => 'POST']);
+                ['controller' => 'Oauth', 'action' => 'register', '_method' => 'POST']);
 
             // change password routes
             $routes->connect('/change-password',
-                ['controller' => 'IAM', 'action' => 'changePassword', '_method' => 'POST']);
+                ['controller' => 'Oauth', 'action' => 'changePassword', '_method' => 'POST']);
 
             // logout routes
             $routes->connect('/logout',
-                ['controller' => 'IAM', 'action' => 'logout', '_method' => 'POST']);
+                ['controller' => 'Oauth', 'action' => 'logout', '_method' => 'POST']);
+
+            // sso routes
+            $routes->connect('/google',
+                ['controller' => 'Oauth', 'action' => 'sso', '_method' => 'POST']);
 
 
         });

@@ -4,7 +4,7 @@ use OpenApi\Annotations as OA;
 
 /**
  * @OA\Info(
- *     title="PHP IAM",
+ *     title="PHP Oauth2",
  *     version="1.0.0",
  *     description="A Template for a CakePHP Application. Specification used: [OpenApi 3](https://swagger.io/specification/)",
  *     description="Internal api-docs at [API Docs](/api-docs/index.html)",

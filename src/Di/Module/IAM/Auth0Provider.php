@@ -14,7 +14,7 @@ class Auth0Provider implements ProviderInterface {
             'clientId' => 'IDfC5gcuoD5QAybm7u6zVJPcXaq1KgTa',
             'clientSecret' => 't0JFPKsGiWt3V3Izb4YGIxwOZycxFKqwVFHmJcMItFq8ZuGm3zjR47hX2pyOILkB',
             'cookieSecret' => '_9O8vaN9jy2aPlma8PA38MCAYY0XCxyCI6DnkDdmCMJQoTwffqsId7rVSJ9ny6hj',
-            'audience' => ['https://php-iam.xel-localservices.nl'],
+            'audience' => ['https://php-oauth2.xel-localservices.nl'],
             'organization' => ['test'],
         ]);
         return new Auth0($configuration);

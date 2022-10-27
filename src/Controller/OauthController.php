@@ -6,12 +6,12 @@ namespace App\Controller;
 use App\Domain\EmailRequest;
 use App\Domain\LoginRequest;
 use App\Domain\registerRequest;
-use App\Services\IAM\IAMService;
+use App\Services\IAM\OauthService;
 use OpenApi\Annotations as OA;
 use Ray\Di\Di\Inject;
 
-class IAMController extends AppController {
-    protected IAMService $iamService;
+class OauthController extends AppController {
+    protected OauthService $oauth2Service;
 
     public function initialize(): void {
         parent::initialize();
@@ -22,11 +22,11 @@ class IAMController extends AppController {
 
     /**
      * @Inject
-     * @param IAMService $iamService
+     * @param OauthService $oauth2Service
      * @return void
      */
-    public function inject(IAMService $iamService) {
-        $this->iamService = $iamService;
+    public function inject(OauthService $oauth2Service) {
+        $this->oauth2Service = $oauth2Service;
     }
 
     /**
@@ -61,7 +61,7 @@ class IAMController extends AppController {
     public function login() {
         /** @var LoginRequest $loginRequest */
         $loginRequest = $this->xelRequest->getDataAsDomainObject(LoginRequest::builder());
-        $accessToken = $this->iamService->login($loginRequest);
+        $accessToken = $this->oauth2Service->login($loginRequest);
         $this->set('access_token', $accessToken);
         $this->set('_serialize', ['access_token']);
     }
@@ -97,9 +97,8 @@ class IAMController extends AppController {
     public function logout() {
         /** @var EmailRequest $emailRequest */
         $emailRequest = $this->xelRequest->getDataAsDomainObject(EmailRequest::builder());
-        $accessToken = $this->iamService->logout($emailRequest);
-        $this->set('access_token', $accessToken);
-        $this->set('_serialize', ['access_token']);
+        $this->oauth2Service->logout($emailRequest);
+
     }
     /**
      * @OA\Post  (
@@ -133,7 +132,7 @@ class IAMController extends AppController {
     public function register() {
         /** @var RegisterRequest $registerRequest */
         $registerRequest = $this->xelRequest->getDataAsDomainObject(RegisterRequest::builder());
-        $this->iamService->register($registerRequest);
+        $this->oauth2Service->register($registerRequest);
 
     }
 
@@ -169,7 +168,14 @@ class IAMController extends AppController {
     public function changePassword() {
         /** @var EmailRequest $emailRequest */
         $emailRequest = $this->xelRequest->getDataAsDomainObject(EmailRequest::builder());
-        $this->iamService->changePassword($emailRequest);
+        $this->oauth2Service->changePassword($emailRequest);
+
+    }
+
+    public function sso() {
+        /** @var EmailRequest $emailRequest */
+        $emailRequest = $this->xelRequest->getDataAsDomainObject(EmailRequest::builder());
+        $this->oauth2Service->sso($emailRequest);
 
     }
 

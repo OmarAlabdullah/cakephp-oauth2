@@ -57,7 +57,7 @@ use Xel\Util\ConfigEncryption;
  * that changes from configuration that does not. This makes deployment simpler.
  */
 $configVersion = "1";
-$configPath = "/etc/xel/xel-config-files/php-iam/$configVersion/";
+$configPath = "/etc/xel/xel-config-files/php-oauth2/$configVersion/";
 try {
     $configKey = ConfigEncryption::getConfigKey();
     Configure::config('default', new XelPhpConfig($configPath, $configKey));

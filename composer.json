@@ -1,6 +1,6 @@
 {
     "version": "2.6.13",
-    "name": "xel-webservices/php-iam",
+    "name": "xel-webservices/php-oauth2",
     "description": "CakePHP application",
     "type": "project",
     "require": {
@@ -15,7 +15,8 @@
         "lorenzo/piping-bag": "~2.0",
         "guzzlehttp/guzzle": "^7.5",
         "auth0/auth0-php": "^8.3",
-        "vlucas/phpdotenv": "^5.5"
+        "vlucas/phpdotenv": "^5.5",
+        "league/oauth2-server": "^8.3"
     },
     "require-dev": {
         "psy/psysh": "@stable",

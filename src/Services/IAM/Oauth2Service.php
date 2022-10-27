@@ -12,7 +12,7 @@ use Xel\Common\Exception\ServiceException;
 use Xel\Driver\Response;
 use Xel\Driver\ResponseHandler;
 
-class Auth0IAMService implements IAMService {
+class Oauth2Service implements OauthService {
 
     private Auth0 $auth0;
 
@@ -25,11 +25,12 @@ class Auth0IAMService implements IAMService {
 
 
     public function login(LoginRequest $loginRequest) :string {
-        $realm = "Username-Password-Authentication";
-        $response = $this->auth0->authentication()->login($loginRequest->getUsername(), $loginRequest->getPassword(), $realm);
-        $json = json_decode($response->getBody()->getContents(), true);
-        print_r($json);die();
-        return $json['access_token'];
+//        $realm = "Username-Password-Authentication";
+//        $response = $this->auth0->authentication()->login($loginRequest->getUsername(), $loginRequest->getPassword(), $realm);
+//        $json = json_decode($response->getBody()->getContents(), true);
+//        print_r($json);die();
+//        return $json['access_token'];
+        return "heeeeeee";
     }
 
     public function register(RegisterRequest $registerRequest): string {
@@ -51,10 +52,17 @@ class Auth0IAMService implements IAMService {
     }
 
     public function logout(EmailRequest $emailRequest) :Response {
-        $response = $this->auth0->authentication()->getLogoutLink('https://php-iam.xel-localservices.nl/',null);
-        $json = json_decode($response->getBody()->getContents(), true);
-        print_r($json);die();
+        $this->auth0->authentication()->getLogoutLink('https://php-oauth2.xel-localservices.nl/',null);
+        $response = "hh";
+            print_r($response);die();
 
+    }
+
+    public function sso(EmailRequest $emailRequest) :Response {
+        $response = $this->auth0->authentication()->getSamlpLink("IDfC5gcuoD5QAybm7u6zVJPcXaq1KgTa", "Google Workspace");
+
+        print_r($response);die();
+        return $response;
     }
 
 
