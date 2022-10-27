@@ -1,4 +1,5 @@
 vendor
+/vendor
 /tmp
 /logs
 .idea
