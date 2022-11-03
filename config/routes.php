@@ -90,7 +90,9 @@ return static function (RouteBuilder $routes) {
             $routes->connect('/google',
                 ['controller' => 'Oauth', 'action' => 'sso', '_method' => 'POST']);
 
-
+            // token routes
+            $routes->connect('/token',
+                ['controller' => 'Token', 'action' => 'accessToken', '_method' => 'POST']);
         });
 
         $routes->setExtensions(['json']);

@@ -6,7 +6,7 @@ namespace App\Controller;
 use App\Domain\EmailRequest;
 use App\Domain\LoginRequest;
 use App\Domain\registerRequest;
-use App\Services\IAM\OauthService;
+use App\Services\oauth\OauthService;
 use OpenApi\Annotations as OA;
 use Ray\Di\Di\Inject;
 

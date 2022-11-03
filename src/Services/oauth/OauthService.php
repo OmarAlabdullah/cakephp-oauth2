@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\IAM;
+namespace App\Services\oauth;
 
 use App\Domain\EmailRequest;
 use App\Domain\LoginRequest;

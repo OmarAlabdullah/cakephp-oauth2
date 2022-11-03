@@ -1,24 +1,48 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Entity;
 
-use Cake\Auth\DefaultPasswordHasher;
-use Cake\ORM\Entity;
+use League\OAuth2\Server\Entities\ClientEntityInterface;
+use League\OAuth2\Server\Entities\Traits\ClientTrait;
+use League\OAuth2\Server\Entities\Traits\EntityTrait;
 
-class Client extends Entity {
+final class Client implements ClientEntityInterface
+{
+    use ClientTrait;
+    use EntityTrait;
 
-    // Make all fields mass assignable except for primary key field "id".
-    protected $_accessible = [
-        '*' => true,
-        'id' => false
-    ];
+    /**
+     * @var bool
+     */
+    private $allowPlainTextPkce = false;
 
-    protected function _setPassword(string $password) {
-        return (new DefaultPasswordHasher)->hash($password);
+    public function setName(string $name): void
+    {
+        $this->name = $name;
     }
 
-    public static function generatePassword(int $length = 8) {
-        return substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, $length);
+    /**
+     * @param string[] $redirectUri
+     */
+    public function setRedirectUri(array $redirectUri): void
+    {
+        $this->redirectUri = $redirectUri;
+    }
+
+    public function setConfidential(bool $isConfidential): void
+    {
+        $this->isConfidential = $isConfidential;
+    }
+
+    public function isPlainTextPkceAllowed(): bool
+    {
+        return $this->allowPlainTextPkce;
+    }
+
+    public function setAllowPlainTextPkce(bool $allowPlainTextPkce): void
+    {
+        $this->allowPlainTextPkce = $allowPlainTextPkce;
     }
 }

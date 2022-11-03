@@ -8,11 +8,11 @@ use Xel\Common\XelObject;
  * Class LoginRequest
  *
  * // Setters
- * @method RegisterRequest setUsername (string $username)
+ * @method RegisterRequest setEmail(string $email)
  * @method RegisterRequest setPassword (string $password)
  *
  * // Getters
- * @method string getUsername
+ * @method string getEmail
  * @method string getPassword
  *
  * @method static RegisterRequest builder
@@ -23,7 +23,7 @@ use Xel\Common\XelObject;
  */
 class RegisterRequest extends XelObject {
     /** @OA\Property() */
-    protected string $username;
+    protected string $email;
     /** @OA\Property() */
     protected string $password;
 

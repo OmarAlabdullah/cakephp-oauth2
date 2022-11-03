@@ -4,11 +4,18 @@ declare(strict_types = 1);
 
 namespace App\Di\Module;
 
-use App\Di\Module\IAM\Auth0Provider;
-use App\Di\Module\IAM\IAMServiceProvider;
-use App\Services\IAM\Oauth2Service;
-use App\Services\IAM\OauthService;
-use Auth0\SDK\Auth0;
+
+use App\Model\Table\AccessTokensTable;
+use App\Model\Table\AuthorizationCodeTable;
+use App\Model\Table\ClientsTable;
+use App\Model\Table\UsersTable;
+use App\Orm\UserORM;
+use App\Services\oauth\Oauth2Service;
+use App\Services\oauth\OauthService;
+use App\Services\oauth\TokenService;
+use App\Services\oauth\TokenServiceInterface;
+use Cake\ORM\TableRegistry;
+use App\Model\Table\RefreshTokensTable;
 use Ray\Di\AbstractModule;
 use Xel\Cake\Network\XelRequest;
 
@@ -20,6 +27,15 @@ class AppModule extends AbstractModule {
     protected function configure() {
         $this->bind(XelRequest::class)->toProvider(XelRequestProvider::class);
         $this->bind(OauthService::class)->to(Oauth2Service::class);
-        $this->bind(Auth0::class)->toProvider(Auth0Provider::class);
+        $this->bind(TokenServiceInterface::class)->to(TokenService::class);
+        $this->bind(UserOrm::class);
+
+        $this->bind(UsersTable::class)->toInstance(TableRegistry::getTableLocator()->get('Users'));
+        $this->bind(AccessTokensTable::class)->toInstance(TableRegistry::getTableLocator()->get('AccessTokenTable'));
+        $this->bind(AuthorizationCodeTable::class)->toInstance(TableRegistry::getTableLocator()->get('AuthorizationCodeTable'));
+        $this->bind(RefreshTokensTable::class)->toInstance(TableRegistry::getTableLocator()->get('RefreshTokensTable'));
+        $this->bind(ClientsTable::class)->toInstance(TableRegistry::getTableLocator()->get('ClientsTable'));
+
+
     }
 }
