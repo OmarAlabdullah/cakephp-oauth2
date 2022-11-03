@@ -18,7 +18,7 @@ class AccessTokensTable extends Table
      */
     public function initialize(array $config): void
     {
-        $this->settable('access_tokens');
+        $this->setTable('access_tokens');
         $this->setPrimaryKey('id');
         $this->setDisplayField('user_id');
         $this->setDisplayField('client_id');
