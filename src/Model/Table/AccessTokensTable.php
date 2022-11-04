@@ -22,11 +22,8 @@ class AccessTokensTable extends Table
         $this->setPrimaryKey('identifier');
         $this->setDisplayField('user_id');
         $this->setDisplayField('client_id');
-        $this->setDisplayField('name');
         $this->setDisplayField('scopes');
         $this->setDisplayField('revoked');
-        $this->setDisplayField('created_at');
-        $this->setDisplayField('updated_at');
         $this->setDisplayField('expires_at');
 //        $this->hasMany('ClientTable', [
 //            'className' => 'OAuthServer.AccessTokenScopes',

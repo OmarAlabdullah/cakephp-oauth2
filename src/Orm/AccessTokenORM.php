@@ -4,6 +4,7 @@ namespace App\Orm;
 
 use App\Model\Entity\AccessToken;
 use App\Model\Table\AccessTokensTable;
+use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\AccessTokenEntityInterface;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Exception\UniqueTokenIdentifierConstraintViolationException;
@@ -41,18 +42,28 @@ class AccessTokenORM implements AccessTokenRepositoryInterface
             throw UniqueTokenIdentifierConstraintViolationException::create();
         }
 
-        $accessToken = $this->buildAccessTokenModel($accessTokenEntity);
+        $accessTokensEntity = new Entity([
+            'user_id' => $accessTokenEntity->getUserIdentifier(),
+            'client_id' => $accessTokenEntity->getClient(),
+            'identifier' => $accessTokenEntity->getIdentifier(),
+            'expires_at' => $accessTokenEntity->getExpiryDateTime(),
+            'scopes' => $accessTokenEntity->getScopes()
+        ]);
 
-        $this->accessTokenManager->save($accessToken);
+        $this->accessTokensTable->save($accessTokensEntity);
     }
 
     public function revokeAccessToken($tokenId)
     {
-        // TODO: Implement revokeAccessToken() method.
+        $accessTokenEntity = $this->accessTokensTable->get($tokenId);
+
+        $accessTokenEntity->set('revoked', true);
+
+        $this->accessTokensTable->save($accessTokenEntity);
     }
 
     public function isAccessTokenRevoked($tokenId)
     {
-        // TODO: Implement isAccessTokenRevoked() method.
+        return $this->accessTokensTable->get($tokenId);
     }
 }

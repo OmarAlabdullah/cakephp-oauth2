@@ -28,6 +28,7 @@ class ClientsTable extends Table
         $this->setDisplayField('provider');
         $this->setDisplayField('redirect');
         $this->setDisplayField('revoked');
+        $this->setDisplayField('grants');
         $this->setDisplayField('created_at');
         $this->setDisplayField('updated_at');
 //        $this->hasMany('Sessions', [
