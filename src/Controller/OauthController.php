@@ -18,6 +18,7 @@ class OauthController extends AppController {
         $this->Auth->allow(['login']);
         $this->Auth->allow(['register']);
         $this->Auth->allow(['changePassword']);
+        $this->Auth->allow(['find']);
     }
 
     /**
@@ -132,8 +133,10 @@ class OauthController extends AppController {
     public function register() {
         /** @var RegisterRequest $registerRequest */
         $registerRequest = $this->xelRequest->getDataAsDomainObject(RegisterRequest::builder());
-        $this->oauth2Service->register($registerRequest);
-
+        $user = $this->oauth2Service->register($registerRequest);
+        $this->set("user", [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -172,10 +175,11 @@ class OauthController extends AppController {
 
     }
 
-    public function sso() {
+    public function find() {
         /** @var EmailRequest $emailRequest */
         $emailRequest = $this->xelRequest->getDataAsDomainObject(EmailRequest::builder());
-        $this->oauth2Service->sso($emailRequest);
+        $user = $this->oauth2Service->find($emailRequest);
+        $this->set($user);
 
     }
 

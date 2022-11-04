@@ -2,12 +2,14 @@
 
 namespace App\Services\oauth;
 
-use OAuth2\Request;
+
+
+use App\Domain\TokenRequest;
 
 class TokenService implements TokenServiceInterface {
 
-    public function accessToken(Request $request): string
+    public function accessToken(TokenRequest $tokenRequest): string
     {
-        return "token...........";
+        return (string) $tokenRequest->getEmail();
     }
 }

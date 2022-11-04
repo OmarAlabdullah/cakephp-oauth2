@@ -5,6 +5,7 @@ namespace App\Services\oauth;
 use App\Domain\EmailRequest;
 use App\Domain\LoginRequest;
 use App\Domain\RegisterRequest;
+use App\Model\Entity\User;
 use App\Model\Table\UsersTable;
 use App\Orm\UserORM;
 
@@ -22,28 +23,18 @@ class Oauth2Service implements OauthService {
 
     public function login(LoginRequest $loginRequest) :string {
 
-//        $realm = "Username-Password-Authentication";
-//        $response = $this->auth0->authentication()->login($loginRequest->getUsername(), $loginRequest->getPassword(), $realm);
-//        $json = json_decode($response->getBody()->getContents(), true);
-//        print_r($json);die();
-//        return $json['access_token'];
         return "heeeeeee";
     }
 
     public function register(RegisterRequest $registerRequest): string {
-        $this->userORM->register($registerRequest);
-//        if($response->getStatusCode() > 299 || $response->getStatusCode() < 200) {
-//            throw new ServiceException("Error registering user: " . $response->getReasonPhrase(), $response->getStatusCode());
-        return "heeeeeee";
+        $this->userORM->saveUser($registerRequest);
+        return  "user";
 
 
     }
 
     public function changePassword(EmailRequest $emailRequest) :string {
-//        $response = $this->auth0->authentication()->dbConnectionsChangePassword($emailRequest->getEmail(),'Username-Password-Authentication');
-//        $json = json_decode($response->getBody()->getContents(), true);
-//        print_r($json);die();
-//        return $response;
+
         return "heeeeeee";
     }
 
@@ -52,9 +43,8 @@ class Oauth2Service implements OauthService {
 
     }
 
-    public function sso(EmailRequest $emailRequest) :string {
-
-        return "response";
+    public function find(EmailRequest $emailRequest) :string {
+        return $this->userORM->getUser($emailRequest);
     }
 
 

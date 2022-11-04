@@ -87,8 +87,8 @@ return static function (RouteBuilder $routes) {
                 ['controller' => 'Oauth', 'action' => 'logout', '_method' => 'POST']);
 
             // sso routes
-            $routes->connect('/google',
-                ['controller' => 'Oauth', 'action' => 'sso', '_method' => 'POST']);
+            $routes->connect('/find',
+                ['controller' => 'Oauth', 'action' => 'find', '_method' => 'POST']);
 
             // token routes
             $routes->connect('/token',

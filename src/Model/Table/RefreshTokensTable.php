@@ -5,7 +5,7 @@ namespace App\Model\Table;
 use Cake\ORM\Table;
 
 /**
- * RefreshToken Model
+ * DbRefreshToken Model
  *
  * @property ClientsTable $Client
  * @property UsersTable $UsersTable
@@ -19,7 +19,7 @@ class RefreshTokensTable extends Table
     public function initialize(array $config): void
     {
         $this->setTable('refresh_tokens');
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('identifier');
         $this->setDisplayField('access_token_id');
         $this->setDisplayField('revoked');
         $this->setDisplayField('expires_at');

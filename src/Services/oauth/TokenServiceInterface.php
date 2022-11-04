@@ -2,11 +2,12 @@
 
 namespace App\Services\oauth;
 
-use App\Domain\EmailRequest;
-use OAuth2\Request;
+
+
+use App\Domain\TokenRequest;
 
 interface TokenServiceInterface
 {
-    public function accessToken(Request $request);
+    public function accessToken(TokenRequest $tokenRequest);
 
 }

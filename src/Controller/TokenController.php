@@ -4,9 +4,11 @@ declare(strict_types=1);
 namespace App\Controller;
 
 
+use App\Domain\TokenRequest;
 use App\Services\oauth\TokenService;
 use App\Services\oauth\TokenServiceInterface;
-use OAuth2\Request;
+
+use http\Client\Request;
 use Ray\Di\Di\Inject;
 use OpenApi\Annotations as OA;
 
@@ -55,7 +57,7 @@ class TokenController extends AppController {
      * )
      */
     public function accessToken() {
-        $token = $this->tokenService->accessToken(Request::createFromGlobals());
+        $token = $this->tokenService->accessToken(TokenRequest::builder());
         $this->set("token", [
             'accessToken' => $token
         ]);

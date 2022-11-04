@@ -20,7 +20,7 @@ class AuthorizationCodeTable extends Table
     public function initialize(array $config): void
     {
         $this->setTable('authorization_codes');
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('identifier');
         $this->setDisplayField('user_id');
         $this->setDisplayField('client_id');
         $this->setDisplayField('scopes');

@@ -10,7 +10,7 @@ use App\Model\Table\RefreshTokensTable;
  *
  * @property AccessTokensTable $AccessToken
  * @property AuthorizationCodeTable $AuthCode
- * @property RefreshTokensTable $RefreshToken
+ * @property RefreshTokensTable $DbRefreshToken
  */
 class ClientsTable extends Table
 {
@@ -21,7 +21,7 @@ class ClientsTable extends Table
     public function initialize(array $config): void
     {
         $this->setTable('clients');
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('identifier');
         $this->setDisplayField('user_id');
         $this->setDisplayField('name');
         $this->setDisplayField('secret');
