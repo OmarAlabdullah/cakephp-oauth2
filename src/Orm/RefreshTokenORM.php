@@ -16,7 +16,7 @@ use Xel\Common\EntityConverter;
 use Xel\Common\ErrorCodes;
 use Xel\Common\Exception\ServiceException;
 
-class RefreshTokensORM implements RefreshTokenRepositoryInterface
+class RefreshTokenORM implements RefreshTokenRepositoryInterface
 {
 
     private RefreshTokensTable $refreshTokensTable;

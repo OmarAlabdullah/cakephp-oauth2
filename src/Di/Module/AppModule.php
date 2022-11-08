@@ -6,9 +6,13 @@ namespace App\Di\Module;
 
 
 use App\Model\Table\AccessTokensTable;
-use App\Model\Table\AuthorizationCodeTable;
+use App\Model\Table\AuthorizationCodesTable;
 use App\Model\Table\ClientsTable;
 use App\Model\Table\UsersTable;
+use App\Orm\AccessTokenORM;
+use App\Orm\AuthorizationCodeORM;
+use App\Orm\ClientORM;
+use App\Orm\RefreshTokenORM;
 use App\Orm\UserORM;
 use App\Services\oauth\Oauth2Service;
 use App\Services\oauth\OauthService;
@@ -29,12 +33,16 @@ class AppModule extends AbstractModule {
         $this->bind(OauthService::class)->to(Oauth2Service::class);
         $this->bind(TokenServiceInterface::class)->to(TokenService::class);
         $this->bind(UserOrm::class);
+        $this->bind(AccessTokenORM::class);
+        $this->bind(RefreshTokenORM::class);
+        $this->bind(ClientORM::class);
+        $this->bind(AuthorizationCodeORM::class);
 
         $this->bind(UsersTable::class)->toInstance(TableRegistry::getTableLocator()->get('Users'));
-        $this->bind(AccessTokensTable::class)->toInstance(TableRegistry::getTableLocator()->get('AccessTokenTable'));
-        $this->bind(AuthorizationCodeTable::class)->toInstance(TableRegistry::getTableLocator()->get('AuthorizationCodeTable'));
-        $this->bind(RefreshTokensTable::class)->toInstance(TableRegistry::getTableLocator()->get('RefreshTokensTable'));
-        $this->bind(ClientsTable::class)->toInstance(TableRegistry::getTableLocator()->get('ClientsTable'));
+        $this->bind(AccessTokensTable::class)->toInstance(TableRegistry::getTableLocator()->get('AccessTokens'));
+        $this->bind(AuthorizationCodesTable::class)->toInstance(TableRegistry::getTableLocator()->get('AuthorizationCodes'));
+        $this->bind(RefreshTokensTable::class)->toInstance(TableRegistry::getTableLocator()->get('RefreshTokens'));
+        $this->bind(ClientsTable::class)->toInstance(TableRegistry::getTableLocator()->get('Clients'));
 
 
     }

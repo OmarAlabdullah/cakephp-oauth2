@@ -11,7 +11,7 @@ use App\Model\Table\UsersTable;
  * @property ClientsTable $Client
  * @property UsersTable $UsersTable
  */
-class AuthorizationCodeTable extends Table
+class AuthorizationCodesTable extends Table
 {
     /**
      * @param array $config Config

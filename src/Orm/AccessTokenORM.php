@@ -14,10 +14,14 @@ class AccessTokenORM implements AccessTokenRepositoryInterface
 {
     private AccessTokensTable $accessTokensTable;
 
-    public function __construct(AccessTokensTable $accessTokensTable){
-        $this->accessTokensTable =$accessTokensTable;
-
+    /**
+     * @param AccessTokensTable $accessTokensTable
+     */
+    public function __construct(AccessTokensTable $accessTokensTable)
+    {
+        $this->accessTokensTable = $accessTokensTable;
     }
+
 
     public function getNewToken(ClientEntityInterface $clientEntity, array $scopes, $userIdentifier = null)
     {
@@ -36,18 +40,19 @@ class AccessTokenORM implements AccessTokenRepositoryInterface
 
     public function persistNewAccessToken(AccessTokenEntityInterface $accessTokenEntity)
     {
-        $accessToken = $this->accessTokensTable->find($accessTokenEntity->getIdentifier());
-
-        if (null !== $accessToken) {
-            throw UniqueTokenIdentifierConstraintViolationException::create();
-        }
+//        $accessToken = $this->accessTokensTable->get($accessTokenEntity->getIdentifier());
+//
+//        if (null !== $accessToken) {
+//            throw UniqueTokenIdentifierConstraintViolationException::create();
+//        }
 
         $accessTokensEntity = new Entity([
             'user_id' => $accessTokenEntity->getUserIdentifier(),
-            'client_id' => $accessTokenEntity->getClient(),
+            'revoked' => false,
+            'client_id' => $accessTokenEntity->getClient()->getIdentifier(),
             'identifier' => $accessTokenEntity->getIdentifier(),
             'expires_at' => $accessTokenEntity->getExpiryDateTime(),
-            'scopes' => $accessTokenEntity->getScopes()
+            'scopes' => ''
         ]);
 
         $this->accessTokensTable->save($accessTokensEntity);

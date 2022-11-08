@@ -9,7 +9,7 @@ use App\Model\Table\RefreshTokensTable;
  * Client Model
  *
  * @property AccessTokensTable $AccessToken
- * @property AuthorizationCodeTable $AuthCode
+ * @property AuthorizationCodesTable $AuthCode
  * @property RefreshTokensTable $DbRefreshToken
  */
 class ClientsTable extends Table

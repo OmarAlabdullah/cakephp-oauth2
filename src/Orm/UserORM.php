@@ -23,9 +23,6 @@ class UserORM implements UserRepositoryInterface
 
     }
 
-    /**
-     * @throws ServiceException
-     */
     public function saveUser(RegisterRequest $registerRequest): void
     {
 
@@ -41,7 +38,7 @@ class UserORM implements UserRepositoryInterface
         try {
             $this->usersTable->saveOrFail($userEntity);
         } catch (\Exception $t) {
-            throw new ConflictException("Cannot save user, Error: $t", ErrorCodes::SERVER_ERROR, $t);
+            throw new ConflictException("Cannot save user, Error: $t",  505, $t);
         }
     }
 
@@ -93,7 +90,7 @@ class UserORM implements UserRepositoryInterface
                     ->where(["email" => $username])
                     ->firstOrFail();
             } catch (\Throwable $t) {
-                throw new NotFoundException("user not found");
+                throw new NotFoundException("user not found, $t");
             }
 
         }

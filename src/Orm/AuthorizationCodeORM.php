@@ -3,7 +3,7 @@
 namespace App\Orm;
 
 use App\Model\Entity\AuthCode;
-use App\Model\Table\AuthorizationCodeTable;
+use App\Model\Table\AuthorizationCodesTable;
 use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\AuthCodeEntityInterface;
 use League\OAuth2\Server\Exception\UniqueTokenIdentifierConstraintViolationException;
@@ -12,9 +12,9 @@ use League\OAuth2\Server\Repositories\AuthCodeRepositoryInterface;
 class AuthorizationCodeORM implements AuthCodeRepositoryInterface
 {
 
-    private  AuthorizationCodeTable $authorizationCodeTable;
+    private  AuthorizationCodesTable $authorizationCodeTable;
 
-    public function __construct(AuthorizationCodeTable $authorizationCodeTable)
+    public function __construct(AuthorizationCodesTable $authorizationCodeTable)
     {
         $this->authorizationCodeTable = $authorizationCodeTable;
     }
@@ -38,7 +38,7 @@ class AuthorizationCodeORM implements AuthCodeRepositoryInterface
             'expires_at' => $authCodeEntity->getExpiryDateTime(),
             'user_id' => $authCodeEntity->getUserIdentifier(),
             'scopes' => $authCodeEntity->getScopes(),
-            'client_id' => $authCodeEntity->getClient()
+            'client_id' => $authCodeEntity->getClient()->getIdentifier()
         ]));
     }
 

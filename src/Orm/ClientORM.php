@@ -2,8 +2,11 @@
 
 namespace App\Orm;
 
+use App\Model\Entity\Client;
 use App\Model\Table\ClientsTable;
 use Cake\Http\Exception\NotFoundException;
+
+use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Repositories\ClientRepositoryInterface;
 
 class ClientORM implements ClientRepositoryInterface
@@ -16,16 +19,14 @@ class ClientORM implements ClientRepositoryInterface
         $this->clientsTable = $clientsTable;
     }
 
-    public function getClientEntity($clientIdentifier){
+    public function getClientEntity($clientIdentifier): ClientEntityInterface{
         {
-            try {
-                return $this->clientsTable->find()
-                    ->where(["identifier" => $clientIdentifier])
-                    ->firstOrFail();
-            } catch (\Throwable $t) {
-                throw new NotFoundException("client not found");
-            }
+//            $client = $this->clientsTable->get($clientIdentifier);
+            $clientEntity = new Client();
+            $clientEntity->setIdentifier($clientIdentifier);
+            $clientEntity->setAllowPlainTextPkce(true);
 
+            return $clientEntity;
         }
     }
 
