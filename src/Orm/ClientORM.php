@@ -29,8 +29,11 @@ class ClientORM implements ClientRepositoryInterface {
     }
 
     public function validateClient($clientIdentifier, $clientSecret, $grantType){
-         $this->clientsTable->get($clientIdentifier);
+//         $this->clientsTable->get($clientIdentifier);
+        $clientEntity = new Client();
+        $clientEntity->setIdentifier($clientIdentifier);
+        $clientEntity->setGrant($grantType);
 
-        return true;
+        return $clientEntity!= null;
     }
 }

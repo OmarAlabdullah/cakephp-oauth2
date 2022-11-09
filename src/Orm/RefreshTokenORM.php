@@ -60,14 +60,19 @@ class RefreshTokenORM implements RefreshTokenRepositoryInterface
 
     public function persistNewRefreshToken(RefreshTokenEntityInterface $refreshTokenEntity)
     {
-        $refreshToken = $this->refreshTokensTable->find($refreshTokenEntity->getIdentifier());
-
-        if (null !== $refreshToken) {
-            throw UniqueTokenIdentifierConstraintViolationException::create();
-        }
+//        $refreshToken = new RefreshToken();
+//
+//        $refreshToken->setIdentifier($refreshTokenEntity->getIdentifier());
+//
+//        if (null !== $refreshToken) {
+//            throw UniqueTokenIdentifierConstraintViolationException::create();
+//        }
 
         $refreshTokensEntity = new Entity([
-            'revoked' => $refreshTokenEntity->getAccessToken(),
+            // TODO"Cannot convert value of type `App\\Model\\Entity\\AccessToken` to bool"
+           // 'revoked' => $refreshTokenEntity->getAccessToken(),
+            'identifier' => $refreshTokenEntity->getIdentifier(),
+            'revoked' => 1,
             'expires_at' => $refreshTokenEntity->getExpiryDateTime(),
             'access_token_id' => $refreshTokenEntity->getIdentifier()
         ]);

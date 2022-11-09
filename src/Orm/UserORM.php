@@ -4,6 +4,7 @@ namespace App\Orm;
 
 use App\Domain\EmailRequest;
 use App\Domain\RegisterRequest;
+use App\Model\Entity\User;
 use App\Model\Table\UsersTable;
 use Cake\Http\Exception\ConflictException;
 use Cake\Http\Exception\NotFoundException;
@@ -23,66 +24,76 @@ class UserORM implements UserRepositoryInterface
 
     }
 
-    public function saveUser(RegisterRequest $registerRequest): void
-    {
-
-        $email = $registerRequest->getEmail();
-        $password = $registerRequest->getPassword();
-
-
-        $userEntity = new Entity([
-            'email' => $email,
-            'password' => $password
-        ]);
-
-        try {
-            $this->usersTable->saveOrFail($userEntity);
-        } catch (\Exception $t) {
-            throw new ConflictException("Cannot save user, Error: $t",  505, $t);
-        }
-    }
-
-
-    /**
-     * @throws ServiceException
-     */
-    public function getUser(EmailRequest $emailRequest)
-    {
-        $email = $emailRequest->getEmail();
-        try {
-            return $this->usersTable->find()
-                ->where(["email" => $email])
-                ->firstOrFail();
-        } catch (\Throwable $t) {
-            throw new NotFoundException("user not found");
-        }
-
-    }
-
-    /**
-     * @throws ServiceException
-     */
-    public function deleteUser(RegisterRequest $registerRequest): void
-    {
-
-        $email = $registerRequest->getEmail();
-        $password = $registerRequest->getPassword();
-
-        $userEntity = new Entity([
-            'email' => $email,
-            'password' => $password
-        ]);
-
-        try {
-            $this->usersTable->delete($userEntity);
-        } catch (\Exception $t) {
-            throw new ServiceException("User not found, Error: $t", ErrorCodes::SERVER_ERROR, $t);
-        }
-    }
+//    public function saveUser(RegisterRequest $registerRequest): void
+//    {
+//
+//        $email = $registerRequest->getEmail();
+//        $password = $registerRequest->getPassword();
+//
+//
+//        $userEntity = new Entity([
+//            'email' => $email,
+//            'password' => $password
+//        ]);
+//
+//        try {
+//            $this->usersTable->saveOrFail($userEntity);
+//        } catch (\Exception $t) {
+//            throw new ConflictException("Cannot save user, Error: $t",  505, $t);
+//        }
+//    }
+//
+//
+//    /**
+//     * @throws ServiceException
+//     */
+//    public function getUser(EmailRequest $emailRequest)
+//    {
+//        $email = $emailRequest->getEmail();
+//        try {
+//            return $this->usersTable->find()
+//                ->where(["email" => $email])
+//                ->firstOrFail();
+//        } catch (\Throwable $t) {
+//            throw new NotFoundException("user not found");
+//        }
+//
+//    }
+//
+//    /**
+//     * @throws ServiceException
+//     */
+//    public function deleteUser(RegisterRequest $registerRequest): void
+//    {
+//
+//        $email = $registerRequest->getEmail();
+//        $password = $registerRequest->getPassword();
+//
+//        $userEntity = new Entity([
+//            'email' => $email,
+//            'password' => $password
+//        ]);
+//
+//        try {
+//            $this->usersTable->delete($userEntity);
+//        } catch (\Exception $t) {
+//            throw new ServiceException("User not found, Error: $t", ErrorCodes::SERVER_ERROR, $t);
+//        }
+//    }
 
 
     public function getUserEntityByUserCredentials($username, $password, $grantType, ClientEntityInterface $clientEntity)
     {
+
+//        $user = $this->usersTable->find()
+//            ->where(["email" => $username])
+//            ->firstOrFail();
+//
+//        $userEntity = new User();
+//        $userEntity->setIdentifier($user->id);
+//
+//        return $userEntity;
+
         {
             try {
                 return $this->usersTable->find()

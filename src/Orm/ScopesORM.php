@@ -2,6 +2,7 @@
 
 namespace App\Orm;
 
+use App\Model\Entity\Scope;
 use App\Model\Table\ScopesTable;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Repositories\ScopeRepositoryInterface;
@@ -18,11 +19,13 @@ class ScopesORM implements ScopeRepositoryInterface
 
     public function getScopeEntityByIdentifier($identifier)
     {
-        return $this->scopesTable->get($identifier);
+        $scopesEntity = new Scope();
+        $scopesEntity->setIdentifier($identifier);
+        return $scopesEntity;
     }
 
     public function finalizeScopes(array $scopes, $grantType, ClientEntityInterface $clientEntity, $userIdentifier = null)
     {
-        // TODO: Implement finalizeScopes() method.
+        return $scopes;
     }
 }

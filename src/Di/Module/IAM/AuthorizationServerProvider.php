@@ -33,6 +33,7 @@ class AuthorizationServerProvider implements ProviderInterface {
         );
         $authServer->enableGrantType(new ClientCredentialsGrant());
         $authServer->enableGrantType(new PasswordGrant($this->userRepository, $this->refreshTokenRepository));
+        $authServer->enableGrantType(new RefreshTokenGrant($this->refreshTokenRepository));
         return $authServer;
     }
 }

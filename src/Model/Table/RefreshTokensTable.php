@@ -21,8 +21,8 @@ class RefreshTokensTable extends Table
         $this->setTable('refresh_tokens');
         $this->setPrimaryKey('identifier');
         $this->setDisplayField('access_token_id');
-        $this->setDisplayField('revoked');
         $this->setDisplayField('expires_at');
+        $this->setDisplayField('revoked');
 //        $this->hasMany('AccessTokensTable', [
 //            'className' => 'AccessTokensTable',
 //            'foreignKey' => 'oauth_token'
