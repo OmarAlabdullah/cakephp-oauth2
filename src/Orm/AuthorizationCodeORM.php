@@ -2,7 +2,7 @@
 
 namespace App\Orm;
 
-use App\Model\Entity\AuthCode;
+use App\Domain\LeagueEntities\AuthCode;
 use App\Model\Table\AuthorizationCodesTable;
 use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\AuthCodeEntityInterface;

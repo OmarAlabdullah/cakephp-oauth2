@@ -2,12 +2,11 @@
 
 namespace App\Orm;
 
-use App\Model\Entity\AccessToken;
+use App\Domain\LeagueEntities\AccessToken;
 use App\Model\Table\AccessTokensTable;
 use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\AccessTokenEntityInterface;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
-use League\OAuth2\Server\Exception\UniqueTokenIdentifierConstraintViolationException;
 use League\OAuth2\Server\Repositories\AccessTokenRepositoryInterface;
 
 class AccessTokenORM implements AccessTokenRepositoryInterface
@@ -40,12 +39,6 @@ class AccessTokenORM implements AccessTokenRepositoryInterface
 
     public function persistNewAccessToken(AccessTokenEntityInterface $accessTokenEntity)
     {
-//        $accessToken = $this->accessTokensTable->get($accessTokenEntity->getIdentifier());
-//
-//        if (null !== $accessToken) {
-//            throw UniqueTokenIdentifierConstraintViolationException::create();
-//        }
-
         $accessTokensEntity = new Entity([
             'user_id' => $accessTokenEntity->getUserIdentifier(),
             'revoked' => false,
@@ -69,6 +62,6 @@ class AccessTokenORM implements AccessTokenRepositoryInterface
 
     public function isAccessTokenRevoked($tokenId)
     {
-        return $this->accessTokensTable->get($tokenId);
+        return $this->accessTokensTable->get($tokenId)->get('revoked');
     }
 }

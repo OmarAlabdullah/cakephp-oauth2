@@ -2,7 +2,7 @@
 
 namespace App\Orm;
 
-use App\Model\Entity\Scope;
+use App\Domain\LeagueEntities\Scope;
 use App\Model\Table\ScopesTable;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Repositories\ScopeRepositoryInterface;

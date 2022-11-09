@@ -2,10 +2,8 @@
 
 namespace App\Orm;
 
-use App\Model\Entity\Client;
+use App\Domain\LeagueEntities\Client;
 use App\Model\Table\ClientsTable;
-use Cake\Http\Exception\NotFoundException;
-
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Repositories\ClientRepositoryInterface;
 

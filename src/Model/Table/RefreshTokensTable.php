@@ -23,10 +23,6 @@ class RefreshTokensTable extends Table
         $this->setDisplayField('access_token_id');
         $this->setDisplayField('expires_at');
         $this->setDisplayField('revoked');
-//        $this->hasMany('AccessTokensTable', [
-//            'className' => 'AccessTokensTable',
-//            'foreignKey' => 'oauth_token'
-//        ]);
         parent::initialize($config);
     }
 }

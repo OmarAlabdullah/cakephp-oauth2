@@ -5,8 +5,6 @@ namespace App\Services\oauth;
 use App\Domain\EmailRequest;
 use App\Domain\LoginRequest;
 use App\Domain\RegisterRequest;
-use App\Model\Entity\User;
-use App\Model\Table\UsersTable;
 use App\Orm\UserORM;
 
 class Oauth2Service implements OauthService {

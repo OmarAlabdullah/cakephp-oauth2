@@ -26,22 +26,6 @@ class AuthorizationCodesTable extends Table
         $this->setDisplayField('scopes');
         $this->setDisplayField('revoked');
         $this->setDisplayField('expires_at');
-
-//        $this->belongsTo(
-//            'Sessions',
-//            [
-//                'className' => 'OAuthServer.Sessions',
-//                'foreignKey' => 'session_id'
-//            ]
-//        );
-//        $this->hasMany(
-//            'AuthCodeScopes',
-//            [
-//                'className' => 'OAuthServer.AuthCodeScopes',
-//                'foreignKey' => 'auth_code',
-//                'dependant' => true
-//            ]
-//        );
         parent::initialize($config);
     }
 }

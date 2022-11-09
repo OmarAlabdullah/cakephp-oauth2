@@ -4,13 +4,11 @@ namespace App\Services\oauth;
 
 
 
+use App\Domain\LeagueEntities\AccessToken;
 use App\Domain\TokenRequest;
-use App\Model\Entity\AccessToken;
-use App\Model\Table\ClientsTable;
 use App\Orm\AccessTokenORM;
 use App\Orm\ClientORM;
 use Cake\I18n\FrozenTime;
-use Cake\ORM\Entity;
 
 class TokenService implements TokenServiceInterface {
     private AccessTokenORM $accessTokenORM;

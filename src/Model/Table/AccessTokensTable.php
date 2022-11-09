@@ -25,11 +25,6 @@ class AccessTokensTable extends Table
         $this->setDisplayField('scopes');
         $this->setDisplayField('revoked');
         $this->setDisplayField('expires_at');
-//        $this->hasMany('ClientTable', [
-//            'className' => 'OAuthServer.AccessTokenScopes',
-//            'foreignKey' => 'oauth_token',
-//            'dependant' => true
-//        ]);
         parent::initialize($config);
     }
 }
