@@ -32,7 +32,7 @@ class TokenService implements TokenServiceInterface {
     {
         $accessToken = new AccessToken();
 
-        $accessToken->setIdentifier(3344);
+        $accessToken->setIdentifier(3342);
         $accessToken->setUserIdentifier(1);
         $accessToken->setClient($this->clientORM->getClientEntity("omar"));
         $accessToken->setExpiryDateTime(FrozenTime::createFromFormat(
@@ -40,13 +40,7 @@ class TokenService implements TokenServiceInterface {
             '2021-01-31 22:11:30',
             'America/New_York'
         ));
-//        $accessTokensEntity = new Entit([
-//            'user_id' => $tokenRequest->getEmail(),
-//            'client_id' => $tokenRequest->getEmail(),
-//            'identifier' => $tokenRequest->getEmail(),
-//            'expires_at' => $tokenRequest->getEmail(),
-//            'scopes' => $tokenRequest->getEmail()
-//        ]);
+
         $this->accessTokenORM->persistNewAccessToken($accessToken);
         return "";
     }

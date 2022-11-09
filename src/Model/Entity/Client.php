@@ -18,6 +18,11 @@ final class Client implements ClientEntityInterface
      */
     private $allowPlainTextPkce = false;
 
+    /**
+     * @var string
+     */
+    private $grant;
+
     public function setName(string $name): void
     {
         $this->name = $name;
@@ -44,5 +49,9 @@ final class Client implements ClientEntityInterface
     public function setAllowPlainTextPkce(bool $allowPlainTextPkce): void
     {
         $this->allowPlainTextPkce = $allowPlainTextPkce;
+    }
+    public function setGrant(string $grant): void
+    {
+        $this->grant = $grant;
     }
 }

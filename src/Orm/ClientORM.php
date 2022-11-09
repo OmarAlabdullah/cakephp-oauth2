@@ -9,8 +9,7 @@ use Cake\Http\Exception\NotFoundException;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Repositories\ClientRepositoryInterface;
 
-class ClientORM implements ClientRepositoryInterface
-{
+class ClientORM implements ClientRepositoryInterface {
 
     private ClientsTable $clientsTable;
 
@@ -21,11 +20,10 @@ class ClientORM implements ClientRepositoryInterface
 
     public function getClientEntity($clientIdentifier): ClientEntityInterface{
         {
-//            $client = $this->clientsTable->get($clientIdentifier);
             $clientEntity = new Client();
             $clientEntity->setIdentifier($clientIdentifier);
+            $clientEntity->setGrant('client_credentials');
             $clientEntity->setAllowPlainTextPkce(true);
-
             return $clientEntity;
         }
     }

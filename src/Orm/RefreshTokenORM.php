@@ -3,7 +3,6 @@
 namespace App\Orm;
 
 use App\Domain\TokenRequest;
-use App\Model\DbRefreshToken;
 use App\Model\Entity\RefreshToken;
 use App\Model\Table\AccessTokensTable;
 use App\Model\Table\RefreshTokensTable;
@@ -12,7 +11,6 @@ use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\RefreshTokenEntityInterface;
 use League\OAuth2\Server\Exception\UniqueTokenIdentifierConstraintViolationException;
 use League\OAuth2\Server\Repositories\RefreshTokenRepositoryInterface;
-use Xel\Common\EntityConverter;
 use Xel\Common\ErrorCodes;
 use Xel\Common\Exception\ServiceException;
 

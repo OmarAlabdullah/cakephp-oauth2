@@ -84,7 +84,6 @@ class UserORM implements UserRepositoryInterface
     public function getUserEntityByUserCredentials($username, $password, $grantType, ClientEntityInterface $clientEntity)
     {
         {
-
             try {
                 return $this->usersTable->find()
                     ->where(["email" => $username])
