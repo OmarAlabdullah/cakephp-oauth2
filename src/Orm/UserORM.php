@@ -3,24 +3,30 @@
 namespace App\Orm;
 
 use App\Domain\LeagueEntities\User;
-use App\Domain\UserClass;
+use App\Model\Table\ClientsTable;
 use App\Model\Table\UsersTable;
 use Cake\Http\Exception\ConflictException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
+use League\OAuth2\Server\Entities\UserEntityInterface;
 use League\OAuth2\Server\Repositories\UserRepositoryInterface;
-use Xel\Common\EntityConverter;
 
 class UserORM implements UserRepositoryInterface
 {
     private UsersTable $usersTable;
+    private ClientsTable $clientTable;
 
-    public function __construct(UsersTable $usersTable)
+    /**
+     * @param UsersTable $usersTable
+     * @param ClientsTable $clientTable
+     */
+    public function __construct(UsersTable $usersTable, ClientsTable $clientTable)
     {
         $this->usersTable = $usersTable;
-
+        $this->clientTable = $clientTable;
     }
+
 
     public function saveUser(string $email, string $password): void
     {
@@ -37,19 +43,22 @@ class UserORM implements UserRepositoryInterface
     }
 
 
-    public function getUserEntityByUserCredentials($username, $password, $grantType, ClientEntityInterface $clientEntity)
-    {
+    public function getUserEntityByUserCredentials($username, $password, $grantType,
+                                                   ClientEntityInterface $clientEntity): UserEntityInterface{
         try {
              $user = $this->usersTable->find()
-                ->where(["email" => $username])
+                ->where(["username" => $username,
+                        "password" => $password])
                 ->firstOrFail();
              $userEntity = new User();
              $userEntity->setIdentifier($user->get('identifier'));
 
+            $this->clientTable->get($clientEntity->getIdentifier());
+
           return $userEntity;
 
         } catch (\Throwable $t) {
-            throw new NotFoundException("user not found or $t");
+            throw new NotFoundException("data is not correct, $t");
         }
     }
 }

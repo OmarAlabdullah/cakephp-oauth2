@@ -11,11 +11,7 @@ use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Grant\ClientCredentialsGrant;
 use League\OAuth2\Server\Grant\PasswordGrant;
 use League\OAuth2\Server\Grant\RefreshTokenGrant;
-use League\OAuth2\Server\Repositories\AccessTokenRepositoryInterface;
-use League\OAuth2\Server\Repositories\ClientRepositoryInterface;
-use League\OAuth2\Server\Repositories\ScopeRepositoryInterface;
 use Ray\Di\ProviderInterface;
-use Xel\Common\Exception\ServiceException;
 
 class AuthorizationServerProvider implements ProviderInterface {
 

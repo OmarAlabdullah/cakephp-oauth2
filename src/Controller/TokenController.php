@@ -9,12 +9,9 @@ use App\Services\oauth\TokenService;
 use App\Services\oauth\TokenServiceInterface;
 
 
-use Cake\Event\Event;
-use Cake\Http\Client\Response;
-use Cake\Http\Exception\ForbiddenException;
+
 use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Exception\OAuthServerException;
-use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Ray\Di\Di\Inject;
 use OpenApi\Annotations as OA;
