@@ -3,7 +3,6 @@
 namespace App\Model\Table;
 
 use Cake\ORM\Table;
-use App\Model\Table\UsersTable;
 
 /**
  * AuthCode Model

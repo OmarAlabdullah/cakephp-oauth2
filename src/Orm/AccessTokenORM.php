@@ -22,7 +22,7 @@ class AccessTokenORM implements AccessTokenRepositoryInterface
     }
 
 
-    public function getNewToken(ClientEntityInterface $clientEntity, array $scopes, $userIdentifier = null)
+    public function getNewToken(ClientEntityInterface $clientEntity, array $scopes, $userIdentifier = null): AccessToken
     {
         /** @var int|string|null $userIdentifier */
         $accessToken = new AccessToken();

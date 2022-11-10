@@ -3,14 +3,14 @@
 namespace App\Services\oauth;
 
 
-
 use App\Domain\LeagueEntities\AccessToken;
 use App\Domain\TokenRequest;
 use App\Orm\AccessTokenORM;
 use App\Orm\ClientORM;
 use Cake\I18n\FrozenTime;
 
-class TokenService implements TokenServiceInterface {
+class TokenService implements TokenServiceInterface
+{
     private AccessTokenORM $accessTokenORM;
 
     private ClientORM $clientORM;

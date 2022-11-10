@@ -12,7 +12,7 @@ use League\OAuth2\Server\Repositories\AuthCodeRepositoryInterface;
 class AuthorizationCodeORM implements AuthCodeRepositoryInterface
 {
 
-    private  AuthorizationCodesTable $authorizationCodeTable;
+    private AuthorizationCodesTable $authorizationCodeTable;
 
     public function __construct(AuthorizationCodesTable $authorizationCodeTable)
     {

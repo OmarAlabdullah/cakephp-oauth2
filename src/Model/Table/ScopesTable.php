@@ -4,7 +4,7 @@ namespace App\Model\Table;
 
 use Cake\ORM\Table;
 
-class ScopesTable  extends Table
+class ScopesTable extends Table
 {
     /**
      * @param array $config Config

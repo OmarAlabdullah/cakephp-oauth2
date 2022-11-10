@@ -17,14 +17,14 @@ class ScopesORM implements ScopeRepositoryInterface
     }
 
 
-    public function getScopeEntityByIdentifier($identifier)
+    public function getScopeEntityByIdentifier($identifier): Scope
     {
         $scopesEntity = new Scope();
         $scopesEntity->setIdentifier($identifier);
         return $scopesEntity;
     }
 
-    public function finalizeScopes(array $scopes, $grantType, ClientEntityInterface $clientEntity, $userIdentifier = null)
+    public function finalizeScopes(array $scopes, $grantType, ClientEntityInterface $clientEntity, $userIdentifier = null): array
     {
         return $scopes;
     }

@@ -50,6 +50,7 @@ final class Client implements ClientEntityInterface
     {
         $this->allowPlainTextPkce = $allowPlainTextPkce;
     }
+
     public function setGrant(string $grant): void
     {
         $this->grant = $grant;

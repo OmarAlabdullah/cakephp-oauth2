@@ -3,7 +3,6 @@
 namespace App\Services\oauth;
 
 
-
 use App\Domain\TokenRequest;
 
 interface TokenServiceInterface

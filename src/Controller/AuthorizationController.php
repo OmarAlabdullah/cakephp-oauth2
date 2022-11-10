@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace App\Controller;
 
 
-use App\Domain\TokenRequest;
 use App\Services\oauth\TokenService;
 use App\Services\oauth\TokenServiceInterface;
 
@@ -18,13 +17,13 @@ use OpenApi\Annotations as OA;
 
 use Xel\Common\Exception\UnauthorizedException;
 
-class TokenController extends AppController {
+class AuthorizationController extends AppController {
     protected TokenServiceInterface $tokenService;
     private AuthorizationServer $server;
 
     public function initialize(): void {
         parent::initialize();
-        $this->Auth->allow(['accessToken']);
+        $this->Auth->allow(['authorize']);
     }
 
     /**
@@ -41,9 +40,9 @@ class TokenController extends AppController {
 
     /**
      * @OA\Post(
-     *     path="/token",
+     *     path="/authorize",
      *     tags={"authentication"},
-     *     description="Token/authenticate using credentials",
+     *     description="authorize/authenticate using credentials",
      *     @OA\Header(
      *          header="accept: application/json",
      *          @OA\Schema(type="string")
@@ -56,7 +55,7 @@ class TokenController extends AppController {
      *     ),
      *     @OA\Response(
      *         response=201,
-     *         description="Login via token success",
+     *         description=" authorize",
      *         @OA\JsonContent()
      *     ),
      *    @OA\Response(
@@ -67,13 +66,14 @@ class TokenController extends AppController {
      * )
      */
 
-    public function accessToken(): ResponseInterface
+    public function authorize(): ResponseInterface
     {
         try {
-            $response = $this->server->respondToAccessTokenRequest($this->request, $this->response);
+            $authRequest = $this->server->validateAuthorizationRequest($this->request);
+            $response = $this->server->completeAuthorizationRequest($authRequest, $this->response);
         } catch (OAuthServerException $e) {
-                throw $e;
-  //          throw new UnauthorizedException($e->getMessage());
+            throw $e;
+            //          throw new UnauthorizedException($e->getMessage());
         }
         return $response;
 

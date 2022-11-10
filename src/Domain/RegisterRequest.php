@@ -21,7 +21,8 @@ use Xel\Common\XelObject;
  *
  * @OA\Schema()
  */
-class RegisterRequest extends XelObject {
+class RegisterRequest extends XelObject
+{
     /** @OA\Property() */
     protected string $email;
     /** @OA\Property() */

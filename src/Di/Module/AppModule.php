@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 
 namespace App\Di\Module;
@@ -9,6 +9,7 @@ use App\Di\Module\IAM\AuthorizationServerProvider;
 use App\Model\Table\AccessTokensTable;
 use App\Model\Table\AuthorizationCodesTable;
 use App\Model\Table\ClientsTable;
+use App\Model\Table\RefreshTokensTable;
 use App\Model\Table\ScopesTable;
 use App\Model\Table\UsersTable;
 use App\Orm\AccessTokenORM;
@@ -22,10 +23,7 @@ use App\Services\oauth\OauthService;
 use App\Services\oauth\TokenService;
 use App\Services\oauth\TokenServiceInterface;
 use Cake\ORM\TableRegistry;
-use App\Model\Table\RefreshTokensTable;
 use League\OAuth2\Server\AuthorizationServer;
-use League\OAuth2\Server\Repositories\AccessTokenRepositoryInterface;
-use League\OAuth2\Server\Repositories\ClientRepositoryInterface;
 use Ray\Di\AbstractModule;
 use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
 use Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory;
@@ -33,12 +31,14 @@ use Symfony\Bridge\PsrHttpMessage\HttpFoundationFactoryInterface;
 use Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface;
 use Xel\Cake\Network\XelRequest;
 
-class AppModule extends AbstractModule {
+class AppModule extends AbstractModule
+{
 
     /**
      * Configure binding
      */
-    protected function configure() {
+    protected function configure()
+    {
         $this->bind(XelRequest::class)->toProvider(XelRequestProvider::class);
         $this->bind(OauthService::class)->to(Oauth2Service::class);
         $this->bind(TokenServiceInterface::class)->to(TokenService::class);

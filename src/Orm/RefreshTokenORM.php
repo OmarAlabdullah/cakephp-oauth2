@@ -3,29 +3,26 @@
 namespace App\Orm;
 
 use App\Domain\LeagueEntities\RefreshToken;
-use App\Domain\RefreshAccessTokenClass;
-use App\Model\Table\AccessTokensTable;
 use App\Model\Table\RefreshTokensTable;
 use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\RefreshTokenEntityInterface;
 use League\OAuth2\Server\Repositories\RefreshTokenRepositoryInterface;
-use Xel\Common\EntityConverter;
 
 class RefreshTokenORM implements RefreshTokenRepositoryInterface
 {
 
     private RefreshTokensTable $refreshTokensTable;
-    private AccessTokensTable $accessTokensTable;
 
-    public function __construct(RefreshTokensTable $refreshTokensTable, AccessTokensTable $accessTokensTable){
-        $this->refreshTokensTable= $refreshTokensTable;
-        $this->accessTokensTable = $accessTokensTable;
-
+    /**
+     * @param RefreshTokensTable $refreshTokensTable
+     */
+    public function __construct(RefreshTokensTable $refreshTokensTable)
+    {
+        $this->refreshTokensTable = $refreshTokensTable;
     }
 
 
-
-    public function getNewRefreshToken()
+    public function getNewRefreshToken(): RefreshToken
     {
         return new RefreshToken();
     }
@@ -33,8 +30,6 @@ class RefreshTokenORM implements RefreshTokenRepositoryInterface
     public function persistNewRefreshToken(RefreshTokenEntityInterface $refreshTokenEntity)
     {
         $refreshTokensEntity = new Entity([
-            // TODO"Cannot convert value of type `App\\Model\\Entity\\AccessToken` to bool"
-           // 'revoked' => $refreshTokenEntity->getAccessToken(),
             'identifier' => $refreshTokenEntity->getIdentifier(),
             'revoked' => 0,
             'expires_at' => $refreshTokenEntity->getExpiryDateTime(),
@@ -58,7 +53,8 @@ class RefreshTokenORM implements RefreshTokenRepositoryInterface
      * @param string $tokenId
      * @return bool
      */
-    public function isRefreshTokenRevoked($tokenId): bool {
+    public function isRefreshTokenRevoked($tokenId): bool
+    {
 
         return $this->refreshTokensTable->get($tokenId)->get('revoked');
 

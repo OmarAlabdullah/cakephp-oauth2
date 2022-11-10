@@ -6,11 +6,9 @@ use App\Domain\LeagueEntities\Client;
 use App\Model\Table\ClientsTable;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Repositories\ClientRepositoryInterface;
-use phpDocumentor\GraphViz\Exception;
-use Xel\Common\Exception\ServiceException;
-use function RingCentral\Psr7\str;
 
-class ClientORM implements ClientRepositoryInterface {
+class ClientORM implements ClientRepositoryInterface
+{
 
     private ClientsTable $clientsTable;
 
@@ -19,7 +17,8 @@ class ClientORM implements ClientRepositoryInterface {
         $this->clientsTable = $clientsTable;
     }
 
-    public function getClientEntity($clientIdentifier): ClientEntityInterface{
+    public function getClientEntity($clientIdentifier): ClientEntityInterface
+    {
         {
             $clientEntity = new Client();
             $clientEntity->setIdentifier($clientIdentifier);
@@ -29,30 +28,30 @@ class ClientORM implements ClientRepositoryInterface {
         }
     }
 
-    public function validateClient($clientIdentifier, $clientSecret, $grantType): bool{
+    public function validateClient($clientIdentifier, $clientSecret, $grantType): bool
+    {
 
-        if ($this->isGrantSupported($clientIdentifier, $grantType)){
+        if ($this->isGrantSupported($clientIdentifier, $grantType)) {
             return true;
         }
 
-        if ($this->clientsTable->get($clientIdentifier)->get('secret') == $clientSecret){
+        if ($this->clientsTable->get($clientIdentifier)->get('secret') == $clientSecret) {
             return true;
         }
-
         return false;
     }
 
 
-    private function isGrantSupported($clientIdentifier, $grantType): bool{
+    private function isGrantSupported($clientIdentifier, $grantType): bool
+    {
         $grants = $this->clientsTable->get($clientIdentifier)->get('grants');
         $explode = explode(" ", $grants);
 
-        for($i=0;$i<count($explode);$i++){
-            if($explode[$i] == $grantType){
+        for ($i = 0; $i < count($explode); $i++) {
+            if ($explode[$i] == $grantType) {
                 return true;
             }
         }
-
         return false;
     }
 

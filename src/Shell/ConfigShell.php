@@ -7,4 +7,6 @@ namespace App\Shell;
 
 use Xel\Cake\Config\XelConfigShell;
 
-class ConfigShell extends XelConfigShell { }
+class ConfigShell extends XelConfigShell
+{
+}

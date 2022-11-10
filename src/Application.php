@@ -13,6 +13,7 @@ declare(strict_types=1);
  * @since     3.3.0
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App;
 
 
@@ -25,4 +26,6 @@ use Xel\Cake\Middleware\XelBaseApplication;
  * This defines the bootstrapping logic and middleware layers you
  * want to use in your application.
  */
-class Application extends XelBaseApplication { }
+class Application extends XelBaseApplication
+{
+}

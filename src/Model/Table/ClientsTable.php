@@ -1,9 +1,8 @@
 <?php
+
 namespace App\Model\Table;
 
 use Cake\ORM\Table;
-use App\Model\Table\AccessTokensTable;
-use App\Model\Table\RefreshTokensTable;
 
 /**
  * Client Model

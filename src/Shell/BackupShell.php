@@ -1,35 +1,38 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 
 namespace App\Shell;
 
 use Xel\Cake\Shell\XelShell;
-use Ray\Di\Di\Inject;
-use Cake\Core\Configure;
-use Cake\ORM\Entity;
 use Xel\Util\BackupDatabase;
 
-class BackupShell extends XelShell {
+class BackupShell extends XelShell
+{
 
     private BackupDatabase $backupDatabase;
 
     //override startup to disable welcome message
-    public function startup(): void { }
+    public function startup(): void
+    {
+    }
 
-	public function main(...$args) {
-		$this->out('Need a subcommand: Databases');
-	}
+    public function main(...$args)
+    {
+        $this->out('Need a subcommand: Databases');
+    }
 
-	 /**
+    /**
      * @Inject
      * @param BackupDatabase $backupDatabase
      */
-    public function set(BackupDatabase $backupDatabase) {
+    public function set(BackupDatabase $backupDatabase)
+    {
         $this->backupDatabase = $backupDatabase;
     }
 
-	public function Databases(){
+    public function Databases()
+    {
         $this->out("Starting task backup_database");
         $this->backupDatabase->start();
         $this->out("Backup_database task finished");

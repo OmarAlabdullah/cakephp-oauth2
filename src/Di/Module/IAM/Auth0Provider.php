@@ -6,9 +6,11 @@ use Auth0\SDK\Auth0;
 use Auth0\SDK\Configuration\SdkConfiguration;
 use Ray\Di\ProviderInterface;
 
-class Auth0Provider implements ProviderInterface {
+class Auth0Provider implements ProviderInterface
+{
 
-    public function get(): Auth0 {
+    public function get(): Auth0
+    {
         $configuration = new SdkConfiguration([
             'domain' => 'dev-7ys-j0kk.us.auth0.com',
             'clientId' => 'IDfC5gcuoD5QAybm7u6zVJPcXaq1KgTa',

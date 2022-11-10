@@ -38,24 +38,25 @@ class UserORM implements UserRepositoryInterface
         try {
             $this->usersTable->saveOrFail($userEntity);
         } catch (\Exception $t) {
-            throw new ConflictException("Cannot save user, Error: $t",  505, $t);
+            throw new ConflictException("Cannot save user, Error: $t", 505, $t);
         }
     }
 
 
     public function getUserEntityByUserCredentials($username, $password, $grantType,
-                                                   ClientEntityInterface $clientEntity): UserEntityInterface{
+                                                   ClientEntityInterface $clientEntity): UserEntityInterface
+    {
         try {
-             $user = $this->usersTable->find()
+            $user = $this->usersTable->find()
                 ->where(["username" => $username,
-                        "password" => $password])
+                    "password" => $password])
                 ->firstOrFail();
-             $userEntity = new User();
-             $userEntity->setIdentifier($user->get('identifier'));
+            $userEntity = new User();
+            $userEntity->setIdentifier($user->get('identifier'));
 
             $this->clientTable->get($clientEntity->getIdentifier());
 
-          return $userEntity;
+            return $userEntity;
 
         } catch (\Throwable $t) {
             throw new NotFoundException("data is not correct, $t");
