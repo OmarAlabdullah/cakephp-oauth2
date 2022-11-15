@@ -93,6 +93,10 @@ return static function (RouteBuilder $routes) {
             // token routes
             $routes->connect('/token',
                 ['controller' => 'Token', 'action' => 'accessToken', '_method' => 'POST']);
+
+            // token routes
+            $routes->connect('/authorize',
+                ['controller' => 'Authorization', 'action' => 'authorize', '_method' => 'GET']);
         });
 
         $routes->setExtensions(['json']);

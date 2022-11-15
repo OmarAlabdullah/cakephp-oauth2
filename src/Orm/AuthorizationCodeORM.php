@@ -8,6 +8,7 @@ use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\AuthCodeEntityInterface;
 use League\OAuth2\Server\Exception\UniqueTokenIdentifierConstraintViolationException;
 use League\OAuth2\Server\Repositories\AuthCodeRepositoryInterface;
+use Xel\Common\Exception\ServiceException;
 
 class AuthorizationCodeORM implements AuthCodeRepositoryInterface
 {
@@ -27,19 +28,18 @@ class AuthorizationCodeORM implements AuthCodeRepositoryInterface
 
     public function persistNewAuthCode(AuthCodeEntityInterface $authCodeEntity)
     {
-        $authorizationCode = $this->authorizationCodeTable->find($authCodeEntity->getIdentifier());
-
-        if (null !== $authorizationCode) {
-            throw UniqueTokenIdentifierConstraintViolationException::create();
-        }
-
-        $this->authorizationCodeTable->save(new Entity([
+        $authCode = new Entity([
             'identifier' => $authCodeEntity->getIdentifier(),
             'expires_at' => $authCodeEntity->getExpiryDateTime(),
             'user_id' => $authCodeEntity->getUserIdentifier(),
             'scopes' => $authCodeEntity->getScopes(),
             'client_id' => $authCodeEntity->getClient()->getIdentifier()
-        ]));
+        ]);
+
+//        $userId = $authCodeEntity->getUserIdentifier();
+//        throw new ServiceException("hhh $userId");
+
+        $this->authorizationCodeTable->save($authCode);
     }
 
     public function revokeAuthCode($codeId)

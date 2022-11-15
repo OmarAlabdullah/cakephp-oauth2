@@ -4,6 +4,7 @@ namespace App\Orm;
 
 use App\Domain\LeagueEntities\Client;
 use App\Model\Table\ClientsTable;
+use League\Container\Exception\NotFoundException;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Repositories\ClientRepositoryInterface;
 
@@ -19,13 +20,23 @@ class ClientORM implements ClientRepositoryInterface
 
     public function getClientEntity($clientIdentifier): ClientEntityInterface
     {
-        {
+        try {
+            $client = $this->clientsTable->get($clientIdentifier);
             $clientEntity = new Client();
-            $clientEntity->setIdentifier($clientIdentifier);
-            $clientEntity->setGrant('client_credentials');
-            $clientEntity->setAllowPlainTextPkce(true);
+            $clientEntity->setIdentifier($client->get('identifier'));
+            $clientEntity->setConfidential($client->get('isConfidential'));
+            $clientEntity->setGrant($client->get('grants'));
+            $clientEntity->setName($client->get('name'));
+            $clientEntity->setRedirectUri($this->stringConverterToArray($client->get('redirect')));
+            $clientEntity->setAllowPlainTextPkce($client->get('allow_plain_text_pkce'));
+
             return $clientEntity;
+
+        } catch (\Throwable $t) {
+            throw new NotFoundException("data is not correct , $t");
         }
+
+
     }
 
     public function validateClient($clientIdentifier, $clientSecret, $grantType): bool
@@ -35,10 +46,10 @@ class ClientORM implements ClientRepositoryInterface
             return true;
         }
 
-        if ($this->clientsTable->get($clientIdentifier)->get('secret') == $clientSecret) {
+        else if ($this->clientsTable->get($clientIdentifier)->get('secret') == $clientSecret) {
             return true;
         }
-        return false;
+        return true;
     }
 
 
@@ -54,6 +65,14 @@ class ClientORM implements ClientRepositoryInterface
         }
         return false;
     }
+
+
+
+    private function stringConverterToArray($string): array
+    {
+        return explode(" ", $string);
+    }
+
 
 
 }

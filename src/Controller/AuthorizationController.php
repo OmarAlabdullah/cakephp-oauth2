@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 
+use App\Domain\LeagueEntities\User;
 use App\Services\oauth\TokenService;
 use App\Services\oauth\TokenServiceInterface;
 
@@ -70,6 +71,11 @@ class AuthorizationController extends AppController {
     {
         try {
             $authRequest = $this->server->validateAuthorizationRequest($this->request);
+
+            $authRequest->setUser(new User());
+
+            $authRequest->setAuthorizationApproved(true);
+
             $response = $this->server->completeAuthorizationRequest($authRequest, $this->response);
         } catch (OAuthServerException $e) {
             throw $e;

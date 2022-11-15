@@ -4,12 +4,7 @@ namespace App\Model\Table;
 
 use Cake\ORM\Table;
 
-/**
- * AuthCode Model
- *
- * @property ClientsTable $Client
- * @property UsersTable $UsersTable
- */
+
 class AuthorizationCodesTable extends Table
 {
     /**

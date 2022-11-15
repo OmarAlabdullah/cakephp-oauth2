@@ -3,17 +3,22 @@
 namespace App\Di\Module\IAM;
 
 use App\Orm\AccessTokenORM;
+use App\Orm\AuthorizationCodeORM;
 use App\Orm\ClientORM;
 use App\Orm\RefreshTokenORM;
 use App\Orm\ScopesORM;
 use App\Orm\UserORM;
+use Cake\I18n\FrozenTime;
+use Cassandra\Date;
 use DateInterval;
 use League\OAuth2\Server\AuthorizationServer;
+use League\OAuth2\Server\Grant\AuthCodeGrant;
 use League\OAuth2\Server\Grant\ClientCredentialsGrant;
 use League\OAuth2\Server\Grant\ImplicitGrant;
 use League\OAuth2\Server\Grant\PasswordGrant;
 use League\OAuth2\Server\Grant\RefreshTokenGrant;
 use Ray\Di\ProviderInterface;
+use Xel\Cake\Util\DateTimeUtil;
 
 class AuthorizationServerProvider implements ProviderInterface
 {
@@ -23,8 +28,8 @@ class AuthorizationServerProvider implements ProviderInterface
                                 private readonly RefreshTokenORM $refreshTokenRepository,
                                 private readonly AccessTokenORM  $accessTokenRepository,
                                 private readonly ScopesORM       $scopeRepository,
-                                private readonly DateInterval $accessTokenTTL
-    )
+                                private readonly AuthorizationCodeORM $authorizationCodeORM
+                                )
     {
     }
 
@@ -34,10 +39,15 @@ class AuthorizationServerProvider implements ProviderInterface
             dirname(__FILE__) . DS . 'id_rsa',
             dirname(__FILE__) . DS . 'id_rsa.pub'
         );
-        $authServer->enableGrantType(new ClientCredentialsGrant());
+
+        $authCodeTTL = new \DateInterval("P1D");
+        $accessTokenTTL = new \DateInterval("P1D");
+        $authServer->enableGrantType(new \League\OAuth2\Server\Grant\ClientCredentialsGrant());
         $authServer->enableGrantType(new PasswordGrant($this->userRepository, $this->refreshTokenRepository));
         $authServer->enableGrantType(new RefreshTokenGrant($this->refreshTokenRepository));
-        $authServer->enableGrantType(new ImplicitGrant($this->accessTokenTTL));
+        $authServer->enableGrantType(new AuthCodeGrant($this->authorizationCodeORM,$this->refreshTokenRepository, $authCodeTTL));
+        $authServer->enableGrantType(new ImplicitGrant($accessTokenTTL));
+
         return $authServer;
     }
 }

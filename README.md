@@ -21,3 +21,85 @@ The framework source code can be found here: [cakephp/cakephp](https://github.co
 
 There is no template project for drivers, because it would be completely empty.
 Just copy another driver project and remove all code that you do not need.
+
+
+### Database structure
+```
+create table access_tokens
+(
+identifier varchar(100)    not null
+primary key,
+user_id    bigint unsigned null,
+client_id  char(36)        not null,
+scopes     text            null,
+revoked    tinyint(1)      not null,
+expires_at datetime        null
+)
+collate = utf8mb4_unicode_ci;
+
+create index oauth_access_tokens_user_id_index
+on access_tokens (user_id);
+
+create table authorization_codes
+(
+identifier varchar(100)    not null
+primary key,
+user_id    bigint unsigned not null,
+client_id  char(36)        not null,
+scopes     text            null,
+revoked    tinyint(1)      not null,
+expires_at datetime        null
+)
+collate = utf8mb4_unicode_ci;
+
+create index oauth_auth_codes_user_id_index
+on authorization_codes (user_id);
+
+create table clients
+(
+identifier            char(36)        not null
+primary key,
+user_id               bigint unsigned null,
+name                  varchar(255)    not null,
+secret                varchar(100)    null,
+redirect              text            not null,
+allow_plain_text_pkce tinyint(1)      not null,
+grants                varchar(128)    null,
+isConfidential        tinyint(1)      null
+)
+collate = utf8mb4_unicode_ci;
+
+create index oauth_clients_user_id_index
+on clients (user_id);
+
+create table refresh_tokens
+(
+identifier      varchar(100) not null
+primary key,
+access_token_id varchar(100) not null,
+expires_at      datetime     null,
+revoked         tinyint(1)   null
+)
+collate = utf8mb4_unicode_ci;
+
+create index oauth_refresh_tokens_access_token_id_index
+on refresh_tokens (access_token_id);
+
+create table scopes
+(
+identifier varchar(80) not null
+primary key,
+is_default tinyint(1)  null
+);
+
+create table users
+(
+identifier bigint unsigned auto_increment
+primary key,
+username   varchar(255) not null,
+password   varchar(255) not null,
+constraint users_email_unique
+unique (username)
+)
+collate = utf8mb4_unicode_ci;
+```

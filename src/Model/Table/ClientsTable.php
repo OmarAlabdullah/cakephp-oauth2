@@ -30,6 +30,7 @@ class ClientsTable extends Table
         $this->setDisplayField('grants');
         $this->setDisplayField('created_at');
         $this->setDisplayField('updated_at');
+        $this->setDisplayField('isConfidential');
         parent::initialize($config);
     }
 
