@@ -17,4 +17,6 @@ interface OauthService
     public function logout(EmailRequest $emailRequest);
 
     public function find(EmailRequest $emailRequest);
+
+    public function getUserById(string $userId);
 }

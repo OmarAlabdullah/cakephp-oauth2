@@ -50,4 +50,10 @@ class Oauth2Service implements OauthService
     }
 
 
+    public function getUserById(string $userId)
+    {
+        return $this->userORM->getUserById($userId);
+    }
+
+
 }

@@ -5,10 +5,10 @@ namespace App\Controller;
 
 
 use App\Domain\LeagueEntities\User;
+use App\Services\oauth\Oauth2Service;
+use App\Services\oauth\OauthService;
 use App\Services\oauth\TokenService;
 use App\Services\oauth\TokenServiceInterface;
-
-
 
 use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Exception\OAuthServerException;
@@ -16,10 +16,11 @@ use Psr\Http\Message\ResponseInterface;
 use Ray\Di\Di\Inject;
 use OpenApi\Annotations as OA;
 
-use Xel\Common\Exception\UnauthorizedException;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class AuthorizationController extends AppController {
-    protected TokenServiceInterface $tokenService;
+    protected OauthService $OauthService;
     private AuthorizationServer $server;
 
     public function initialize(): void {
@@ -32,10 +33,14 @@ class AuthorizationController extends AppController {
      * @param TokenServiceInterface $tokenService
      * @return void
      */
-    public function inject(TokenServiceInterface $tokenService,
-                           AuthorizationServer $server
+
+
+
+
+    public function inject(OauthService $OauthService,
+                           AuthorizationServer $server,
     ) {
-        $this->tokenService = $tokenService;
+        $this->OauthService = $OauthService;
         $this->server = $server;
     }
 
@@ -72,11 +77,12 @@ class AuthorizationController extends AppController {
         try {
             $authRequest = $this->server->validateAuthorizationRequest($this->request);
 
-            $authRequest->setUser(new User());
 
             $authRequest->setAuthorizationApproved(true);
+             $authRequest->setUser($this->OauthService->getUserById($this->request->getQuery('user_id')));
 
             $response = $this->server->completeAuthorizationRequest($authRequest, $this->response);
+            //var_dump($response); die();
         } catch (OAuthServerException $e) {
             throw $e;
             //          throw new UnauthorizedException($e->getMessage());

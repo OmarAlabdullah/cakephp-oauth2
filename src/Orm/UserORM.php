@@ -62,4 +62,19 @@ class UserORM implements UserRepositoryInterface
             throw new NotFoundException("data is not correct, $t");
         }
     }
+
+    public function getUserById(string $userId): UserEntityInterface
+    {
+        try {
+            $user = $this->usersTable->get($userId);
+            $userEntity = new User();
+            $userEntity->setIdentifier($user->get('identifier'));
+
+
+            return $userEntity;
+
+        } catch (\Throwable $t) {
+            throw new NotFoundException("user not found $t");
+        }
+    }
 }

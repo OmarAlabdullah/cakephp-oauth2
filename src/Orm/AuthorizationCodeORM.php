@@ -3,9 +3,11 @@
 namespace App\Orm;
 
 use App\Domain\LeagueEntities\AuthCode;
+use App\Domain\ScopeModel;
 use App\Model\Table\AuthorizationCodesTable;
 use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\AuthCodeEntityInterface;
+use League\OAuth2\Server\Entities\ScopeEntityInterface;
 use League\OAuth2\Server\Exception\UniqueTokenIdentifierConstraintViolationException;
 use League\OAuth2\Server\Repositories\AuthCodeRepositoryInterface;
 use Xel\Common\Exception\ServiceException;
@@ -28,16 +30,16 @@ class AuthorizationCodeORM implements AuthCodeRepositoryInterface
 
     public function persistNewAuthCode(AuthCodeEntityInterface $authCodeEntity)
     {
+
         $authCode = new Entity([
             'identifier' => $authCodeEntity->getIdentifier(),
             'expires_at' => $authCodeEntity->getExpiryDateTime(),
             'user_id' => $authCodeEntity->getUserIdentifier(),
-            'scopes' => $authCodeEntity->getScopes(),
+            'scopes' => "public",
+            'revoked' => false,
             'client_id' => $authCodeEntity->getClient()->getIdentifier()
         ]);
 
-//        $userId = $authCodeEntity->getUserIdentifier();
-//        throw new ServiceException("hhh $userId");
 
         $this->authorizationCodeTable->save($authCode);
     }
@@ -55,4 +57,7 @@ class AuthorizationCodeORM implements AuthCodeRepositoryInterface
     {
         return $this->authorizationCodeTable->get($codeId)->get('revoked');
     }
+
+
+
 }

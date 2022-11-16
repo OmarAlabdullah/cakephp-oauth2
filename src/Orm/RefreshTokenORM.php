@@ -31,7 +31,7 @@ class RefreshTokenORM implements RefreshTokenRepositoryInterface
     {
         $refreshTokensEntity = new Entity([
             'identifier' => $refreshTokenEntity->getIdentifier(),
-            'revoked' => 0,
+            'revoked' => false,
             'expires_at' => $refreshTokenEntity->getExpiryDateTime(),
             'access_token_id' => $refreshTokenEntity->getIdentifier()
         ]);
