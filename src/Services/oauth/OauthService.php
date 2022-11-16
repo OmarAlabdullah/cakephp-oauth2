@@ -18,5 +18,5 @@ interface OauthService
 
     public function find(EmailRequest $emailRequest);
 
-    public function getUserById(string $userId);
+    public function getUserByCredentials(string $username, string $password);
 }

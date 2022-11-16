@@ -53,6 +53,8 @@ class UserORM implements UserRepositoryInterface
                 ->firstOrFail();
             $userEntity = new User();
             $userEntity->setIdentifier($user->get('identifier'));
+            $userEntity->setEmail($this->usersTable->get($user->get('identifier'))->get('email'));
+
 
             $this->clientTable->get($clientEntity->getIdentifier());
 
@@ -63,18 +65,21 @@ class UserORM implements UserRepositoryInterface
         }
     }
 
-    public function getUserById(string $userId): UserEntityInterface
+    public function getUserByCredentials($username, $password): UserEntityInterface
     {
         try {
-            $user = $this->usersTable->get($userId);
+            $user = $this->usersTable->find()
+                ->where(["username" => $username,
+                    "password" => $password])
+                ->firstOrFail();
             $userEntity = new User();
             $userEntity->setIdentifier($user->get('identifier'));
-
+            $userEntity->setEmail($this->usersTable->get($user->get('identifier'))->get('email'));
 
             return $userEntity;
 
         } catch (\Throwable $t) {
-            throw new NotFoundException("user not found $t");
+            throw new NotFoundException("username or password is not correct, $t");
         }
     }
 }

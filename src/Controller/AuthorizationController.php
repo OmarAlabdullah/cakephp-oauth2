@@ -79,10 +79,9 @@ class AuthorizationController extends AppController {
 
 
             $authRequest->setAuthorizationApproved(true);
-             $authRequest->setUser($this->OauthService->getUserById($this->request->getQuery('user_id')));
+             $authRequest->setUser($this->OauthService->getUserByCredentials($this->request->getQuery('username'), $this->request->getQuery('password')));
 
             $response = $this->server->completeAuthorizationRequest($authRequest, $this->response);
-            //var_dump($response); die();
         } catch (OAuthServerException $e) {
             throw $e;
             //          throw new UnauthorizedException($e->getMessage());

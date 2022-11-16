@@ -67,7 +67,6 @@ class ClientORM implements ClientRepositoryInterface
     }
 
 
-
     private function stringConverterToArray($string): array
     {
         return explode(" ", $string);

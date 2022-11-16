@@ -10,7 +10,7 @@ use App\Services\oauth\OauthService;
 use OpenApi\Annotations as OA;
 use Ray\Di\Di\Inject;
 
-class OauthController extends AppController {
+class LoginController extends AppController {
     protected OauthService $oauth2Service;
 
     public function initialize(): void {

@@ -88,13 +88,6 @@ class TokenController extends AppController {
 
     public function accessToken(): ResponseInterface
     {
-        try {
-            $response = $this->server->respondToAccessTokenRequest($this->request, $this->response);
-        } catch (OAuthServerException $e) {
-                throw $e;
-  //          throw new UnauthorizedException($e->getMessage());
-        }
-        return $response;
-
+        return $this->server->respondToAccessTokenRequest($this->request, $this->response);
     }
 }
