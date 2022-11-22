@@ -42,14 +42,11 @@ class ClientORM implements ClientRepositoryInterface
     public function validateClient($clientIdentifier, $clientSecret, $grantType): bool
     {
 
-        if ($this->isGrantSupported($clientIdentifier, $grantType)) {
+        if ($this->isGrantSupported($clientIdentifier, $grantType) &&
+            $this->clientsTable->get($clientIdentifier)->get('secret') == $clientSecret) {
             return true;
         }
-
-        else if ($this->clientsTable->get($clientIdentifier)->get('secret') == $clientSecret) {
-            return true;
-        }
-        return true;
+        return false;
     }
 
 
@@ -71,7 +68,5 @@ class ClientORM implements ClientRepositoryInterface
     {
         return explode(" ", $string);
     }
-
-
 
 }
