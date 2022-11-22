@@ -69,6 +69,4 @@ class ClientORM implements ClientRepositoryInterface
         return explode(" ", $string);
     }
 
-
-
 }

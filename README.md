@@ -4,7 +4,7 @@ The League library can be found here: [OAuth 2.0 Server/LEAGUE](https://oauth2.t
 
 The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
 
-![alt text](oauth.png?raw=true)
+[<img src="oauth.png" width="666" />]
 
 ### Create a new CakePHP SSO according to Oauth2 architecture
 
@@ -21,7 +21,7 @@ The framework source code can be found here: [cakephp/cakephp](https://github.co
 11. you can test the endpoints with postman. Attention the type of the body is 'x-ww-form-urlencoded'.
 12. you have to build a login/registration endpoints to prove the user and the client.
 
-![alt text](oauthproces.png?raw=true)
+[<img src="oauthproces.png" width="666" />]
 
 ## Authorize endpoint
 
@@ -38,27 +38,26 @@ I have access alle grant types except the implicit grant. I will explain per gra
 
 The most important grant type. With this grant can the client get the user data by the code from the authorize endpoint.
 
-![alt text](authorization_code.png?raw=true)
-
+[<img src="authorization_code.png" width="666" />]
 
 ### Password grant type
 
 the client can use this type and get access token and refresh token by username and password.
 
-![alt text](password.png?raw=true)
+[<img src="password.png" width="666" />]
 
 ### Refresh_token grant type
 
 After that the access token expires the client still have the refresh token. The client can exchange this refresh token with a new access token and refresh token.
 
-![alt text](refresh_token.png?raw=true)
+[<img src="refresh_token.png" width="666" />]
+
 
 ### Client_credentials
 
 This grant is suitable for machine-to-machine authentication, for example would be a client making requests to an API that don’t require user’s permission.
 
-![alt text](client_credentials.png?raw=true)
-
+[<img src="client_credentials.png" width="666" />]
 
 
 
