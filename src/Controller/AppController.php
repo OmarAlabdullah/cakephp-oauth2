@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Cake\Event\Event;
-use Cake\Network\Response;
+
 use Xel\Cake\Clients\XelClientsAuth;
 use Xel\Cake\Controller\XelAppController;
 use Xel\Cake\Network\XelRequest;

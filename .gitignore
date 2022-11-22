@@ -1,4 +1,5 @@
-vendor
+
+/tests
 /vendor
 /tmp
 /logs
