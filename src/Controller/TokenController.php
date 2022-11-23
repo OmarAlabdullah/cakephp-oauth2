@@ -4,13 +4,19 @@ declare(strict_types=1);
 namespace App\Controller;
 
 
-use App\Services\oauth\TokenServiceInterface;
-use League\OAuth2\Server\AuthorizationServer;
-use Psr\Http\Message\ResponseInterface;
+use App\Domain\TokenRequest;
 
+
+
+use League\OAuth2\Server\AuthorizationServer;
+use League\OAuth2\Server\Exception\OAuthServerException;
+use Psr\Http\Message\ResponseInterface;
+use Ray\Di\Di\Inject;
+use OpenApi\Annotations as OA;
+
+use Xel\Common\Exception\UnauthorizedException;
 
 class TokenController extends AppController {
-    protected TokenServiceInterface $tokenService;
     private AuthorizationServer $server;
 
     public function initialize(): void {
@@ -20,13 +26,11 @@ class TokenController extends AppController {
 
     /**
      * @Inject
-     * @param TokenServiceInterface $tokenService
+     * @param AuthorizationServer $server
      * @return void
      */
-    public function inject(TokenServiceInterface $tokenService,
-                           AuthorizationServer   $server
+    public function inject(AuthorizationServer $server
     ) {
-        $this->tokenService = $tokenService;
         $this->server = $server;
     }
 
@@ -77,7 +81,8 @@ class TokenController extends AppController {
      * )
      */
 
-    public function accessToken(): ResponseInterface {
+    public function accessToken(): ResponseInterface
+    {
         return $this->server->respondToAccessTokenRequest($this->request, $this->response);
     }
 }

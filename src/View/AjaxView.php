@@ -21,7 +21,8 @@ namespace App\View;
  * Currently only switches the default layout and sets the response type -
  * which just maps to text/html by default.
  */
-class AjaxView extends AppView {
+class AjaxView extends AppView
+{
 
     /**
      * The name of the layout file to render the view inside of. The name
@@ -37,7 +38,8 @@ class AjaxView extends AppView {
      *
      * @return void
      */
-    public function initialize(): void {
+    public function initialize(): void
+    {
         parent::initialize();
 
         $this->response = $this->response->withType('ajax');

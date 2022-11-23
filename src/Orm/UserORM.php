@@ -5,6 +5,7 @@ namespace App\Orm;
 use App\Domain\LeagueEntities\User;
 use App\Model\Table\ClientsTable;
 use App\Model\Table\UsersTable;
+use Cake\Http\Exception\NotFoundException;
 use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Entities\UserEntityInterface;

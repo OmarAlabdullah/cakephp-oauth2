@@ -9,9 +9,11 @@ use Cake\Routing\Router;
 use Ray\Di\ProviderInterface;
 use Xel\Cake\Network\XelRequest;
 
-class XelRequestProvider implements ProviderInterface {
+class XelRequestProvider implements ProviderInterface
+{
 
-    public function get() {
+    public function get()
+    {
         return new XelRequest(Router::getRequest());
     }
 }

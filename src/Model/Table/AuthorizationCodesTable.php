@@ -5,12 +5,14 @@ namespace App\Model\Table;
 use Cake\ORM\Table;
 
 
-class AuthorizationCodesTable extends Table {
+class AuthorizationCodesTable extends Table
+{
     /**
      * @param array $config Config
      * @return void
      */
-    public function initialize(array $config): void {
+    public function initialize(array $config): void
+    {
         $this->setTable('authorization_codes');
         $this->setPrimaryKey('identifier');
         $this->setDisplayField('user_id');

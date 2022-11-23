@@ -7,7 +7,8 @@ namespace App\Domain\LeagueEntities;
 use League\OAuth2\Server\Entities\ScopeEntityInterface;
 use League\OAuth2\Server\Entities\Traits\EntityTrait;
 
-final class Scope implements ScopeEntityInterface {
+final class Scope implements ScopeEntityInterface
+{
     use EntityTrait;
 
     /**
@@ -16,7 +17,8 @@ final class Scope implements ScopeEntityInterface {
      * @return mixed
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         return $this->getIdentifier();
     }
 }

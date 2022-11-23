@@ -6,7 +6,8 @@ use App\Domain\EmailRequest;
 use App\Domain\LoginRequest;
 use App\Domain\RegisterRequest;
 
-interface OauthService {
+interface OauthService
+{
     public function login(LoginRequest $loginRequest);
 
     public function register(RegisterRequest $registerRequest);
