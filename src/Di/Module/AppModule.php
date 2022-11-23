@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Di\Module;
 
 
-use App\Di\Module\IAM\AuthorizationServerProvider;
+use App\Di\Module\Provider\AuthorizationServerProvider;
 use App\Model\Table\AccessTokensTable;
 use App\Model\Table\AuthorizationCodesTable;
 use App\Model\Table\ClientsTable;
@@ -20,15 +20,9 @@ use App\Orm\ScopesORM;
 use App\Orm\UserORM;
 use App\Services\oauth\Oauth2Service;
 use App\Services\oauth\OauthService;
-use App\Services\oauth\TokenService;
-use App\Services\oauth\TokenServiceInterface;
 use Cake\ORM\TableRegistry;
 use League\OAuth2\Server\AuthorizationServer;
 use Ray\Di\AbstractModule;
-use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
-use Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory;
-use Symfony\Bridge\PsrHttpMessage\HttpFoundationFactoryInterface;
-use Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface;
 use Xel\Cake\Network\XelRequest;
 
 class AppModule extends AbstractModule
