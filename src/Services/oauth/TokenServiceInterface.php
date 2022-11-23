@@ -5,8 +5,7 @@ namespace App\Services\oauth;
 
 use App\Domain\TokenRequest;
 
-interface TokenServiceInterface
-{
+interface TokenServiceInterface {
     public function accessToken(TokenRequest $tokenRequest);
 
 }

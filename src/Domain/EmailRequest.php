@@ -19,8 +19,7 @@ use Xel\Common\XelObject;
  *
  * @OA\Schema()
  */
-class EmailRequest extends XelObject
-{
+class EmailRequest extends XelObject {
     /** @OA\Property() */
     protected string $email;
 

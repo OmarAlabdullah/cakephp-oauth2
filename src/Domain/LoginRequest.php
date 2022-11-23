@@ -21,15 +21,13 @@ use Xel\Common\XelObject;
  *
  * @OA\Schema()
  */
-class LoginRequest extends XelObject
-{
+class LoginRequest extends XelObject {
     /** @OA\Property() */
     protected string $username;
     /** @OA\Property() */
     protected string $password;
 
-    public function assertPassword(?string $password, string $msg = null): string
-    {
+    public function assertPassword(?string $password, string $msg = null): string {
         return $password;
     }
 }

@@ -9,21 +9,18 @@ use League\OAuth2\Server\Entities\AccessTokenEntityInterface;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Repositories\AccessTokenRepositoryInterface;
 
-class AccessTokenORM implements AccessTokenRepositoryInterface
-{
+class AccessTokenORM implements AccessTokenRepositoryInterface {
     private AccessTokensTable $accessTokensTable;
 
     /**
      * @param AccessTokensTable $accessTokensTable
      */
-    public function __construct(AccessTokensTable $accessTokensTable)
-    {
+    public function __construct(AccessTokensTable $accessTokensTable) {
         $this->accessTokensTable = $accessTokensTable;
     }
 
 
-    public function getNewToken(ClientEntityInterface $clientEntity, array $scopes, $userIdentifier = null): AccessToken
-    {
+    public function getNewToken(ClientEntityInterface $clientEntity, array $scopes, $userIdentifier = null): AccessToken {
         /** @var int|string|null $userIdentifier */
         $accessToken = new AccessToken();
         $accessToken->setClient($clientEntity);
@@ -37,31 +34,28 @@ class AccessTokenORM implements AccessTokenRepositoryInterface
 
     }
 
-    public function persistNewAccessToken(AccessTokenEntityInterface $accessTokenEntity)
-    {
+    public function persistNewAccessToken(AccessTokenEntityInterface $accessTokenEntity) {
         $accessTokensEntity = new Entity([
             'user_id' => $accessTokenEntity->getUserIdentifier(),
             'revoked' => false,
             'client_id' => $accessTokenEntity->getClient()->getIdentifier(),
             'identifier' => $accessTokenEntity->getIdentifier(),
             'expires_at' => $accessTokenEntity->getExpiryDateTime(),
-            'scopes' => ''
+            'scopes' => 'public'
         ]);
 
-        $this->accessTokensTable->save($accessTokensEntity);
+        $this->accessTokensTable->saveOrFail($accessTokensEntity);
     }
 
-    public function revokeAccessToken($tokenId)
-    {
+    public function revokeAccessToken($tokenId) {
         $accessTokenEntity = $this->accessTokensTable->get($tokenId);
 
         $accessTokenEntity->set('revoked', true);
 
-        $this->accessTokensTable->save($accessTokenEntity);
+        $this->accessTokensTable->saveOrFail($accessTokenEntity);
     }
 
-    public function isAccessTokenRevoked($tokenId)
-    {
+    public function isAccessTokenRevoked($tokenId) {
         return $this->accessTokensTable->get($tokenId)->get('revoked');
     }
 }

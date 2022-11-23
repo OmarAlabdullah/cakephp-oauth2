@@ -7,7 +7,6 @@ namespace App\Controller;
 use Xel\Cake\Clients\XelClientsAuth;
 use Xel\Cake\Controller\XelAppController;
 use Xel\Cake\Network\XelRequest;
-use Ray\Di\Di\Inject;
 
 class AppController extends XelAppController {
     protected XelRequest $xelRequest;

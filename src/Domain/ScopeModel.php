@@ -7,8 +7,7 @@ namespace App\Domain;
 /**
  * @psalm-immutable
  */
-class ScopeModel
-{
+class ScopeModel {
     /**
      * @var string
      */
@@ -17,16 +16,14 @@ class ScopeModel
     /**
      * @psalm-mutation-free
      */
-    public function __construct(string $scope)
-    {
+    public function __construct(string $scope) {
         $this->scope = $scope;
     }
 
     /**
      * @psalm-mutation-free
      */
-    public function __toString(): string
-    {
+    public function __toString(): string {
         return $this->scope;
     }
 }

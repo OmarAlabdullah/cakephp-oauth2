@@ -4,8 +4,7 @@ namespace App\Model\Table;
 
 use Cake\ORM\Table;
 
-class UsersTable extends Table
-{
+class UsersTable extends Table {
     /**
      * @param array $config Config
      * @return void
@@ -22,8 +21,7 @@ class UsersTable extends Table
      * @method UsersTable toBuilder
      * @
      */
-    public function initialize(array $config): void
-    {
+    public function initialize(array $config): void {
         $this->setTable('users');
         $this->setPrimaryKey('identifier');
         $this->setDisplayField('password');

@@ -9,8 +9,7 @@ use App\Orm\AccessTokenORM;
 use App\Orm\ClientORM;
 use Cake\I18n\FrozenTime;
 
-class TokenService implements TokenServiceInterface
-{
+class TokenService implements TokenServiceInterface {
     private AccessTokenORM $accessTokenORM;
 
     private ClientORM $clientORM;
@@ -19,15 +18,13 @@ class TokenService implements TokenServiceInterface
      * @param AccessTokenORM $accessTokenORM
      * @param ClientORM $clientORM
      */
-    public function __construct(AccessTokenORM $accessTokenORM, ClientORM $clientORM)
-    {
+    public function __construct(AccessTokenORM $accessTokenORM, ClientORM $clientORM) {
         $this->accessTokenORM = $accessTokenORM;
         $this->clientORM = $clientORM;
     }
 
 
-    public function accessToken(TokenRequest $tokenRequest): string
-    {
+    public function accessToken(TokenRequest $tokenRequest): string {
         $accessToken = new AccessToken();
 
         $accessToken->setIdentifier(3342);

@@ -7,8 +7,6 @@ use App\Domain\EmailRequest;
 use App\Domain\LoginRequest;
 use App\Domain\registerRequest;
 use App\Services\oauth\OauthService;
-use OpenApi\Annotations as OA;
-use Ray\Di\Di\Inject;
 
 class LoginController extends AppController {
     protected OauthService $oauth2Service;
@@ -66,6 +64,7 @@ class LoginController extends AppController {
         $this->set('access_token', $accessToken);
         $this->set('_serialize', ['access_token']);
     }
+
     /**
      * @OA\Post  (
      *     path="/logout",
@@ -101,6 +100,7 @@ class LoginController extends AppController {
         $this->oauth2Service->logout($emailRequest);
 
     }
+
     /**
      * @OA\Post  (
      *     path="/register",
@@ -176,11 +176,7 @@ class LoginController extends AppController {
     }
 
     public function find() {
-        /** @var EmailRequest $emailRequest */
-        $emailRequest = $this->xelRequest->getDataAsDomainObject(EmailRequest::builder());
-        $user = $this->oauth2Service->find($emailRequest);
-        $this->set($user);
-
+        return $this->render('templates/Pages/login/login.php');
     }
 
 }

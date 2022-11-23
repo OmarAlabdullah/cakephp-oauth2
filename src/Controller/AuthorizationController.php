@@ -4,20 +4,11 @@ declare(strict_types=1);
 namespace App\Controller;
 
 
-use App\Domain\LeagueEntities\User;
-use App\Services\oauth\Oauth2Service;
 use App\Services\oauth\OauthService;
-use App\Services\oauth\TokenService;
 use App\Services\oauth\TokenServiceInterface;
-
 use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Exception\OAuthServerException;
 use Psr\Http\Message\ResponseInterface;
-use Ray\Di\Di\Inject;
-use OpenApi\Annotations as OA;
-
-use Symfony\Component\EventDispatcher\EventDispatcher;
-use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class AuthorizationController extends AppController {
     protected OauthService $OauthService;
@@ -35,9 +26,7 @@ class AuthorizationController extends AppController {
      */
 
 
-
-
-    public function inject(OauthService $OauthService,
+    public function inject(OauthService        $OauthService,
                            AuthorizationServer $server,
     ) {
         $this->OauthService = $OauthService;
@@ -72,14 +61,13 @@ class AuthorizationController extends AppController {
      * )
      */
 
-    public function authorize(): ResponseInterface
-    {
+    public function authorize(): ResponseInterface {
         try {
             $authRequest = $this->server->validateAuthorizationRequest($this->request);
 
 
             $authRequest->setAuthorizationApproved(true);
-             $authRequest->setUser($this->OauthService->getUserByCredentials($this->request->getQuery('username'), $this->request->getQuery('password')));
+            $authRequest->setUser($this->OauthService->getUserByCredentials($this->request->getQuery('username'), $this->request->getQuery('password')));
 
             $response = $this->server->completeAuthorizationRequest($authRequest, $this->response);
         } catch (OAuthServerException $e) {

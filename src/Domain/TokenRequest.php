@@ -22,8 +22,7 @@ use Xel\Common\XelObject;
  *
  * @OA\Schema()
  */
-class TokenRequest extends XelObject
-{
+class TokenRequest extends XelObject {
     /** @OA\Property() */
     protected string $id;
     /** @OA\Property() */

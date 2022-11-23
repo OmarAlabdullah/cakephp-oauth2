@@ -25,20 +25,14 @@ use App\Services\oauth\TokenServiceInterface;
 use Cake\ORM\TableRegistry;
 use League\OAuth2\Server\AuthorizationServer;
 use Ray\Di\AbstractModule;
-use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
-use Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory;
-use Symfony\Bridge\PsrHttpMessage\HttpFoundationFactoryInterface;
-use Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface;
 use Xel\Cake\Network\XelRequest;
 
-class AppModule extends AbstractModule
-{
+class AppModule extends AbstractModule {
 
     /**
      * Configure binding
      */
-    protected function configure()
-    {
+    protected function configure() {
         $this->bind(XelRequest::class)->toProvider(XelRequestProvider::class);
         $this->bind(OauthService::class)->to(Oauth2Service::class);
         $this->bind(TokenServiceInterface::class)->to(TokenService::class);
@@ -56,8 +50,8 @@ class AppModule extends AbstractModule
         $this->bind(ClientsTable::class)->toInstance(TableRegistry::getTableLocator()->get('Clients'));
         $this->bind(ScopesTable::class)->toInstance(TableRegistry::getTableLocator()->get('Scopes'));
 
-        $this->bind(HttpMessageFactoryInterface::class)->to(PsrHttpFactory::class);
-        $this->bind(HttpFoundationFactoryInterface::class)->to(HttpFoundationFactory::class);
+//        $this->bind(HttpMessageFactoryInterface::class)->to(PsrHttpFactory::class);
+//        $this->bind(HttpFoundationFactoryInterface::class)->to(HttpFoundationFactory::class);
         $this->bind(AuthorizationServer::class)->toProvider(AuthorizationServerProvider::class);
     }
 }
