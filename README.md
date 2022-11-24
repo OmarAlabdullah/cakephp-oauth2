@@ -76,7 +76,7 @@ This grant is suitable for machine-to-machine authentication, for example would 
 #### How does it work?
 The client can use token endpoint with the client_credentials grant type.
 * The client sends a POST request with following body parameters to the authorization server `token(grant_type, client_id, client_secret)`.
-* The authorization server will respond with a JSON object containing the following properties `response{token_type, expires_in, access_token, refresh_token}`.
+* The authorization server will respond with a JSON object containing the following properties `response{token_type, expires_in, access_token}`.
 
 <img src="client_credentials.png" width="600"  alt="diagram" />
 

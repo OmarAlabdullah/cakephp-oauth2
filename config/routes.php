@@ -56,6 +56,11 @@ return static function (RouteBuilder $routes) {
          */
         $routes->connect('/', ['controller' => 'Pages', 'action' => 'home']);
 
+        $routes->connect(
+            '/login',
+            ['controller' => 'Pages', 'action' => 'login', '_method' => 'GET']
+        );
+
         $routes->scope('/v1/', function (RouteBuilder $routes) {
             // Setup default route for V1 'home':
             $routes->connect(
@@ -63,15 +68,12 @@ return static function (RouteBuilder $routes) {
                 ['controller' => 'Pages', 'action' => 'home', '_method' => 'GET']
             );
 
+
+
             // Setup route for V1 swagger files:
             $routes->connect(
                 '/swagger/*',
                 ['controller' => 'Pages', 'action' => 'swagger', '_method' => 'GET']
-            );
-
-            // Login routes
-            $routes->connect('/login',
-                ['controller' => 'Oauth', 'action' => 'login', '_method' => 'POST']
             );
 
             // register routes
@@ -85,10 +87,6 @@ return static function (RouteBuilder $routes) {
             // logout routes
             $routes->connect('/logout',
                 ['controller' => 'Oauth', 'action' => 'logout', '_method' => 'POST']);
-
-            // sso routes
-            $routes->connect('/login-server',
-                ['controller' => 'Oauth', 'action' => 'find', '_method' => 'GET']);
 
             // token routes
             $routes->connect('/token',
