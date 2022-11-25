@@ -7,11 +7,14 @@ use App\Domain\EmailRequest;
 use App\Domain\LoginRequest;
 use App\Domain\registerRequest;
 use App\Services\oauth\OauthService;
+use League\OAuth2\Server\AuthorizationServer;
 use OpenApi\Annotations as OA;
+use phpDocumentor\Transformer\Router\Router;
 use Ray\Di\Di\Inject;
 
 class LoginController extends AppController {
     protected OauthService $oauth2Service;
+    private AuthorizationServer $server;
 
     public function initialize(): void {
         parent::initialize();
@@ -26,8 +29,10 @@ class LoginController extends AppController {
      * @param OauthService $oauth2Service
      * @return void
      */
-    public function inject(OauthService $oauth2Service) {
+    public function inject(OauthService $oauth2Service,
+                           AuthorizationServer $server) {
         $this->oauth2Service = $oauth2Service;
+        $this->server = $server;
     }
 
     /**
@@ -59,12 +64,17 @@ class LoginController extends AppController {
      *     )
      * )
      */
+
+
+
     public function login() {
-        /** @var LoginRequest $loginRequest */
-        $loginRequest = $this->xelRequest->getDataAsDomainObject(LoginRequest::builder());
-        $accessToken = $this->oauth2Service->login($loginRequest);
-        $this->set('access_token', $accessToken);
-        $this->set('_serialize', ['access_token']);
+
+        $response = $this->server->respondToAccessTokenRequest($this->request, $this->response);
+        $this->redirect(array("controller" => "Authorization",
+            "action" => "authorize",
+            $response
+            ));
+        return $response;
     }
     /**
      * @OA\Post  (

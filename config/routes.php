@@ -61,6 +61,10 @@ return static function (RouteBuilder $routes) {
             ['controller' => 'Pages', 'action' => 'login', '_method' => 'GET']
         );
 
+        // authorize routes
+        $routes->connect('/authorize',
+            ['controller' => 'Authorization', 'action' => 'authorize', '_method' => 'GET']);
+
         $routes->scope('/v1/', function (RouteBuilder $routes) {
             // Setup default route for V1 'home':
             $routes->connect(
@@ -68,13 +72,16 @@ return static function (RouteBuilder $routes) {
                 ['controller' => 'Pages', 'action' => 'home', '_method' => 'GET']
             );
 
-
-
             // Setup route for V1 swagger files:
             $routes->connect(
                 '/swagger/*',
                 ['controller' => 'Pages', 'action' => 'swagger', '_method' => 'GET']
             );
+
+            // login routes
+            $routes->connect('/login',
+                ['controller' => 'Login', 'action' => 'login', '_method' => 'POST']);
+
 
             // register routes
             $routes->connect('/register',
@@ -92,9 +99,6 @@ return static function (RouteBuilder $routes) {
             $routes->connect('/token',
                 ['controller' => 'Token', 'action' => 'accessToken', '_method' => 'POST']);
 
-            // token routes
-            $routes->connect('/authorize',
-                ['controller' => 'Authorization', 'action' => 'authorize', '_method' => 'GET']);
         });
 
         $routes->setExtensions(['json']);
