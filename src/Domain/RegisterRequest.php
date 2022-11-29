@@ -2,6 +2,7 @@
 
 namespace App\Domain;
 
+use OpenApi\Annotations as OA;
 use Xel\Common\XelObject;
 
 /**

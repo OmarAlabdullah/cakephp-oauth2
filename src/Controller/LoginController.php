@@ -70,11 +70,28 @@ class LoginController extends AppController {
     public function login() {
 
         $response = $this->server->respondToAccessTokenRequest($this->request, $this->response);
-        $this->redirect(array("controller" => "Authorization",
-            "action" => "authorize",
-            $response
-            ));
-        return $response;
+
+
+        $response->getBody()->rewind();
+        $json = $response->getBody()->getContents();
+        $json = json_decode($json, true);
+
+
+
+        /** @var LoginRequest $requestObject */
+        $requestObject = $this->xelRequest->getDataAsDomainObject(LoginRequest::builder(), false);
+
+        $query = http_build_query([
+            'client_id' => $requestObject->getQueryClientId(),
+            'redirect_uri' => $requestObject->getQueryRedirectUri(),
+            'response_type' => $requestObject->getQueryResponseType(),
+            'scope' => $requestObject->getQueryScope(),
+            'access_token' => $json['access_token']
+        ]);
+
+       return $this->redirect("/authorize?" . $query);
+
+//        return $response;
     }
     /**
      * @OA\Post  (

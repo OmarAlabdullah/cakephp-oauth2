@@ -63,6 +63,22 @@ class AuthorizationController extends AppController {
      */
 
     public function authorize(): ResponseInterface {
+
+
+        $query = http_build_query([
+            'client_id' => $this->request->getQuery('client_id'),
+            'redirect_uri' => $this->request->getQuery('redirect_uri'),
+            'response_type' => $this->request->getQuery('response_type'),
+            'scope' => $this->request->getQuery('scope'),
+            'state' => $this->request->getQuery('state'),
+
+        ]);
+
+        //var_dump($this->request->getQuery('access_token') ); die();
+        if ($this->request->getQuery('access_token') == null){
+
+           return $this->redirect("/login?".$query);
+        }
         $authRequest = $this->server->validateAuthorizationRequest($this->request);
 
         $authRequest->setUser($this->OauthService->getUserByCredentials($this->request->getQuery('username'), $this->request->getQuery('password'), "", $this->request->getQuery('client_id')));

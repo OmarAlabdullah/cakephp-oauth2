@@ -7,6 +7,7 @@ use App\Model\Table\ClientsTable;
 use App\Model\Table\UsersTable;
 use Cake\Http\Exception\NotFoundException;
 use Cake\ORM\Entity;
+use Lcobucci\JWT\Token;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Entities\UserEntityInterface;
 use League\OAuth2\Server\Repositories\UserRepositoryInterface;
@@ -44,6 +45,16 @@ class UserORM implements UserRepositoryInterface {
             ->where(["username" => $username,
                 "password" => $password])
             ->firstOrFail();
+        $userEntity = new User();
+        $userEntity->setIdentifier($user->get('identifier'));
+        $userEntity->setEmail($user->get('email'));
+
+        return $userEntity;
+    }
+
+    public function getUserEntityByAccessToken(Token $accessToken): UserEntityInterface {
+        $userId = $accessToken->headers()->get("id");
+        $user = $this->usersTable->get($userId);
         $userEntity = new User();
         $userEntity->setIdentifier($user->get('identifier'));
         $userEntity->setEmail($user->get('email'));
