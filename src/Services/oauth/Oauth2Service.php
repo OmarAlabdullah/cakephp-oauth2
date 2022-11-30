@@ -25,12 +25,6 @@ class Oauth2Service implements OauthService
     }
 
 
-    public function login(LoginRequest $loginRequest): string
-    {
-
-        return "heeeeeee";
-    }
-
     public function register(RegisterRequest $registerRequest): string
     {
         $this->userORM->saveUser($registerRequest);
@@ -61,7 +55,7 @@ class Oauth2Service implements OauthService
 
     }
 
-    public function getUserBySAccessToken(array|string|null $token) {
+    public function getUserBySAccessToken(array|string|null $token): UserEntityInterface {
         return $this->userORM->getUserEntityByAccessToken($token);
     }
 }

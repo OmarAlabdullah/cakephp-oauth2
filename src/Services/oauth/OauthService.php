@@ -8,7 +8,6 @@ use App\Domain\RegisterRequest;
 
 interface OauthService
 {
-    public function login(LoginRequest $loginRequest);
 
     public function register(RegisterRequest $registerRequest);
 
