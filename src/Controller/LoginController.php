@@ -15,14 +15,15 @@ use Ray\Di\Di\Inject;
 class LoginController extends AppController {
     protected OauthService $oauth2Service;
     private AuthorizationServer $server;
-
+    private string $clientId = "00843";
+    private string $clientSecret = "00843080de0839b3d29927e9c0881a51b2f359f4eeb7ab0f4b46b3abe7422934b1d3eb412e787ce5340769";
+    private string $grantType = "password";
     public function initialize(): void {
         parent::initialize();
         $this->Auth->allow(['login']);
         $this->Auth->allow(['register']);
         $this->Auth->allow(['changePassword']);
         $this->Auth->allow(['find']);
-//        $this->loadComponent('Security', ['blackHoleCallback' => 'login']);
     }
 
     /**
@@ -70,14 +71,15 @@ class LoginController extends AppController {
 
     public function login() {
 
-        $response = $this->server->respondToAccessTokenRequest($this->request, $this->response);
+        $this->setRequest($this->request->withData("grant_type", $this->grantType));
+        $this->setRequest($this->request->withData("client_id", $this->clientId));
+        $this->setRequest($this->request->withData("client_secret", $this->clientSecret));
 
+        $response = $this->server->respondToAccessTokenRequest($this->request, $this->response);
 
         $response->getBody()->rewind();
         $json = $response->getBody()->getContents();
         $json = json_decode($json, true);
-
-
 
         /** @var LoginRequest $requestObject */
         $requestObject = $this->xelRequest->getDataAsDomainObject(LoginRequest::builder(), false);
@@ -94,7 +96,6 @@ class LoginController extends AppController {
 
        return $this->redirect('https://php-oauth2.xel-localservices.nl/' . $redirect);
 
-//        return $response;
     }
 
 

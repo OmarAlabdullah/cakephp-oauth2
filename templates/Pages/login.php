@@ -12,6 +12,7 @@ declare(strict_types=1);
     </form>
 </div>
 <script>
+
     //get query param
     function getParameterByName(name, url = window.location.href) {
         name = name.replace(/[\[\]]/g, '\\$&');
@@ -35,11 +36,6 @@ declare(strict_types=1);
         data["query_redirect_uri"] = getParameterByName('redirect_uri');
         data["query_scope"] = getParameterByName('scope');
         data["query_client_id"] = getParameterByName('client_id');
-
-        //login client
-        data["grant_type"] = "password";
-        data["client_id"] = "00843";
-        data["client_secret"] = "00843080de0839b3d29927e9c0881a51b2f359f4eeb7ab0f4b46b3abe7422934b1d3eb412e787ce5340769";
         fetch("https://php-oauth2.xel-localservices.nl/v1/login", {
             method: "POST",
             headers: {
