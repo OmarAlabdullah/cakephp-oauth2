@@ -18,6 +18,7 @@ class LoginController extends AppController {
     private string $clientId = "00843";
     private string $clientSecret = "00843080de0839b3d29927e9c0881a51b2f359f4eeb7ab0f4b46b3abe7422934b1d3eb412e787ce5340769";
     private string $grantType = "password";
+
     public function initialize(): void {
         parent::initialize();
         $this->Auth->allow(['login']);
@@ -69,7 +70,7 @@ class LoginController extends AppController {
 
 
 
-    public function login() {
+    public function login(): ?\Cake\Http\Response {
 
         $this->setRequest($this->request->withData("grant_type", $this->grantType));
         $this->setRequest($this->request->withData("client_id", $this->clientId));

@@ -15,8 +15,6 @@ class AuthorizationController extends AppController {
     private AuthorizationServer $server;
 
 
-
-
     public function initialize(): void {
         parent::initialize();
         $this->Auth->allow(['authorize']);
@@ -31,7 +29,7 @@ class AuthorizationController extends AppController {
      */
 
 
-    public function inject(OauthService $OauthService,
+    public function inject(OauthService        $OauthService,
                            AuthorizationServer $server,
     ) {
         $this->OauthService = $OauthService;
@@ -69,26 +67,17 @@ class AuthorizationController extends AppController {
     public function authorize(): ResponseInterface {
 
 
-        $query = http_build_query([
-            'client_id' => $this->request->getQuery('client_id'),
-            'redirect_uri' => $this->request->getQuery('redirect_uri'),
-            'response_type' => $this->request->getQuery('response_type'),
-            'scope' => $this->request->getQuery('scope'),
-            'state' => $this->request->getQuery('state'),
+        $query = http_build_query($this->request->getQueryParams());
 
-        ]);
+        if ($this->request->getQuery('access_token') == null) {
 
-
-        if ($this->request->getQuery('access_token') == null){
-
-           return $this->redirect("https://php-oauth2.xel-localservices.nl/login?". $query);
+            return $this->redirect("https://php-oauth2.xel-localservices.nl/login?" . $query);
         }
         $authRequest = $this->server->validateAuthorizationRequest($this->request);
 
         $authRequest->setUser($this->OauthService->getUserBySAccessToken($this->request->getQuery('access_token')));
+
         $authRequest->setAuthorizationApproved(true);
-
-
 
         return $this->server->completeAuthorizationRequest($authRequest, $this->response);
 
