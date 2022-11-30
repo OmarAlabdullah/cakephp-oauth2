@@ -11,18 +11,23 @@ use Lcobucci\JWT\Token;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Entities\UserEntityInterface;
 use League\OAuth2\Server\Repositories\UserRepositoryInterface;
+use phpDocumentor\GraphViz\Exception;
+use Xel\Common\Exception\ServiceException;
 
 class UserORM implements UserRepositoryInterface {
     private UsersTable $usersTable;
     private ClientsTable $clientTable;
+    private AccessTokenORM $accessTokenORM;
 
     /**
      * @param UsersTable $usersTable
      * @param ClientsTable $clientTable
+     * @param AccessTokenORM $accessTokenORM
      */
-    public function __construct(UsersTable $usersTable, ClientsTable $clientTable) {
+    public function __construct(UsersTable $usersTable, ClientsTable $clientTable, AccessTokenORM $accessTokenORM) {
         $this->usersTable = $usersTable;
         $this->clientTable = $clientTable;
+        $this->accessTokenORM = $accessTokenORM;
     }
 
 
@@ -52,8 +57,17 @@ class UserORM implements UserRepositoryInterface {
         return $userEntity;
     }
 
-    public function getUserEntityByAccessToken(Token $accessToken): UserEntityInterface {
-        $userId = $accessToken->headers()->get("id");
+    public function getUserEntityByAccessToken(string $token): UserEntityInterface {
+        $tokenParts = explode(".", $token);
+        $tokenPayload = base64_decode($tokenParts[1]);
+        $jwtPayload = json_decode($tokenPayload);
+        $userId = $jwtPayload->sub;
+        $accessTokenId = $jwtPayload->jti;
+
+        if ($this->accessTokenORM->isAccessTokenRevoked($accessTokenId)){
+            throw new ServiceException('Access token is revoked');
+        }
+
         $user = $this->usersTable->get($userId);
         $userEntity = new User();
         $userEntity->setIdentifier($user->get('identifier'));

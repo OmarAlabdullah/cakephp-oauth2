@@ -51,10 +51,7 @@ class Oauth2Service implements OauthService
 
     }
 
-    public function find(EmailRequest $emailRequest): string
-    {
-        return "";
-    }
+
 
     public function getUserByCredentials(string $username, string $password, string $grantType, string $clientId): UserEntityInterface
     {
@@ -62,5 +59,9 @@ class Oauth2Service implements OauthService
 
         return $this->userORM->getUserEntityByUserCredentials($username,$password, $grantType, $client);
 
+    }
+
+    public function getUserBySAccessToken(array|string|null $token) {
+        return $this->userORM->getUserEntityByAccessToken($token);
     }
 }
