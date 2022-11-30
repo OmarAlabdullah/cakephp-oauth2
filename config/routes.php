@@ -62,8 +62,12 @@ return static function (RouteBuilder $routes) {
         );
 
         // authorize routes
-        $routes->connect('/authorize',
+        $routes->connect('oauth/authorize',
             ['controller' => 'Authorization', 'action' => 'authorize', '_method' => 'GET']);
+
+        // token routes
+        $routes->connect('oauth/token',
+            ['controller' => 'Token', 'action' => 'accessToken', '_method' => 'POST']);
 
         $routes->scope('/v1/', function (RouteBuilder $routes) {
             // Setup default route for V1 'home':
@@ -94,10 +98,6 @@ return static function (RouteBuilder $routes) {
             // logout routes
             $routes->connect('/logout',
                 ['controller' => 'Oauth', 'action' => 'logout', '_method' => 'POST']);
-
-            // token routes
-            $routes->connect('/token',
-                ['controller' => 'Token', 'action' => 'accessToken', '_method' => 'POST']);
 
         });
 

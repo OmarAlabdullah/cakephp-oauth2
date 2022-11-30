@@ -22,6 +22,7 @@ class LoginController extends AppController {
         $this->Auth->allow(['register']);
         $this->Auth->allow(['changePassword']);
         $this->Auth->allow(['find']);
+//        $this->loadComponent('Security', ['blackHoleCallback' => 'login']);
     }
 
     /**
@@ -89,10 +90,17 @@ class LoginController extends AppController {
             'access_token' => $json['access_token']
         ]);
 
-       return $this->redirect("/authorize?" . $query);
+        $redirect = "oauth/authorize?" . $query;
+
+       return $this->redirect('https://php-oauth2.xel-localservices.nl/' . $redirect);
 
 //        return $response;
     }
+
+
+
+
+
     /**
      * @OA\Post  (
      *     path="/logout",
@@ -200,10 +208,6 @@ class LoginController extends AppController {
         $emailRequest = $this->xelRequest->getDataAsDomainObject(EmailRequest::builder());
         $this->oauth2Service->changePassword($emailRequest);
 
-    }
-
-    public function find() {
-        return $this->render('templates/Pages/login/login.php');
     }
 
 }

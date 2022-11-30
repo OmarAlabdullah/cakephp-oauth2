@@ -14,9 +14,13 @@ class AuthorizationController extends AppController {
     protected OauthService $OauthService;
     private AuthorizationServer $server;
 
+
+
+
     public function initialize(): void {
         parent::initialize();
         $this->Auth->allow(['authorize']);
+
     }
 
     /**
@@ -74,15 +78,17 @@ class AuthorizationController extends AppController {
 
         ]);
 
-        //var_dump($this->request->getQuery('access_token') ); die();
+
         if ($this->request->getQuery('access_token') == null){
 
            return $this->redirect("/login?".$query);
         }
         $authRequest = $this->server->validateAuthorizationRequest($this->request);
 
-        $authRequest->setUser($this->OauthService->getUserByCredentials($this->request->getQuery('username'), $this->request->getQuery('password'), "", $this->request->getQuery('client_id')));
+        $authRequest->setUser($this->OauthService->getUserBySAccessToken($this->request->getQuery('access_token')));
         $authRequest->setAuthorizationApproved(true);
+
+
 
         return $this->server->completeAuthorizationRequest($authRequest, $this->response);
 
