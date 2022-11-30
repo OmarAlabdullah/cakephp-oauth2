@@ -56,6 +56,7 @@ return static function (RouteBuilder $routes) {
          */
         $routes->connect('/', ['controller' => 'Pages', 'action' => 'home']);
 
+        // login page
         $routes->connect(
             '/login',
             ['controller' => 'Pages', 'action' => 'login', '_method' => 'GET']
