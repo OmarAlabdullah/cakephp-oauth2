@@ -3,33 +3,25 @@
 namespace App\Orm;
 
 use App\Domain\LeagueEntities\AuthCode;
-use App\Domain\ScopeModel;
 use App\Model\Table\AuthorizationCodesTable;
 use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\AuthCodeEntityInterface;
-use League\OAuth2\Server\Entities\ScopeEntityInterface;
-use League\OAuth2\Server\Exception\UniqueTokenIdentifierConstraintViolationException;
 use League\OAuth2\Server\Repositories\AuthCodeRepositoryInterface;
-use Xel\Common\Exception\ServiceException;
 
-class AuthorizationCodeORM implements AuthCodeRepositoryInterface
-{
+class AuthorizationCodeORM implements AuthCodeRepositoryInterface {
 
     private AuthorizationCodesTable $authorizationCodeTable;
 
-    public function __construct(AuthorizationCodesTable $authorizationCodeTable)
-    {
+    public function __construct(AuthorizationCodesTable $authorizationCodeTable) {
         $this->authorizationCodeTable = $authorizationCodeTable;
     }
 
 
-    public function getNewAuthCode()
-    {
+    public function getNewAuthCode() {
         return new AuthCode();
     }
 
-    public function persistNewAuthCode(AuthCodeEntityInterface $authCodeEntity)
-    {
+    public function persistNewAuthCode(AuthCodeEntityInterface $authCodeEntity) {
 
         $authCode = new Entity([
             'identifier' => $authCodeEntity->getIdentifier(),
@@ -41,23 +33,20 @@ class AuthorizationCodeORM implements AuthCodeRepositoryInterface
         ]);
 
 
-        $this->authorizationCodeTable->save($authCode);
+        $this->authorizationCodeTable->saveOrFail($authCode);
     }
 
-    public function revokeAuthCode($codeId)
-    {
+    public function revokeAuthCode($codeId) {
         $authCodeEntity = $this->authorizationCodeTable->get($codeId);
 
         $authCodeEntity->set('revoked', true);
 
-        $this->authorizationCodeTable->save($authCodeEntity);
+        $this->authorizationCodeTable->saveOrFail($authCodeEntity);
     }
 
-    public function isAuthCodeRevoked($codeId)
-    {
+    public function isAuthCodeRevoked($codeId) {
         return $this->authorizationCodeTable->get($codeId)->get('revoked');
     }
-
 
 
 }

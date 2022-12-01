@@ -56,6 +56,20 @@ return static function (RouteBuilder $routes) {
          */
         $routes->connect('/', ['controller' => 'Pages', 'action' => 'home']);
 
+        // login page
+        $routes->connect(
+            '/login',
+            ['controller' => 'Pages', 'action' => 'login', '_method' => 'GET']
+        );
+
+        // authorize routes
+        $routes->connect('oauth/authorize',
+            ['controller' => 'Authorization', 'action' => 'authorize', '_method' => 'GET']);
+
+        // token routes
+        $routes->connect('oauth/token',
+            ['controller' => 'Token', 'action' => 'accessToken', '_method' => 'POST']);
+
         $routes->scope('/v1/', function (RouteBuilder $routes) {
             // Setup default route for V1 'home':
             $routes->connect(
@@ -69,10 +83,10 @@ return static function (RouteBuilder $routes) {
                 ['controller' => 'Pages', 'action' => 'swagger', '_method' => 'GET']
             );
 
-            // Login routes
+            // login routes
             $routes->connect('/login',
-                ['controller' => 'Oauth', 'action' => 'login', '_method' => 'POST']
-            );
+                ['controller' => 'Login', 'action' => 'login', '_method' => 'POST']);
+
 
             // register routes
             $routes->connect('/register',
@@ -86,17 +100,6 @@ return static function (RouteBuilder $routes) {
             $routes->connect('/logout',
                 ['controller' => 'Oauth', 'action' => 'logout', '_method' => 'POST']);
 
-            // sso routes
-            $routes->connect('/find',
-                ['controller' => 'Oauth', 'action' => 'find', '_method' => 'POST']);
-
-            // token routes
-            $routes->connect('/token',
-                ['controller' => 'Token', 'action' => 'accessToken', '_method' => 'POST']);
-
-            // token routes
-            $routes->connect('/authorize',
-                ['controller' => 'Authorization', 'action' => 'authorize', '_method' => 'GET']);
         });
 
         $routes->setExtensions(['json']);

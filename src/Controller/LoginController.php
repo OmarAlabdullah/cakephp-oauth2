@@ -7,11 +7,19 @@ use App\Domain\EmailRequest;
 use App\Domain\LoginRequest;
 use App\Domain\registerRequest;
 use App\Services\oauth\OauthService;
+use Cake\Event\EventInterface;
+use Cake\Routing\Exception\RedirectException;
+use League\OAuth2\Server\AuthorizationServer;
 use OpenApi\Annotations as OA;
+use phpDocumentor\Transformer\Router\Router;
 use Ray\Di\Di\Inject;
 
 class LoginController extends AppController {
     protected OauthService $oauth2Service;
+    private AuthorizationServer $server;
+    private string $clientId = "00843";
+    private string $clientSecret = "00843080de0839b3d29927e9c0881a51b2f359f4eeb7ab0f4b46b3abe7422934b1d3eb412e787ce5340769";
+    private string $grantType = "password";
 
     public function initialize(): void {
         parent::initialize();
@@ -26,8 +34,10 @@ class LoginController extends AppController {
      * @param OauthService $oauth2Service
      * @return void
      */
-    public function inject(OauthService $oauth2Service) {
+    public function inject(OauthService $oauth2Service,
+                           AuthorizationServer $server) {
         $this->oauth2Service = $oauth2Service;
+        $this->server = $server;
     }
 
     /**
@@ -59,13 +69,48 @@ class LoginController extends AppController {
      *     )
      * )
      */
-    public function login() {
-        /** @var LoginRequest $loginRequest */
-        $loginRequest = $this->xelRequest->getDataAsDomainObject(LoginRequest::builder());
-        $accessToken = $this->oauth2Service->login($loginRequest);
-        $this->set('access_token', $accessToken);
-        $this->set('_serialize', ['access_token']);
+
+
+
+    public function login(EventInterface $event): ?\Cake\Http\Response {
+
+        $this->setRequest($this->request->withData("grant_type", $this->grantType));
+        $this->setRequest($this->request->withData("client_id", $this->clientId));
+        $this->setRequest($this->request->withData("client_secret", $this->clientSecret));
+
+        $response = $this->server->respondToAccessTokenRequest($this->request, $this->response);
+
+        $response->getBody()->rewind();
+        $json = $response->getBody()->getContents();
+        $json = json_decode($json, true);
+
+        /** @var LoginRequest $requestObject */
+        $requestObject = $this->xelRequest->getDataAsDomainObject(LoginRequest::builder(), false);
+
+        $query = http_build_query([
+            'client_id' => $requestObject->getQueryClientId(),
+            'redirect_uri' => $requestObject->getQueryRedirectUri(),
+            'response_type' => $requestObject->getQueryResponseType(),
+            'scope' => $requestObject->getQueryScope(),
+            'access_token' => $json['access_token']
+        ]);
+
+        $redirect = "oauth/authorize?" . $query;
+        try {
+
+            return $this->redirect('https://php-oauth2.xel-localservices.nl/' . $redirect);
+        }
+        catch (\Exception){
+            throw new RedirectException(Router::url('https://google.nl'));
+        }
+
+
     }
+
+
+
+
+
     /**
      * @OA\Post  (
      *     path="/logout",
@@ -172,14 +217,6 @@ class LoginController extends AppController {
         /** @var EmailRequest $emailRequest */
         $emailRequest = $this->xelRequest->getDataAsDomainObject(EmailRequest::builder());
         $this->oauth2Service->changePassword($emailRequest);
-
-    }
-
-    public function find() {
-        /** @var EmailRequest $emailRequest */
-        $emailRequest = $this->xelRequest->getDataAsDomainObject(EmailRequest::builder());
-        $user = $this->oauth2Service->find($emailRequest);
-        $this->set($user);
 
     }
 

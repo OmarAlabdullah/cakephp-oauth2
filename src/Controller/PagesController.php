@@ -35,7 +35,7 @@ class PagesController extends AppController {
         if (preg_match('/\/?(v\d+)\//', $this->request->getRequestTarget(), $matches)) {
             $this->apiVersion = $matches[1];
         }
-        $this->Auth->allow(['home', 'swagger']);
+        $this->Auth->allow(['home', 'swagger', 'login']);
     }
 
     public function home() {
@@ -43,6 +43,11 @@ class PagesController extends AppController {
         $this->set("version", ServiceInfo::getComposerVersion());
         $this->set("configVersion", Configure::read("XelConfigVersion"));
         $this->set("config", ServiceInfo::getConfigKeyValues('Xel', ['Xel.my-application.CryptoKey']));
+    }
+
+
+    public function login() {
+
     }
 
     public function swagger() {

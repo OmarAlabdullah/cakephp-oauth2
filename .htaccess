@@ -1,12 +1,28 @@
-# Uncomment the following to prevent the httpoxy vulnerability
-# See: https://httpoxy.org/
-#<IfModule mod_headers.c>
-#    RequestHeader unset Proxy
-#</IfModule>
-
 <IfModule mod_rewrite.c>
     RewriteEngine on
-    RewriteRule    ^(\.well-known/.*)$ $1 [L]
-    RewriteRule    ^$    webroot/    [L]
-    RewriteRule    (.*) webroot/$1    [L]
+    RewriteBase /
+
+    # FORCE SSL REDIRECTION
+    RewriteCond %{ENV:HTTPS} !on [NC]
+    RewriteCond %{HTTP_HOST} !^local [NC]
+    RewriteCond %{HTTP_HOST} !^staging [NC]
+    RewriteRule ^(.*)$ https://www.example.com/$1 [R,L]
+
+    RewriteRule ^$ app/webroot/ [L]
+    RewriteRule (.*) app/webroot/$1 [L]
 </IfModule>
+# allows image files to bypass cors @jkr
+<Files *.jpg>
+  Header always set Access-Control-Allow-Origin "*"
+  Header always set Access-Control-Allow-Credentials "true"
+  Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
+  Header always set Access-Control-Max-Age "1000"
+  Header always set Access-Control-Allow-Headers "x-requested-with, Content-Type, origin, authorization, accept, client-security-token"
+</Files>
+
+#always allow preflight to pass @jkr
+<LimitExcept OPTIONS>
+  RewriteEngine On
+  RewriteCond %{REQUEST_METHOD} OPTIONS
+  RewriteRule ^(.*)$ $1 [R=200,L]
+</LimitExcept>

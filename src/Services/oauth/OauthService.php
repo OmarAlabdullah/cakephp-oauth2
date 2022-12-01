@@ -8,7 +8,6 @@ use App\Domain\RegisterRequest;
 
 interface OauthService
 {
-    public function login(LoginRequest $loginRequest);
 
     public function register(RegisterRequest $registerRequest);
 
@@ -16,7 +15,7 @@ interface OauthService
 
     public function logout(EmailRequest $emailRequest);
 
-    public function find(EmailRequest $emailRequest);
+    public function getUserByCredentials(string $username, string $password, string $grantType, string $clientId);
 
-    public function getUserByCredentials(string $username, string $password);
+    public function getUserBySAccessToken(array|string|null $token);
 }

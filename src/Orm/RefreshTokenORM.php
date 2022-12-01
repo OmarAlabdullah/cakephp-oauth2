@@ -8,27 +8,23 @@ use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\RefreshTokenEntityInterface;
 use League\OAuth2\Server\Repositories\RefreshTokenRepositoryInterface;
 
-class RefreshTokenORM implements RefreshTokenRepositoryInterface
-{
+class RefreshTokenORM implements RefreshTokenRepositoryInterface {
 
     private RefreshTokensTable $refreshTokensTable;
 
     /**
      * @param RefreshTokensTable $refreshTokensTable
      */
-    public function __construct(RefreshTokensTable $refreshTokensTable)
-    {
+    public function __construct(RefreshTokensTable $refreshTokensTable) {
         $this->refreshTokensTable = $refreshTokensTable;
     }
 
 
-    public function getNewRefreshToken(): RefreshToken
-    {
+    public function getNewRefreshToken(): RefreshToken {
         return new RefreshToken();
     }
 
-    public function persistNewRefreshToken(RefreshTokenEntityInterface $refreshTokenEntity)
-    {
+    public function persistNewRefreshToken(RefreshTokenEntityInterface $refreshTokenEntity) {
         $refreshTokensEntity = new Entity([
             'identifier' => $refreshTokenEntity->getIdentifier(),
             'revoked' => false,
@@ -36,25 +32,23 @@ class RefreshTokenORM implements RefreshTokenRepositoryInterface
             'access_token_id' => $refreshTokenEntity->getIdentifier()
         ]);
 
-        $this->refreshTokensTable->save($refreshTokensEntity);
+        $this->refreshTokensTable->saveOrFail($refreshTokensEntity);
     }
 
 
-    public function revokeRefreshToken($tokenId)
-    {
+    public function revokeRefreshToken($tokenId) {
         $refreshTokenEntity = $this->refreshTokensTable->get($tokenId);
 
         $refreshTokenEntity->set('revoked', true);
 
-        $this->refreshTokensTable->save($refreshTokenEntity);
+        $this->refreshTokensTable->saveOrFail($refreshTokenEntity);
     }
 
     /**
      * @param string $tokenId
      * @return bool
      */
-    public function isRefreshTokenRevoked($tokenId): bool
-    {
+    public function isRefreshTokenRevoked($tokenId): bool {
 
         return $this->refreshTokensTable->get($tokenId)->get('revoked');
 

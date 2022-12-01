@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Di\Module\IAM;
+namespace App\Di\Module\Provider;
 
 use App\Orm\AccessTokenORM;
 use App\Orm\AuthorizationCodeORM;
@@ -8,17 +8,12 @@ use App\Orm\ClientORM;
 use App\Orm\RefreshTokenORM;
 use App\Orm\ScopesORM;
 use App\Orm\UserORM;
-use Cake\I18n\FrozenTime;
-use Cassandra\Date;
-use DateInterval;
 use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Grant\AuthCodeGrant;
-use League\OAuth2\Server\Grant\ClientCredentialsGrant;
 use League\OAuth2\Server\Grant\ImplicitGrant;
 use League\OAuth2\Server\Grant\PasswordGrant;
 use League\OAuth2\Server\Grant\RefreshTokenGrant;
 use Ray\Di\ProviderInterface;
-use Xel\Cake\Util\DateTimeUtil;
 
 class AuthorizationServerProvider implements ProviderInterface
 {

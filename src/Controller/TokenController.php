@@ -5,8 +5,6 @@ namespace App\Controller;
 
 
 use App\Domain\TokenRequest;
-use App\Services\oauth\TokenService;
-use App\Services\oauth\TokenServiceInterface;
 
 
 
@@ -19,7 +17,6 @@ use OpenApi\Annotations as OA;
 use Xel\Common\Exception\UnauthorizedException;
 
 class TokenController extends AppController {
-    protected TokenServiceInterface $tokenService;
     private AuthorizationServer $server;
 
     public function initialize(): void {
@@ -29,13 +26,11 @@ class TokenController extends AppController {
 
     /**
      * @Inject
-     * @param TokenServiceInterface $tokenService
+     * @param AuthorizationServer $server
      * @return void
      */
-    public function inject(TokenServiceInterface $tokenService,
-                           AuthorizationServer $server
+    public function inject(AuthorizationServer $server
     ) {
-        $this->tokenService = $tokenService;
         $this->server = $server;
     }
 

@@ -9,7 +9,7 @@ declare(strict_types=1);
 use Cake\Datasource\ConnectionManager;
 use Cake\Routing\Router;
 
-$this->assign('title', 'CakePHP Application');
+$this->assign('title', 'Xel-SSO');
 ?>
 <div class="container">
     <h1>Welcome to CakePHP Project Template</h1>
