@@ -62,6 +62,12 @@ return static function (RouteBuilder $routes) {
             ['controller' => 'Pages', 'action' => 'login', '_method' => 'GET']
         );
 
+        // register page
+        $routes->connect(
+            '/register',
+            ['controller' => 'Pages', 'action' => 'register', '_method' => 'GET']
+        );
+
         // authorize routes
         $routes->connect('oauth/authorize',
             ['controller' => 'Authorization', 'action' => 'authorize', '_method' => 'GET']);
@@ -85,20 +91,11 @@ return static function (RouteBuilder $routes) {
 
             // login routes
             $routes->connect('/login',
-                ['controller' => 'Login', 'action' => 'login', '_method' => 'POST']);
-
+                ['controller' => 'Authentication', 'action' => 'login', '_method' => 'POST']);
 
             // register routes
             $routes->connect('/register',
-                ['controller' => 'Oauth', 'action' => 'register', '_method' => 'POST']);
-
-            // change password routes
-            $routes->connect('/change-password',
-                ['controller' => 'Oauth', 'action' => 'changePassword', '_method' => 'POST']);
-
-            // logout routes
-            $routes->connect('/logout',
-                ['controller' => 'Oauth', 'action' => 'logout', '_method' => 'POST']);
+                ['controller' => 'Authentication', 'action' => 'register', '_method' => 'POST']);
 
         });
 

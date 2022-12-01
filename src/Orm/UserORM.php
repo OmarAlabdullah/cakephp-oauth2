@@ -31,10 +31,11 @@ class UserORM implements UserRepositoryInterface {
     }
 
 
-    public function saveUser(string $email, string $password): void {
+    public function saveUser(string $email, string $username, string $password): void {
         $userEntity = new Entity([
             'email' => $email,
-            'password' => $password
+            'password' => $password,
+            'username' => $username
         ]);
 
         $this->usersTable->saveOrFail($userEntity);

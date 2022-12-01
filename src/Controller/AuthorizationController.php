@@ -73,25 +73,14 @@ class AuthorizationController extends AppController {
 
             return $this->redirect("https://php-oauth2.xel-localservices.nl/login?" . $query);
         }
+
         $authRequest = $this->server->validateAuthorizationRequest($this->request);
 
         $authRequest->setUser($this->OauthService->getUserBySAccessToken($this->request->getQuery('access_token')));
 
         $authRequest->setAuthorizationApproved(true);
 
-        $response = $this->server->completeAuthorizationRequest($authRequest, $this->response);
-
-        $response = $response
-            ->withHeader(
-                'Access-Control-Allow-Methods',
-                'POST, GET, PUT, PATCH, DELETE, OPTIONS'
-            )
-            ->withHeader('Access-Control-Allow-Headers', '*')
-            ->withHeader('CORS_ALLOW_ALL_ORIGINS', 'true')
-            ->withHeader('CSRF_TRUSTED_ORIGINS', 'www.google.nl')
-            ->withHeader('content-type', 'application/json');
-
-        return $response;
+        return $this->server->completeAuthorizationRequest($authRequest, $this->response);
 
     }
 }

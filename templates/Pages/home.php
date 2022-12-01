@@ -12,25 +12,12 @@ use Cake\Routing\Router;
 $this->assign('title', 'Xel-SSO');
 ?>
 <div class="container">
-    <h1>Welcome to CakePHP Project Template</h1>
-    <p>Version: <?= $version ?></p>
-    <p>API version: <?= $apiVersion ?> (<a href="/swagger-ui/index.html?url=<?= Router::url('/v1/swagger/') ?>" title="Project Template Swagger UI" target="_blank">explore with Swagger UI</a>)</p>
-    <p><a href="/info.php" title="PHP Info" target="_blank">PHP info</a></p>
-    <p>Config version: <?= $configVersion ?></p>
-    <table class="table service-info">
-        <?php
-        $connection = ConnectionManager::get('default');
-        $errorMessage = "";
-        try {
-          $connected = $connection->connect();
-        } catch (Throwable $t) {
-          $connected = false;
-          $errorMessage = $t->getMessage();
-        }
-        ?>
-        <tr><td>Connected to Database</td><td><?= $connected ? 'Yes' : 'No' ?><?php if (!empty($errorMessage)) { echo " ($errorMessage)"; } ?></td></tr>
-        <?php foreach($config as $key => $value): ?>
-            <tr><td><?=$key?></td><td><?=$value?></td></tr>
-        <?php endforeach; ?>
-    </table>
+    <h1>Welcome to Xel SSO</h1>
+
+    <h2>Login</h2>
+    <button><a href="/login" title="login" target="_blank">Login</a></button>
+
+    <h2>Register</h2>
+    <button><a href="/register" title="login" target="_blank">Register</a></button>
+
 </div>

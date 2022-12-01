@@ -27,31 +27,9 @@ class Oauth2Service implements OauthService
 
     public function register(RegisterRequest $registerRequest): string
     {
-        $this->userORM->saveUser($registerRequest);
+        $this->userORM->saveUser($registerRequest->getEmail(), $registerRequest->getEmail(),$registerRequest->getPassword());
         return "user";
 
-
-    }
-
-    public function changePassword(EmailRequest $emailRequest): string
-    {
-
-        return "heeeeeee";
-    }
-
-    public function logout(EmailRequest $emailRequest): string
-    {
-        return "";
-
-    }
-
-
-
-    public function getUserByCredentials(string $username, string $password, string $grantType, string $clientId): UserEntityInterface
-    {
-        $client = $this->clientORM->getClientEntity($clientId);
-
-        return $this->userORM->getUserEntityByUserCredentials($username,$password, $grantType, $client);
 
     }
 

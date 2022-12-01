@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 
+use Exception;
 use Xel\Cake\Clients\XelClientsAuth;
 use Xel\Cake\Controller\XelAppController;
 use Xel\Cake\Network\XelRequest;
@@ -24,6 +25,7 @@ class AppController extends XelAppController {
      * Initialization hook method.
      *
      * @return void
+     * @throws Exception
      */
     public function initialize(): void {
         parent::initialize();

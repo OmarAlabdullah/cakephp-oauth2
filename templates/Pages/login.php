@@ -1,7 +1,6 @@
 <?php
 declare(strict_types=1);
 
-
 ?>
 <div id="loginFormId">
     <form >
@@ -10,8 +9,14 @@ declare(strict_types=1);
         <input type="password" placeholder="Password" name="password" src="password" aria-label="password"/>
         <button type="submit" class="btn" value="Login"> Sign in</button>
     </form>
+
 </div>
+<a href="/register" onclick="saveLoginLink()">register</a>
 <script>
+
+    function saveLoginLink(){
+        localStorage.setItem('login-link', JSON.stringify(window.location.href));
+    }
 
     //get query param
     function getParameterByName(name, url = window.location.href) {
@@ -30,7 +35,8 @@ declare(strict_types=1);
 
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData.entries());
-        // send query parameters in body data to the backend
+
+        // send query parameters in the body data to the backend
         data["query_response_type"] = getParameterByName('response_type');
         data["query_redirect_uri"] = getParameterByName('redirect_uri');
         data["query_scope"] = getParameterByName('scope');
@@ -46,11 +52,13 @@ declare(strict_types=1);
             body: JSON.stringify(data)
         }).then(async function (response) {
 
+            console.log(await response.json())
+
             if (!response.ok) {
                 alert("Login failed");
             }
             if (response.ok){
-
+                window.confirm()
             }
             if (response.redirected) {
                 window.location.href = response.url;
