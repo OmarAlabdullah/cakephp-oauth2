@@ -23,8 +23,6 @@ declare(strict_types=1);
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 
-
-
     // login
     const loginForm = document.querySelector("#loginFormId");
     loginForm.addEventListener("submit", (event) => {
@@ -32,10 +30,12 @@ declare(strict_types=1);
 
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData.entries());
+        // send query parameters in body data to the backend
         data["query_response_type"] = getParameterByName('response_type');
         data["query_redirect_uri"] = getParameterByName('redirect_uri');
         data["query_scope"] = getParameterByName('scope');
         data["query_client_id"] = getParameterByName('client_id');
+
         fetch("https://php-oauth2.xel-localservices.nl/v1/login", {
             method: "POST",
             headers: {
@@ -45,10 +45,15 @@ declare(strict_types=1);
             },
             body: JSON.stringify(data)
         }).then(async function (response) {
-            console.log(response)
-            console.log(await response.json())
+
             if (!response.ok) {
                 alert("Login failed");
+            }
+            if (response.ok){
+
+            }
+            if (response.redirected) {
+                window.location.href = response.url;
             }
         })
             .catch(async error => console.log(error));

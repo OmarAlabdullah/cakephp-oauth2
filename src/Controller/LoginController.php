@@ -72,7 +72,7 @@ class LoginController extends AppController {
 
 
 
-    public function login(EventInterface $event): ?\Cake\Http\Response {
+    public function login(): ?\Cake\Http\Response {
 
         $this->setRequest($this->request->withData("grant_type", $this->grantType));
         $this->setRequest($this->request->withData("client_id", $this->clientId));
@@ -96,13 +96,9 @@ class LoginController extends AppController {
         ]);
 
         $redirect = "oauth/authorize?" . $query;
-        try {
 
             return $this->redirect('https://php-oauth2.xel-localservices.nl/' . $redirect);
-        }
-        catch (\Exception){
-            throw new RedirectException(Router::url('https://google.nl'));
-        }
+
 
 
     }
