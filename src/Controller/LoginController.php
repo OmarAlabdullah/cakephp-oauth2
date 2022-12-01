@@ -7,6 +7,8 @@ use App\Domain\EmailRequest;
 use App\Domain\LoginRequest;
 use App\Domain\registerRequest;
 use App\Services\oauth\OauthService;
+use Cake\Event\EventInterface;
+use Cake\Routing\Exception\RedirectException;
 use League\OAuth2\Server\AuthorizationServer;
 use OpenApi\Annotations as OA;
 use phpDocumentor\Transformer\Router\Router;
@@ -70,7 +72,7 @@ class LoginController extends AppController {
 
 
 
-    public function login(): ?\Cake\Http\Response {
+    public function login(EventInterface $event): ?\Cake\Http\Response {
 
         $this->setRequest($this->request->withData("grant_type", $this->grantType));
         $this->setRequest($this->request->withData("client_id", $this->clientId));
@@ -94,8 +96,14 @@ class LoginController extends AppController {
         ]);
 
         $redirect = "oauth/authorize?" . $query;
+        try {
 
-       return $this->redirect('https://php-oauth2.xel-localservices.nl/' . $redirect);
+            return $this->redirect('https://php-oauth2.xel-localservices.nl/' . $redirect);
+        }
+        catch (\Exception){
+            throw new RedirectException(Router::url('https://google.nl'));
+        }
+
 
     }
 

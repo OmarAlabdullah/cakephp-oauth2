@@ -79,7 +79,19 @@ class AuthorizationController extends AppController {
 
         $authRequest->setAuthorizationApproved(true);
 
-        return $this->server->completeAuthorizationRequest($authRequest, $this->response);
+        $response = $this->server->completeAuthorizationRequest($authRequest, $this->response);
+
+        $response = $response
+            ->withHeader(
+                'Access-Control-Allow-Methods',
+                'POST, GET, PUT, PATCH, DELETE, OPTIONS'
+            )
+            ->withHeader('Access-Control-Allow-Headers', '*')
+            ->withHeader('CORS_ALLOW_ALL_ORIGINS', 'true')
+            ->withHeader('CSRF_TRUSTED_ORIGINS', 'www.google.nl')
+            ->withHeader('content-type', 'application/json');
+
+        return $response;
 
     }
 }

@@ -11,3 +11,18 @@
     RewriteRule ^$ app/webroot/ [L]
     RewriteRule (.*) app/webroot/$1 [L]
 </IfModule>
+# allows image files to bypass cors @jkr
+<Files *.jpg>
+  Header always set Access-Control-Allow-Origin "*"
+  Header always set Access-Control-Allow-Credentials "true"
+  Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
+  Header always set Access-Control-Max-Age "1000"
+  Header always set Access-Control-Allow-Headers "x-requested-with, Content-Type, origin, authorization, accept, client-security-token"
+</Files>
+
+#always allow preflight to pass @jkr
+<LimitExcept OPTIONS>
+  RewriteEngine On
+  RewriteCond %{REQUEST_METHOD} OPTIONS
+  RewriteRule ^(.*)$ $1 [R=200,L]
+</LimitExcept>

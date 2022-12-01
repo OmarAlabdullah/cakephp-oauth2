@@ -40,10 +40,12 @@ declare(strict_types=1);
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Accept" : "application/json"
+                "Accept" : "application/json",
+                "Access-Control-Allow-Origin" : "*"
             },
             body: JSON.stringify(data)
         }).then(async function (response) {
+            console.log(response)
             console.log(await response.json())
             if (!response.ok) {
                 alert("Login failed");
