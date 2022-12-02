@@ -30,7 +30,7 @@ class AuthenticationController extends AppController {
      * @param OauthService $oauth2Service
      * @return void
      */
-    public function inject(OauthService $oauth2Service,
+    public function inject(OauthService        $oauth2Service,
                            AuthorizationServer $server) {
         $this->oauth2Service = $oauth2Service;
         $this->server = $server;
@@ -67,7 +67,6 @@ class AuthenticationController extends AppController {
      */
 
 
-
     public function login(): ?\Cake\Http\Response {
 
         $this->setRequest($this->request->withData("grant_type", $this->grantType));
@@ -93,8 +92,7 @@ class AuthenticationController extends AppController {
 
         $redirect = "oauth/authorize?" . $query;
 
-            return $this->redirect('https://php-oauth2.xel-localservices.nl/' . $redirect);
-
+        return $this->redirect('https://php-oauth2.xel-localservices.nl/' . $redirect);
 
 
     }

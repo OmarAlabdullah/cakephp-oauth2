@@ -3,22 +3,29 @@ declare(strict_types=1);
 
 ?>
 <div id="loginFormId">
-    <form >
+    <form action="https://php-oauth2.xel-localservices.nl/v1/login" method="post">
+
         <h1>Login</h1>
-        <input type="email" placeholder="Email" name="username" id="username" aria-label="username" />
+        <input type="email" placeholder="Email" name="username" id="username" aria-label="username"/>
         <input type="password" placeholder="Password" name="password" src="password" aria-label="password"/>
-        <button type="submit" class="btn" value="Login"> Sign in</button>
+        <input type="text" hidden aria-label="query_response_type" name="query_response_type" id="query_response_type"/>
+        <input type="text" hidden aria-label="query_client_id" name="query_client_id" id="query_client_id"/>
+        <input type="text" hidden aria-label="query_redirect_uri" name="query_redirect_uri" id="query_redirect_uri"/>
+        <input type="text" hidden aria-label="query_scope" name="query_scope" id="query_scope"/>
+        <input type="text" hidden aria-label="query_state" name="query_state" id="query_state"/>
+        <button type="submit" class="btn" value="Login">Log in</button>
     </form>
 
 </div>
 <a href="/register" onclick="saveLoginLink()">register</a>
 <script>
 
-    function saveLoginLink(){
+    // this function save the login url in the local storage
+    function saveLoginLink() {
         localStorage.setItem('login-link', JSON.stringify(window.location.href));
     }
 
-    //get query param
+    ////get query param by the name
     function getParameterByName(name, url = window.location.href) {
         name = name.replace(/[\[\]]/g, '\\$&');
         var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
@@ -28,43 +35,16 @@ declare(strict_types=1);
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 
-    // login
-    const loginForm = document.querySelector("#loginFormId");
-    loginForm.addEventListener("submit", (event) => {
-        event.preventDefault()
+    /// this function fill the data from the query parameters in the body
+    document.addEventListener("DOMContentLoaded", function (event) {
+        console.log("DOM fully loaded and parsed");
 
-        const formData = new FormData(event.target);
-        const data = Object.fromEntries(formData.entries());
+        document.getElementById('query_client_id').value = getParameterByName('client_id');
+        document.getElementById('query_response_type').value = getParameterByName('response_type');
+        document.getElementById('query_redirect_uri').value = getParameterByName('redirect_uri');
+        document.getElementById('query_scope').value = getParameterByName('scope');
+        document.getElementById('query_state').value = getParameterByName('state');
 
-        // send query parameters in the body data to the backend
-        data["query_response_type"] = getParameterByName('response_type');
-        data["query_redirect_uri"] = getParameterByName('redirect_uri');
-        data["query_scope"] = getParameterByName('scope');
-        data["query_client_id"] = getParameterByName('client_id');
-
-        fetch("https://php-oauth2.xel-localservices.nl/v1/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept" : "application/json",
-                "Access-Control-Allow-Origin" : "*"
-            },
-            body: JSON.stringify(data)
-        }).then(async function (response) {
-
-            console.log(await response.json())
-
-            if (!response.ok) {
-                alert("Login failed");
-            }
-            if (response.ok){
-                window.confirm()
-            }
-            if (response.redirected) {
-                window.location.href = response.url;
-            }
-        })
-            .catch(async error => console.log(error));
     });
 </script>
 

@@ -14,7 +14,7 @@ declare(strict_types=1);
 <a href="javascript: hrefToLogin()" >login</a>
 <script>
 
-    // this function get the redirect login client
+    // this function get the redirect login link of the client from the local storage
     function hrefToLogin() {
         window.location.href = JSON.parse(localStorage.getItem('login-link'))
     }
