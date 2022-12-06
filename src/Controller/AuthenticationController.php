@@ -15,8 +15,8 @@ use Ray\Di\Di\Inject;
 class AuthenticationController extends AppController {
     protected OauthService $oauth2Service;
     private AuthorizationServer $server;
-    private string $clientId = "00843";
-    private string $clientSecret = "00843080de0839b3d29927e9c0881a51b2f359f4eeb7ab0f4b46b3abe7422934b1d3eb412e787ce5340769";
+    private string $clientId = "login";
+    private string $clientSecret = "login";
     private string $grantType = "password";
 
     public function initialize(): void {

@@ -41,6 +41,11 @@ declare(strict_types=1);
             if (!response.ok) {
                 alert("Register failed");
             }
+            if (response.ok) {
+                alert("Register succeeded");
+                hrefToLogin();
+
+            }
         })
             .catch(async error => console.log(error));
     });
