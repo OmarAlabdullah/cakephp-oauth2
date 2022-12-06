@@ -9,8 +9,7 @@ use App\Orm\ClientORM;
 use App\Orm\UserORM;
 use League\OAuth2\Server\Entities\UserEntityInterface;
 
-class Oauth2Service implements OauthService
-{
+class Oauth2Service implements OauthService {
 
     private UserORM $userORM;
     private ClientORM $clientORM;
@@ -25,9 +24,8 @@ class Oauth2Service implements OauthService
     }
 
 
-    public function register(RegisterRequest $registerRequest): string
-    {
-        $this->userORM->saveUser($registerRequest->getEmail(), $registerRequest->getEmail(),$registerRequest->getPassword());
+    public function register(RegisterRequest $registerRequest): string {
+        $this->userORM->saveUser($registerRequest->getEmail(), $registerRequest->getEmail(), $registerRequest->getPassword());
         return "user";
 
 

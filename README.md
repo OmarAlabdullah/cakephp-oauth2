@@ -8,85 +8,107 @@ The framework source code can be found here: [cakephp/cakephp](https://github.co
 
 ### Create a new CakePHP SSO according to Oauth2 architecture
 
-1. use  composer to download the league library `composer require league/oauth2-server`.
+1. use composer to download the league library `composer require league/oauth2-server`.
 2. Generate a private key and put it in text file.
 3. Generate a public key (encryption key), or you can create a file and write what you want.
 4. you have to use the previous key files to build the "AuthorizationServerProvider".
 5. build de oauth2 database use that database script (mysql) below.
-6. you have to build the Entities according to the entities of League library use the entity interfaces of the league library, you can use symfony bundle or laravel passport as example.
+6. you have to build the Entities according to the entities of League library use the entity interfaces of the league
+   library, you can use symfony bundle or laravel passport as example.
 7. you have to build the tables with the right columns according to the database.
 8. Build the ORM layer according to the Repositories of the League library.
-9. You can now build the post token endpoint using the authorization server, you can use symfony bundle or laravel passport as example.
-10. You can now build the get authorize endpoint using the authorization server, you can use symfony bundle or laravel passport as example.
+9. You can now build the post token endpoint using the authorization server, you can use symfony bundle or laravel
+   passport as example.
+10. You can now build the get authorize endpoint using the authorization server, you can use symfony bundle or laravel
+    passport as example.
 11. you can test the endpoints with postman. Attention the type of the body is 'x-ww-form-urlencoded'.
-12. you have to build a login/registration endpoints to prove the user and the client, use this example [Symfony SSO example](https://davegebler.com/post/php/build-oauth2-server-php-symfony).
+12. you have to build a login/registration endpoints to prove the user and the client, use this
+    example [Symfony SSO example](https://davegebler.com/post/php/build-oauth2-server-php-symfony).
 
 [//]: # (<img src="oauthproces.png" width="666"  alt="diagram"/>)
 
 ## Authorize endpoint
 
-
-
 ## Token endpoint
+
 The token endpoint has som of grant types, if you want to use one of this grant,
-you have to put it in the AuthorizationServerProvider. Then if you create a client in the database you have to save which grants is the client allowed to use.
+you have to put it in the AuthorizationServerProvider. Then if you create a client in the database you have to save
+which grants is the client allowed to use.
 
 I have access alle grant types except the implicit grant. I will explain per grant type how this is works.
 
 ### Authorization_code grant type
+
 The most important grant type. With this grant can the client get the user data by the code from the authorize endpoint.
 
 #### How does it work?
+
 The client redirect the user the login endpoint, after the user has logged in, the client will get a response with code.
 The client will use the token endpoint with authorization_code grant type.
-* The client sends a POST request with following body parameters to the authorization server `token(grant_type, client_id, client_secret, code, redirect_uri)`.
-The client will exchange the code with access token and refresh token.
-* The authorization server will respond with a JSON object containing the following properties `response{token_type, expires_in, access_token, refresh_token}`.
-Now can the client send the token to the resource server.
+
+* The client sends a POST request with following body parameters to the authorization
+  server `token(grant_type, client_id, client_secret, code, redirect_uri)`.
+  The client will exchange the code with access token and refresh token.
+* The authorization server will respond with a JSON object containing the following
+  properties `response{token_type, expires_in, access_token, refresh_token}`.
+  Now can the client send the token to the resource server.
 
 <img src="authorization_code.png" width="600"  alt="diagram"/>
 
 ### Password grant type
+
 the client can use this type and get access token and refresh token by username and password.
 
 #### How does it work?
+
 The client can use the token endpoint with the type password as a login endpoint.
-* The client sends a POST request with following body parameters to the authorization server `token(grant_type, client_id, client_secret, username, password)`.
-* The authorization server will respond with a JSON object containing the following properties `response{token_type, expires_in, access_token, refresh_token}`.
-The client will send the access token to th resource server.
+
+* The client sends a POST request with following body parameters to the authorization
+  server `token(grant_type, client_id, client_secret, username, password)`.
+* The authorization server will respond with a JSON object containing the following
+  properties `response{token_type, expires_in, access_token, refresh_token}`.
+  The client will send the access token to th resource server.
 
 <img src="password.png" width="600"  alt="diagram" />
 
 ### Refresh_token grant type
-After that the access token expires the client still have the refresh token. The client can exchange this refresh token with a new access token and refresh token.
+
+After that the access token expires the client still have the refresh token. The client can exchange this refresh token
+with a new access token and refresh token.
 
 #### How does it work?
+
 The client can use token endpoint with the refresh_token grant type.
-* The client sends a POST request with following body parameters to the authorization server `token(grant_type, client_id, client_secret, refresh_token)`.
-* The authorization server will respond with a JSON object containing the following properties `response{token_type, expires_in, access_token, refresh_token}`.
-The client will send the access token to th resource server.
+
+* The client sends a POST request with following body parameters to the authorization
+  server `token(grant_type, client_id, client_secret, refresh_token)`.
+* The authorization server will respond with a JSON object containing the following
+  properties `response{token_type, expires_in, access_token, refresh_token}`.
+  The client will send the access token to th resource server.
 
 <img src="refresh_token.png" width="666" alt="diagram" />
 
-
 ### Client_credentials
 
-This grant is suitable for machine-to-machine authentication, for example would be a client making requests to an API that don’t require user’s permission.
+This grant is suitable for machine-to-machine authentication, for example would be a client making requests to an API
+that don’t require user’s permission.
 
 #### How does it work?
+
 The client can use token endpoint with the client_credentials grant type.
-* The client sends a POST request with following body parameters to the authorization server `token(grant_type, client_id, client_secret)`.
-* The authorization server will respond with a JSON object containing the following properties `response{token_type, expires_in, access_token}`.
+
+* The client sends a POST request with following body parameters to the authorization
+  server `token(grant_type, client_id, client_secret)`.
+* The authorization server will respond with a JSON object containing the following
+  properties `response{token_type, expires_in, access_token}`.
 
 <img src="client_credentials.png" width="600"  alt="diagram" />
 
-
-
-
-
 ### Database structure
 
-I have used the database structure of the basic OAuth2 library and I have adjusted to what I need, according to League database structure. for more information about the database visit [League database setup](https://oauth2.thephpleague.com/database-setup/)
+I have used the database structure of the basic OAuth2 library and I have adjusted to what I need, according to League
+database structure. for more information about the database
+visit [League database setup](https://oauth2.thephpleague.com/database-setup/)
 
 ```
 create table access_tokens

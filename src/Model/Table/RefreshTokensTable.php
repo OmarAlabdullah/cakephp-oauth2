@@ -10,14 +10,12 @@ use Cake\ORM\Table;
  * @property ClientsTable $Client
  * @property UsersTable $UsersTable
  */
-class RefreshTokensTable extends Table
-{
+class RefreshTokensTable extends Table {
     /**
      * @param array $config Config
      * @return void
      */
-    public function initialize(array $config): void
-    {
+    public function initialize(array $config): void {
         $this->setTable('refresh_tokens');
         $this->setPrimaryKey('identifier');
         $this->setDisplayField('access_token_id');

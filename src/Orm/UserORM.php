@@ -65,7 +65,7 @@ class UserORM implements UserRepositoryInterface {
         $userId = $jwtPayload->sub;
         $accessTokenId = $jwtPayload->jti;
 
-        if ($this->accessTokenORM->isAccessTokenRevoked($accessTokenId)){
+        if ($this->accessTokenORM->isAccessTokenRevoked($accessTokenId)) {
             throw new ServiceException('Access token is revoked');
         }
 

@@ -37,7 +37,6 @@ declare(strict_types=1);
 
     /// this function fill the data from the query parameters in the body
     document.addEventListener("DOMContentLoaded", function (event) {
-        console.log("DOM fully loaded and parsed");
 
         document.getElementById('query_client_id').value = getParameterByName('client_id');
         document.getElementById('query_response_type').value = getParameterByName('response_type');

@@ -3,15 +3,16 @@ declare(strict_types=1);
 
 ?>
 <div id="registerFormId">
-    <form >
+    <form>
         <h1>Register</h1>
         <input type="email" placeholder="Email" name="email" id="email" aria-label="email" required/>
         <input type="password" placeholder="Password" name="password" src="password" aria-label="password" required/>
-        <input type="password" placeholder="Repeat Password" name="repeatPassword" src="repeatPassword" aria-label="repeatPassword" required/>
+        <input type="password" placeholder="Repeat Password" name="repeatPassword" src="repeatPassword"
+               aria-label="repeatPassword" required/>
         <button type="submit" id="button" value="Login">Register</button>
     </form>
 </div>
-<a href="javascript: hrefToLogin()" >login</a>
+<a href="javascript: hrefToLogin()">login</a>
 <script>
 
     // this function get the redirect login link of the client from the local storage
@@ -31,7 +32,7 @@ declare(strict_types=1);
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Accept" : "application/json",
+                "Accept": "application/json",
 
             },
             body: JSON.stringify(data)

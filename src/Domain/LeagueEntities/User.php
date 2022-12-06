@@ -7,8 +7,7 @@ namespace App\Domain\LeagueEntities;
 use League\OAuth2\Server\Entities\Traits\EntityTrait;
 use League\OAuth2\Server\Entities\UserEntityInterface;
 
-final class User implements UserEntityInterface
-{
+final class User implements UserEntityInterface {
     use EntityTrait;
 
     /**
@@ -19,16 +18,14 @@ final class User implements UserEntityInterface
     /**
      * @return string
      */
-    public function getEmail(): string
-    {
+    public function getEmail(): string {
         return $this->email;
     }
 
     /**
      * @param string $email
      */
-    public function setEmail(string $email): void
-    {
+    public function setEmail(string $email): void {
         $this->email = $email;
     }
 

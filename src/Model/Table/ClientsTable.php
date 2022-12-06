@@ -11,14 +11,12 @@ use Cake\ORM\Table;
  * @property AuthorizationCodesTable $AuthCode
  * @property RefreshTokensTable $DbRefreshToken
  */
-class ClientsTable extends Table
-{
+class ClientsTable extends Table {
     /**
      * @param array $config Config
      * @return void
      */
-    public function initialize(array $config): void
-    {
+    public function initialize(array $config): void {
         $this->setTable('clients');
         $this->setPrimaryKey('identifier');
         $this->setDisplayField('user_id');

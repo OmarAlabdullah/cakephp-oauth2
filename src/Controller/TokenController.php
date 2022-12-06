@@ -6,8 +6,6 @@ namespace App\Controller;
 
 use App\Domain\TokenRequest;
 
-
-
 use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Exception\OAuthServerException;
 use Psr\Http\Message\ResponseInterface;
@@ -81,8 +79,7 @@ class TokenController extends AppController {
      * )
      */
 
-    public function accessToken(): ResponseInterface
-    {
+    public function accessToken(): ResponseInterface {
         return $this->server->respondToAccessTokenRequest($this->request, $this->response);
     }
 }

@@ -26,6 +26,5 @@ use Xel\Cake\Middleware\XelBaseApplication;
  * This defines the bootstrapping logic and middleware layers you
  * want to use in your application.
  */
-class Application extends XelBaseApplication
-{
+class Application extends XelBaseApplication {
 }

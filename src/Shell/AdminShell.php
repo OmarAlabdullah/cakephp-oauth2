@@ -5,6 +5,5 @@ namespace App\Shell;
 
 use Xel\Cake\Clients\XelAdminShell;
 
-class AdminShell extends XelAdminShell
-{
+class AdminShell extends XelAdminShell {
 }

@@ -6,6 +6,7 @@ declare(strict_types=1);
  * @var $configVersion string
  * @var $config array
  */
+
 use Cake\Datasource\ConnectionManager;
 use Cake\Routing\Router;
 
