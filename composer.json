@@ -111,6 +111,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "config": {
+        "platform-check": false,
         "allow-plugins": {
             "cakephp/plugin-installer": true
         }
