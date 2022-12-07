@@ -3,7 +3,11 @@
     "name": "xel-webservices/php-oauth2",
     "description": "CakePHP application",
     "type": "project",
-    "require": {
+    "jenkins" : {
+      "block_ta" : false,
+      "keep_env_alive" : false
+     },
+        "require": {
         "php": "~8.1",
         "cakephp/cakephp": "~4.3",
         "cakephp/migrations": "*",
