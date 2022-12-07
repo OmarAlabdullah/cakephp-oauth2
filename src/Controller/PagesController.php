@@ -13,6 +13,7 @@ declare(strict_types=1);
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Core\Configure;
@@ -35,7 +36,7 @@ class PagesController extends AppController {
         if (preg_match('/\/?(v\d+)\//', $this->request->getRequestTarget(), $matches)) {
             $this->apiVersion = $matches[1];
         }
-        $this->Auth->allow(['home', 'swagger', 'login']);
+        $this->Auth->allow(['home', 'swagger', 'login', 'register']);
     }
 
     public function home() {
@@ -47,6 +48,11 @@ class PagesController extends AppController {
 
 
     public function login() {
+
+    }
+
+
+    public function register() {
 
     }
 

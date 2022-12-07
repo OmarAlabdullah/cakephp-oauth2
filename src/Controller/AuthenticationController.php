@@ -7,26 +7,22 @@ use App\Domain\EmailRequest;
 use App\Domain\LoginRequest;
 use App\Domain\registerRequest;
 use App\Services\oauth\OauthService;
-use Cake\Event\EventInterface;
-use Cake\Routing\Exception\RedirectException;
 use League\OAuth2\Server\AuthorizationServer;
 use OpenApi\Annotations as OA;
 use phpDocumentor\Transformer\Router\Router;
 use Ray\Di\Di\Inject;
 
-class LoginController extends AppController {
+class AuthenticationController extends AppController {
     protected OauthService $oauth2Service;
     private AuthorizationServer $server;
-    private string $clientId = "00843";
-    private string $clientSecret = "00843080de0839b3d29927e9c0881a51b2f359f4eeb7ab0f4b46b3abe7422934b1d3eb412e787ce5340769";
+    private string $clientId = "login";
+    private string $clientSecret = "login";
     private string $grantType = "password";
 
     public function initialize(): void {
         parent::initialize();
         $this->Auth->allow(['login']);
         $this->Auth->allow(['register']);
-        $this->Auth->allow(['changePassword']);
-        $this->Auth->allow(['find']);
     }
 
     /**
@@ -34,7 +30,7 @@ class LoginController extends AppController {
      * @param OauthService $oauth2Service
      * @return void
      */
-    public function inject(OauthService $oauth2Service,
+    public function inject(OauthService        $oauth2Service,
                            AuthorizationServer $server) {
         $this->oauth2Service = $oauth2Service;
         $this->server = $server;
@@ -71,8 +67,7 @@ class LoginController extends AppController {
      */
 
 
-
-    public function login(EventInterface $event): ?\Cake\Http\Response {
+    public function login(): ?\Cake\Http\Response {
 
         $this->setRequest($this->request->withData("grant_type", $this->grantType));
         $this->setRequest($this->request->withData("client_id", $this->clientId));
@@ -96,56 +91,12 @@ class LoginController extends AppController {
         ]);
 
         $redirect = "oauth/authorize?" . $query;
-        try {
 
-            return $this->redirect('https://php-oauth2.xel-localservices.nl/' . $redirect);
-        }
-        catch (\Exception){
-            throw new RedirectException(Router::url('https://google.nl'));
-        }
+        return $this->redirect('https://php-oauth2.xel-localservices.nl/' . $redirect);
 
 
     }
 
-
-
-
-
-    /**
-     * @OA\Post  (
-     *     path="/logout",
-     *     tags={"authentication"},
-     *     description="Logout/authenticate using credentials",
-     *     @OA\Header(
-     *          header="accept: application/json",
-     *          @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(ref="#/components/parameters/X-Xel-Services-RunLevel"),
-     *     @OA\RequestBody(
-     *        required=true,
-     *        description="Logout credentials",
-     *        @OA\JsonContent(
-     *           ref="#/components/schemas/EmailRequest"
-     *        )
-     *     ),
-     *     @OA\Response(
-     *         response=201,
-     *         description="Logout success",
-     *         @OA\JsonContent()
-     *     ),
-     *    @OA\Response(
-     *         response=500,
-     *         description="Internal Server Error",
-     *         @OA\JsonContent()
-     *     )
-     * )
-     */
-    public function logout() {
-        /** @var EmailRequest $emailRequest */
-        $emailRequest = $this->xelRequest->getDataAsDomainObject(EmailRequest::builder());
-        $this->oauth2Service->logout($emailRequest);
-
-    }
     /**
      * @OA\Post  (
      *     path="/register",
@@ -184,40 +135,5 @@ class LoginController extends AppController {
         ]);
     }
 
-    /**
-     * @OA\Post  (
-     *     path="/change-password ",
-     *     tags={"authentication"},
-     *     description="change-password/authenticate using credentials",
-     *     @OA\Header(
-     *          header="accept: application/json",
-     *          @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(ref="#/components/parameters/X-Xel-Services-RunLevel"),
-     *     @OA\RequestBody(
-     *        required=true,
-     *        description="change password ",
-     *        @OA\JsonContent(
-     *           ref="#/components/schemas/EmailRequest"
-     *        )
-     *     ),
-     *     @OA\Response(
-     *         response=201,
-     *         description="change password success",
-     *         @OA\JsonContent()
-     *     ),
-     *    @OA\Response(
-     *         response=500,
-     *         description="Internal Server Error",
-     *         @OA\JsonContent()
-     *     )
-     * )
-     */
-    public function changePassword() {
-        /** @var EmailRequest $emailRequest */
-        $emailRequest = $this->xelRequest->getDataAsDomainObject(EmailRequest::builder());
-        $this->oauth2Service->changePassword($emailRequest);
-
-    }
 
 }

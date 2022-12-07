@@ -25,14 +25,12 @@ use League\OAuth2\Server\AuthorizationServer;
 use Ray\Di\AbstractModule;
 use Xel\Cake\Network\XelRequest;
 
-class AppModule extends AbstractModule
-{
+class AppModule extends AbstractModule {
 
     /**
      * Configure binding
      */
-    protected function configure()
-    {
+    protected function configure() {
         $this->bind(XelRequest::class)->toProvider(XelRequestProvider::class);
         $this->bind(OauthService::class)->to(Oauth2Service::class);
         $this->bind(UserOrm::class);

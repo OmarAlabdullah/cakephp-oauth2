@@ -5,13 +5,11 @@ namespace App\Domain;
 use Xel\Common\XelObject;
 
 
-
 /**
  * Class LoginRequest
  *
  * // Setters
  * @method LoginRequest setQueryClientId (string $queryClientId)
- * @method LoginRequest setQueryClientSecret (string $queryClientSecret)
  * @method LoginRequest setQueryRedirectUri (string $queryRedirectUri)
  * @method LoginRequest setQueryResponseType (string $queryResponseType)
  * @method LoginRequest setQueryScope (string $queryScope)
@@ -19,7 +17,6 @@ use Xel\Common\XelObject;
  *
  * // Getters
  * @method string getQueryClientId
- * @method string getQueryClientSecret
  * @method string getQueryRedirectUri
  * @method string getQueryResponseType
  * @method string getQueryScope
@@ -36,4 +33,5 @@ class LoginRequest extends XelObject {
     protected string $queryRedirectUri;
     protected string $queryResponseType;
     protected string $queryScope;
+    protected string $queryState;
 }
