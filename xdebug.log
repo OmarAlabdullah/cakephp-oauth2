@@ -47166,3 +47166,378 @@
 [77] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
 [77] Log closed at 2022-12-06 15:21:34.148096
 
+[17031] Log opened at 2022-12-06 15:31:10.151200
+[17031] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[17031] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[17031] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[17031] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[17031] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[17031] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[17031] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[17031] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[17031] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[17031] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[17031] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[17031] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[17031] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[17031] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[17031] Log closed at 2022-12-06 15:31:10.732376
+
+[78] Log opened at 2022-12-06 15:32:43.737284
+[78] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[78] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[78] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[78] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[78] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[78] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[78] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[78] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[78] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[78] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[78] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[78] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[78] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[78] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[78] Log closed at 2022-12-06 15:32:44.601136
+
+[79] Log opened at 2022-12-06 15:32:51.969992
+[79] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[79] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[79] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[79] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[79] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[79] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[79] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[79] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[79] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[79] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[79] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[79] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[79] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[79] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[79] Log closed at 2022-12-06 15:32:52.806025
+
+[80] Log opened at 2022-12-06 15:33:16.198147
+[80] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[80] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[80] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[80] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[80] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[80] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[80] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[80] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[80] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[80] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[80] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[80] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[80] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[80] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[80] Log closed at 2022-12-06 15:33:17.003915
+
+[81] Log opened at 2022-12-06 15:33:58.546774
+[81] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[81] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[81] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[81] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[81] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[81] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[81] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[81] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[81] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[81] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[81] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[81] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[81] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[81] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[81] Log closed at 2022-12-06 15:33:59.485309
+
+[83] Log opened at 2022-12-06 15:34:18.815736
+[83] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[83] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[83] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[83] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[83] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[83] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[83] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[83] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[83] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[83] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[83] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[83] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[83] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[83] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[83] Log closed at 2022-12-06 15:34:19.625017
+
+[82] Log opened at 2022-12-06 15:36:43.481296
+[82] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[82] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[82] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[82] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[82] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[82] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[82] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[82] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[82] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[82] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[82] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[82] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[82] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[82] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[82] Log closed at 2022-12-06 15:36:44.308697
+
+[84] Log opened at 2022-12-06 15:38:28.551062
+[84] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[84] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[84] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[84] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[84] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[84] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[84] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[84] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[84] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[84] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[84] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[84] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[84] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[84] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[84] Log closed at 2022-12-06 15:38:29.785246
+
+[85] Log opened at 2022-12-06 15:38:39.342838
+[85] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[85] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[85] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[85] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[85] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[85] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[85] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[85] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[85] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[85] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[85] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[85] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[85] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[85] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[85] Log closed at 2022-12-06 15:38:39.964124
+
+[86] Log opened at 2022-12-06 15:39:31.449856
+[86] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[86] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[86] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[86] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[86] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[86] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[86] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[86] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[86] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[86] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[86] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[86] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[86] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[86] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[86] Log closed at 2022-12-06 15:39:32.464485
+
+[87] Log opened at 2022-12-06 15:40:12.102288
+[87] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[87] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[87] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[87] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[87] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[87] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[87] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[87] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[87] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[87] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[87] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[87] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[87] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[87] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[87] Log closed at 2022-12-06 15:40:13.132420
+
+[88] Log opened at 2022-12-06 15:40:59.334560
+[88] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[88] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[88] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[88] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[88] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[88] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[88] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[88] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[88] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[88] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[88] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[88] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[88] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[88] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[88] Log closed at 2022-12-06 15:40:59.993417
+
+[89] Log opened at 2022-12-06 15:40:59.994265
+[89] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[89] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[89] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[89] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[89] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[89] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[89] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[89] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[89] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[89] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[89] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[89] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[89] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[89] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[89] Log closed at 2022-12-06 15:41:00.562831
+
+[329] Log opened at 2022-12-06 15:41:03.146780
+[329] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[329] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[329] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[329] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[329] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[329] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[329] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[329] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[329] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[329] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[329] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[329] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[329] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[329] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[75] Log opened at 2022-12-06 15:41:04.086194
+[75] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[75] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[329] Log closed at 2022-12-06 15:41:04.086877
+
+[75] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[75] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[75] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[75] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[75] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[75] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[75] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[75] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[75] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[75] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[75] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[75] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[75] Log closed at 2022-12-06 15:41:04.885303
+
+[76] Log opened at 2022-12-06 15:44:41.055184
+[76] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[76] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[76] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[76] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[76] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[76] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[76] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[76] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[76] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[76] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[76] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[76] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[76] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[76] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[77] Log opened at 2022-12-06 15:44:41.883046
+[77] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[77] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[76] Log closed at 2022-12-06 15:44:41.886422
+
+[77] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[77] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[77] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[77] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[77] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[77] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[77] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[77] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[77] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[77] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[77] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[77] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[77] Log closed at 2022-12-06 15:44:42.536580
+
+[17031] Log opened at 2022-12-06 15:44:48.094475
+[17031] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[17031] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[17031] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[17031] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[17031] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[17031] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[17031] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[17031] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[17031] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[17031] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[17031] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[17031] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[17031] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[17031] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[17031] Log closed at 2022-12-06 15:44:48.681717
+
+[78] Log opened at 2022-12-06 15:44:48.702176
+[78] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[78] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[78] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[78] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[78] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[78] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[78] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[78] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[78] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[78] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[78] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[78] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[78] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[78] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[78] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[78] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[78] Log closed at 2022-12-06 15:44:49.113882
+
+[16] Log opened at 2022-12-07 08:17:42.083980
+[16] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[16] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[16] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[16] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[16] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[16] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[16] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[16] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[16] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[16] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[16] Log closed at 2022-12-07 08:17:44.249793
+
+[45] Log opened at 2022-12-07 08:17:52.563679
+[45] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[45] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[45] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[45] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[45] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[45] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[45] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[45] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[45] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[45] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[45] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[45] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[45] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[45] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[45] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[45] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[45] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[45] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[45] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[45] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[45] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[45] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[45] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[45] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[45] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[45] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[45] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[45] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[45] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[45] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[45] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[45] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[45] [Config] INFO: Trigger value for 'XDEBUG_TRIGGER' not found, falling back to 'XDEBUG_SESSION'
+[45] [Config] INFO: Trigger value for 'XDEBUG_SESSION' not found, so not activating
+[45] Log closed at 2022-12-07 08:17:54.900946
+

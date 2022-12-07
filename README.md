@@ -29,6 +29,16 @@ The framework source code can be found here: [cakephp/cakephp](https://github.co
 
 ## Authorize endpoint
 
+The Authorize endpoint is the first endpoint the client uses to redirect the user to the authorization server.
+* The client will redirect the user to the authorization server with the following parameters in the query string
+  `(response_type, client_id, redirect_uri, scope, state)`
+* The authorization server will validate All of this parameters then the user will be redirected to the login page of the server to prove itself. the login endpoint will get the following parameters from the front end `(username, client_id, respons-type, redierct_uri, scope, state)`.
+* If authentication succeeded the login will redirect the user and the client info to the authorize endpoint. The authorize endpoint will get the following parameters `access_token, client_id, respons_type, scope, state, redirect_uri)`.
+* The authorize endpoint will respond at the login endpoint with redirect action to `redirect_uri` with a code. The client will use the code at the token endpoint to exchange the code with access token and refresh token.
+
+The authorization endpoint and the token endpoint on the authorization grant type work together. The authorization endpoint provides the client code after client/user authentication on the authorization server, then the client uses the code on token endpoint on the authorization grant type to get the user information.
+You can use the authorization code sequence diagram (below) to understand how it works.
+
 ## Token endpoint
 
 The token endpoint has som of grant types, if you want to use one of this grant,
