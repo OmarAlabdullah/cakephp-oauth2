@@ -90,9 +90,10 @@ class AuthenticationController extends AppController {
             'access_token' => $json['access_token']
         ]);
 
-        $redirect = "oauth/authorize?" . $query;
+        $host = $this->xelRequest->getRequest()->host();
+        $redirect = "/oauth/authorize?" . $query;
 
-        return $this->redirect('https://php-oauth2.xel-localservices.nl/' . $redirect);
+        return $this->redirect("https://$host" . $redirect);
 
 
     }
