@@ -68,10 +68,11 @@ class AuthorizationController extends AppController {
 
 
         $query = http_build_query($this->request->getQueryParams());
+        $host = $this->xelRequest->getRequest()->host();
 
         if ($this->request->getQuery('access_token') == null) {
 
-            return $this->redirect("https://php-oauth2.xel-localservices.nl/login?" . $query);
+            return $this->redirect("'https://$host/login?" . $query);
         }
 
         $authRequest = $this->server->validateAuthorizationRequest($this->request);
