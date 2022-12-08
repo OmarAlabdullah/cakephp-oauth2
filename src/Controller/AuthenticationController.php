@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Domain\LoginRequest;
-use App\Domain\registerRequest;
+use App\Domain\RegisterRequest;
 use App\Services\oauth\OauthService;
 use League\OAuth2\Server\AuthorizationServer;
 use OpenApi\Annotations as OA;
