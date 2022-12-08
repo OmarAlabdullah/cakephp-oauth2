@@ -28,7 +28,7 @@ declare(strict_types=1);
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData.entries());
 
-        fetch("https://php-oauth2.xel-localservices.nl/v1/register", {
+        fetch("/v1/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

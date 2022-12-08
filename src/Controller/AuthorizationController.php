@@ -66,16 +66,16 @@ class AuthorizationController extends AppController {
 
     public function authorize(): ResponseInterface {
 
+        $authRequest = $this->server->validateAuthorizationRequest($this->request);
 
         $query = http_build_query($this->request->getQueryParams());
-        $host = $this->xelRequest->getRequest()->host();
 
         if ($this->request->getQuery('access_token') == null) {
 
-            return $this->redirect("'https://$host/login?" . $query);
+            $host = $this->xelRequest->getRequest()->host();
+            return $this->redirect("https://$host/login?" . $query);
         }
 
-        $authRequest = $this->server->validateAuthorizationRequest($this->request);
 
         $authRequest->setUser($this->OauthService->getUserBySAccessToken($this->request->getQuery('access_token')));
 

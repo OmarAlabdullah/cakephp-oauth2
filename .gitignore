@@ -10,3 +10,4 @@
 .phpdoc
 webroot/api-docs
 templates/Pages/swagger/v1/*.yml.*
+xdebug.log
