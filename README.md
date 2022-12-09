@@ -199,3 +199,11 @@ unique (username)
 )
 collate = utf8mb4_unicode_ci;
 ```
+
+### How to use the current SSO if everything works
+1. Make client for the internal use in the database(It's for the login page). You have to give him the following values in the database: <br />
+``id = login, user-id = 1, name = login, secret = login, redirect = login, allow_... = 1, isConfidential =  1, grants = password``
+2. Make client for external use in the database. for example, I will call the client auth0-client and I will give him the following values in the database: <br />
+``id = auth0-client, user-id = 1, name = auth0-client, secret = auth0-client, redirect = https://auth0.com/, allow_... = 1, isConfidential =  1, grants = refresh_token authorization_code client_credentials ``
+3. You can now use the following URL to test the SSO https://php-oauth2.xel-localservices.nl/oauth/authorize?response_type=code&client_id=auth0-c[…]IiwianRpIjoiMmViYWY2MmMxMGYxOWU5M2RkMDYzNzQ1Yjk0ZGY5N
+4. If you are redirected to the login page, click on the registration link to create an account. if the registration is successful, you will be returned to the login page and you will need to log in. If the login is successful, you will be redirected to the client URL with code.

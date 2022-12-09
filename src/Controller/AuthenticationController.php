@@ -3,13 +3,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Domain\EmailRequest;
 use App\Domain\LoginRequest;
 use App\Domain\registerRequest;
 use App\Services\oauth\OauthService;
 use League\OAuth2\Server\AuthorizationServer;
 use OpenApi\Annotations as OA;
-use phpDocumentor\Transformer\Router\Router;
 use Ray\Di\Di\Inject;
 
 class AuthenticationController extends AppController {
@@ -90,9 +88,10 @@ class AuthenticationController extends AppController {
             'access_token' => $json['access_token']
         ]);
 
-        $redirect = "oauth/authorize?" . $query;
+        $host = $this->xelRequest->getRequest()->host();
+        $redirect = "/oauth/authorize?" . $query;
 
-        return $this->redirect('https://php-oauth2.xel-localservices.nl/' . $redirect);
+        return $this->redirect("https://$host" . $redirect);
 
 
     }

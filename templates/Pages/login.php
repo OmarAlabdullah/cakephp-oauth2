@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 ?>
 <div id="loginFormId">
-    <form action="https://php-oauth2.xel-localservices.nl/v1/login" method="post">
+    <form action="/v1/login" method="post">
 
         <h1>Login</h1>
         <input type="email" placeholder="Email" name="username" id="username" aria-label="username"/>
