@@ -85,6 +85,7 @@ class AuthenticationController extends AppController {
             'redirect_uri' => $requestObject->getQueryRedirectUri(),
             'response_type' => $requestObject->getQueryResponseType(),
             'scope' => $requestObject->getQueryScope(),
+            'state' => $requestObject->getQueryState(),
             'access_token' => $json['access_token']
         ]);
 
