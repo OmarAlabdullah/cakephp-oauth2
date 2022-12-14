@@ -139,7 +139,9 @@ class AuthenticationController extends AppController {
         $accessToken = $this->request->getQuery('access_token');
         $user = $this->oauth2Service->userInfo($accessToken);
 
-        $this->set(json_encode($user));
+        return $this->response->withStringBody(json_encode($user));
+
+
     }
 
 }
