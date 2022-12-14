@@ -21,6 +21,7 @@ class AuthenticationController extends AppController {
         parent::initialize();
         $this->Auth->allow(['login']);
         $this->Auth->allow(['register']);
+        $this->Auth->allow(['userInfo']);
     }
 
     /**
@@ -129,11 +130,16 @@ class AuthenticationController extends AppController {
     public function register() {
         /** @var RegisterRequest $registerRequest */
         $registerRequest = $this->xelRequest->getDataAsDomainObject(RegisterRequest::builder());
-        $user = $this->oauth2Service->register($registerRequest);
-        $this->set("user", [
-            'user' => $user
-        ]);
+        $this->oauth2Service->register($registerRequest);
+
     }
 
+
+    public function userInfo() {
+        $accessToken = $this->request->getQuery('access_token');
+        $user = $this->oauth2Service->userInfo($accessToken);
+
+        $this->set(json_encode($user));
+    }
 
 }
