@@ -17,6 +17,8 @@ declare(strict_types=1);
 namespace App;
 
 
+use Xel\Cake\Error\AppExceptionRenderer;
+use Xel\Cake\Middleware\AppErrorHandlerMiddleware;
 use Xel\Cake\Middleware\XelBaseApplication;
 
 
@@ -27,4 +29,8 @@ use Xel\Cake\Middleware\XelBaseApplication;
  * want to use in your application.
  */
 class Application extends XelBaseApplication {
+
+    public static function getErrorHandlerMiddleware(): AppErrorHandlerMiddleware {
+        return new AppErrorHandlerMiddleware([], AppExceptionRenderer::class);
+    }
 }
