@@ -2,18 +2,20 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\LeagueEntities;
+namespace App\Model\Entity;
 
+use Cake\Auth\DefaultPasswordHasher;
+use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\Traits\EntityTrait;
 use League\OAuth2\Server\Entities\UserEntityInterface;
 
-final class User implements UserEntityInterface {
+final class User  extends Entity implements UserEntityInterface {
     use EntityTrait;
 
     /**
      * @var string
      */
-    private $email;
+    private string $email;
 
     /**
      * @return string
@@ -27,6 +29,14 @@ final class User implements UserEntityInterface {
      */
     public function setEmail(string $email): void {
         $this->email = $email;
+    }
+
+    protected function setPassword(string $password) : ?string
+    {
+        if (strlen($password) > 0) {
+            return (new DefaultPasswordHasher())->hash($password);
+        }
+        return null;
     }
 
 

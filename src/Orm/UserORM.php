@@ -2,17 +2,14 @@
 
 namespace App\Orm;
 
-use App\Domain\LeagueEntities\User;
+use App\Model\Entity\User;
 use App\Model\Table\ClientsTable;
 use App\Model\Table\UsersTable;
-use Cake\Http\Exception\NotFoundException;
 use Cake\ORM\Entity;
-use Lcobucci\JWT\Token;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Entities\UserEntityInterface;
 use League\OAuth2\Server\Repositories\UserRepositoryInterface;
-use phpDocumentor\GraphViz\Exception;
-use Xel\Common\Exception\ServiceException;
+use Xel\Common\Exception\UnauthorizedException;
 
 class UserORM implements UserRepositoryInterface {
     private UsersTable $usersTable;
@@ -32,6 +29,7 @@ class UserORM implements UserRepositoryInterface {
 
 
     public function saveUser(string $email, string $username, string $password): void {
+
         $userEntity = new Entity([
             'email' => $email,
             'password' => $password,
@@ -66,7 +64,7 @@ class UserORM implements UserRepositoryInterface {
         $accessTokenId = $jwtPayload->jti;
 
         if ($this->accessTokenORM->isAccessTokenRevoked($accessTokenId)) {
-            throw new ServiceException('Access token is revoked');
+            throw new UnauthorizedException('Access token is revoked');
         }
 
         $user = $this->usersTable->get($userId);

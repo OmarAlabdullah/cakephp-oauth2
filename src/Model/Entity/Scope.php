@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\LeagueEntities;
+namespace App\Model\Entity;
 
+use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\ScopeEntityInterface;
 use League\OAuth2\Server\Entities\Traits\EntityTrait;
 
