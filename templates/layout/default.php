@@ -24,11 +24,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <title>
         Xel SSO
     </title>
-    <?= $this->Html->meta(
-        'icon',
-        'logo.png',
-        ['type' => 'icon']
-    ); ?>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
 
