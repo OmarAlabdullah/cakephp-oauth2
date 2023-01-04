@@ -25,6 +25,7 @@ class UsersTable extends Table {
         $this->setTable('users');
         $this->setPrimaryKey('identifier');
         $this->setDisplayField('password');
+        $this->setDisplayField('username');
         $this->setDisplayField('email');
         parent::initialize($config);
     }

@@ -10,7 +10,7 @@ use League\OAuth2\Server\Entities\Traits\AccessTokenTrait;
 use League\OAuth2\Server\Entities\Traits\EntityTrait;
 use League\OAuth2\Server\Entities\Traits\TokenEntityTrait;
 
-final class AccessToken  extends Entity implements AccessTokenEntityInterface {
+final class AccessToken extends Entity implements AccessTokenEntityInterface {
     use AccessTokenTrait;
     use EntityTrait;
     use TokenEntityTrait;

@@ -16,12 +16,12 @@ final class Client extends Entity implements ClientEntityInterface {
     /**
      * @var bool
      */
-    private $allowPlainTextPkce = false;
+    private bool $allowPlainTextPkce = false;
 
     /**
      * @var string
      */
-    private $grant;
+    private string $grant;
 
     public function setName(string $name): void {
         $this->name = $name;

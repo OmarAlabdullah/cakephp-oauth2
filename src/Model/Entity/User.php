@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Model\Entity;
 
-use Cake\Auth\DefaultPasswordHasher;
+use Authentication\PasswordHasher\DefaultPasswordHasher;
 use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\Traits\EntityTrait;
 use League\OAuth2\Server\Entities\UserEntityInterface;
 
-final class User  extends Entity implements UserEntityInterface {
+final class  User  extends Entity implements UserEntityInterface {
     use EntityTrait;
 
     /**
