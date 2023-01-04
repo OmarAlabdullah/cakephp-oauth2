@@ -6,9 +6,7 @@ declare(strict_types=1);
     <form>
         <h1>Register</h1>
         <input type="email" placeholder="Email" name="email" id="email" aria-label="email" required/>
-        <input type="password" placeholder="Password" name="password" src="password" aria-label="password" required/>
-        <input type="password" placeholder="Repeat Password" name="repeatPassword" src="repeatPassword"
-               aria-label="repeatPassword" required/>
+        <input type="password" placeholder="Password" name="password" id="password" minlength="8" aria-label="password" required/>
         <button type="submit" id="button" value="Login">Register</button>
     </form>
 </div>
@@ -19,6 +17,7 @@ declare(strict_types=1);
     function hrefToLogin() {
         window.location.href = JSON.parse(localStorage.getItem('login-link'))
     }
+
 
     // register
     const loginForm = document.querySelector("#registerFormId");
