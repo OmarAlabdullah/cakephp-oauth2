@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 
+use App\Model\Entity\User;
 use App\Services\oauth\OauthService;
 use League\OAuth2\Server\AuthorizationServer;
 use OpenApi\Annotations as OA;
@@ -17,7 +18,7 @@ class AuthorizationController extends AppController {
 
     public function initialize(): void {
         parent::initialize();
-        $this->Auth->allow(['authorize']);
+        $this->Authentication->allowUnauthenticated(['authorize']);
 
     }
 
@@ -70,14 +71,15 @@ class AuthorizationController extends AppController {
 
         $query = http_build_query($this->request->getQueryParams());
 
-        if ($this->request->getQuery('access_token') == null) {
+        if ($this->request->getQuery('email') == null) {
 
             $host = $this->xelRequest->getRequest()->host();
             return $this->redirect("https://$host/login?" . $query);
         }
 
 
-        $authRequest->setUser($this->OauthService->getUserBySAccessToken($this->request->getQuery('access_token')));
+        $authRequest->setUser($this->OauthService->getUserByEmailAndPassword($this->request->getQuery('email'),
+            $this->request->getQuery('password')));
 
         $authRequest->setAuthorizationApproved(true);
 
