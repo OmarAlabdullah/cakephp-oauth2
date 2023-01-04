@@ -35,35 +35,7 @@ class AuthenticationController extends AppController {
         $this->Authentication->allowUnauthenticated(['login', 'register', 'userInfo']);
 
     }
-    /**
-     * @OA\Post  (
-     *     path="/register",
-     *     tags={"authentication"},
-     *     description="register/authenticate using credentials",
-     *     @OA\Header(
-     *          header="accept: application/json",
-     *          @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(ref="#/components/parameters/X-Xel-Services-RunLevel"),
-     *     @OA\RequestBody(
-     *        required=true,
-     *        description="register credentials",
-     *        @OA\JsonContent(
-     *           ref="#/components/schemas/RegisterRequest"
-     *        )
-     *     ),
-     *     @OA\Response(
-     *         response=201,
-     *         description="Register success",
-     *         @OA\JsonContent()
-     *     ),
-     *    @OA\Response(
-     *         response=500,
-     *         description="Internal Server Error",
-     *         @OA\JsonContent()
-     *     )
-     * )
-     */
+
 
     /**
      * @OA\Post  (
@@ -134,6 +106,35 @@ class AuthenticationController extends AppController {
         }
     }
 
+    /**
+     * @OA\Post  (
+     *     path="/register",
+     *     tags={"authentication"},
+     *     description="register/authenticate using credentials",
+     *     @OA\Header(
+     *          header="accept: application/json",
+     *          @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(ref="#/components/parameters/X-Xel-Services-RunLevel"),
+     *     @OA\RequestBody(
+     *        required=true,
+     *        description="register credentials",
+     *        @OA\JsonContent(
+     *           ref="#/components/schemas/RegisterRequest"
+     *        )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Register success",
+     *         @OA\JsonContent()
+     *     ),
+     *    @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         @OA\JsonContent()
+     *     )
+     * )
+     */
 
     public function register() {
 
