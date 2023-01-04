@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-
-use App\Domain\TokenRequest;
-
 use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Exception\OAuthServerException;
 use Psr\Http\Message\ResponseInterface;
@@ -19,7 +16,7 @@ class TokenController extends AppController {
 
     public function initialize(): void {
         parent::initialize();
-        $this->Auth->allow(['accessToken']);
+        $this->Authentication->allowUnauthenticated(['accessToken']);
     }
 
     /**

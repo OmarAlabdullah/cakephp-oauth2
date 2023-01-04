@@ -38,4 +38,8 @@ class Oauth2Service implements OauthService {
             ->build();
 
     }
+
+    public function getUserByEmailAndPassword(string $email, string $password) {
+        return $this->userORM->getUserByEmailAndPassword(  $email,$password);
+    }
 }

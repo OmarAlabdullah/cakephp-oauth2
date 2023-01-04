@@ -12,4 +12,6 @@ interface OauthService {
     public function getUserBySAccessToken(array|string|null $token);
 
     public function userInfo(string $accessToken);
+
+    public function getUserByEmailAndPassword(string $email, string $password);
 }

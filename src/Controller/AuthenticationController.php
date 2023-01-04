@@ -12,16 +12,12 @@ use Ray\Di\Di\Inject;
 
 class AuthenticationController extends AppController {
     protected OauthService $oauth2Service;
-    private AuthorizationServer $server;
-    private string $clientId = "login";
-    private string $clientSecret = "login";
-    private string $grantType = "password";
+
 
     public function initialize(): void {
         parent::initialize();
-        $this->Auth->allow(['login']);
-        $this->Auth->allow(['register']);
-        $this->Auth->allow(['userInfo']);
+        $this->Authentication->allowUnauthenticated(['login', 'register', 'userInfo']);
+
     }
 
     /**
@@ -29,11 +25,45 @@ class AuthenticationController extends AppController {
      * @param OauthService $oauth2Service
      * @return void
      */
-    public function inject(OauthService        $oauth2Service,
-                           AuthorizationServer $server) {
+    public function inject(OauthService $oauth2Service) {
         $this->oauth2Service = $oauth2Service;
-        $this->server = $server;
+
     }
+
+    public function beforeFilter(\Cake\Event\EventInterface $event) {
+        parent::beforeFilter($event);
+        $this->Authentication->allowUnauthenticated(['login', 'register', 'userInfo']);
+
+    }
+    /**
+     * @OA\Post  (
+     *     path="/register",
+     *     tags={"authentication"},
+     *     description="register/authenticate using credentials",
+     *     @OA\Header(
+     *          header="accept: application/json",
+     *          @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(ref="#/components/parameters/X-Xel-Services-RunLevel"),
+     *     @OA\RequestBody(
+     *        required=true,
+     *        description="register credentials",
+     *        @OA\JsonContent(
+     *           ref="#/components/schemas/RegisterRequest"
+     *        )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Register success",
+     *         @OA\JsonContent()
+     *     ),
+     *    @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         @OA\JsonContent()
+     *     )
+     * )
+     */
 
     /**
      * @OA\Post  (
@@ -65,69 +95,48 @@ class AuthenticationController extends AppController {
      * )
      */
 
+    public function login() {
 
-    public function login(): ?\Cake\Http\Response {
-
-        $this->setRequest($this->request->withData("grant_type", $this->grantType));
-        $this->setRequest($this->request->withData("client_id", $this->clientId));
-        $this->setRequest($this->request->withData("client_secret", $this->clientSecret));
-
-        $response = $this->server->respondToAccessTokenRequest($this->request, $this->response);
-
-        $response->getBody()->rewind();
-        $json = $response->getBody()->getContents();
-        $json = json_decode($json, true);
+        $this->request->allowMethod(['get', 'post']);
+        $result = $this->Authentication->getResult();
 
         /** @var LoginRequest $requestObject */
         $requestObject = $this->xelRequest->getDataAsDomainObject(LoginRequest::builder(), false);
-
-        $query = http_build_query([
+        $queryArray = [
             'client_id' => $requestObject->getQueryClientId(),
             'redirect_uri' => $requestObject->getQueryRedirectUri(),
             'response_type' => $requestObject->getQueryResponseType(),
             'scope' => $requestObject->getQueryScope(),
-            'state' => $requestObject->getQueryState(),
-            'access_token' => $json['access_token']
-        ]);
+            'state' => $requestObject->getQueryState()
+        ];
 
-        $host = $this->xelRequest->getRequest()->host();
-        $redirect = "/oauth/authorize?" . $query;
+        // regardless of POST or GET, redirect if user is logged in
+        if ($result && $result->isValid()) {
+            $queryArray['email'] = $result->getData()->offsetGet('email');
+            $queryArray['password'] = $result->getData()->offsetGet('password');
 
-        return $this->redirect("https://$host" . $redirect);
+            $query = http_build_query($queryArray);
 
+            // redirect to /authorize after login success
+            $host = $this->xelRequest->getRequest()->host();
+            $redirect = "/oauth/authorize?" . $query;
 
+            // save username in session if login succeeded to use it in the frontend
+            $_SESSION["username"] = $result->getData()->offsetGet('email');
+
+            return $this->redirect("https://$host" . $redirect);
+        }
+
+        // display error if user submitted and authentication failed
+        if ($this->request->is('post') && !$result->isValid()) {
+            $this->Flash->error(__('Invalid username or password'));
+            return $this->redirect('/login?' . http_build_query($queryArray));
+        }
     }
 
-    /**
-     * @OA\Post  (
-     *     path="/register",
-     *     tags={"authentication"},
-     *     description="register/authenticate using credentials",
-     *     @OA\Header(
-     *          header="accept: application/json",
-     *          @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(ref="#/components/parameters/X-Xel-Services-RunLevel"),
-     *     @OA\RequestBody(
-     *        required=true,
-     *        description="register credentials",
-     *        @OA\JsonContent(
-     *           ref="#/components/schemas/RegisterRequest"
-     *        )
-     *     ),
-     *     @OA\Response(
-     *         response=201,
-     *         description="Register success",
-     *         @OA\JsonContent()
-     *     ),
-     *    @OA\Response(
-     *         response=500,
-     *         description="Internal Server Error",
-     *         @OA\JsonContent()
-     *     )
-     * )
-     */
+
     public function register() {
+
         /** @var RegisterRequest $registerRequest */
         $registerRequest = $this->xelRequest->getDataAsDomainObject(RegisterRequest::builder());
         $this->oauth2Service->register($registerRequest);
@@ -144,6 +153,19 @@ class AuthenticationController extends AppController {
         return $this->response->withStringBody(json_encode($user));
 
 
+    }
+
+    public function logout() {
+
+        $this->Authentication->logout();
+
+        // delete username from session if user logged out
+        $_SESSION["username"] = "";
+
+        $this->Flash->success(__('You successfully logged out.'));
+
+        // user will be redirect to login page after logging out with all the parameters that were in the query
+        return $this->redirect($_SERVER['HTTP_REFERER']);
     }
 
 }

@@ -102,6 +102,10 @@ return static function (RouteBuilder $routes) {
             $routes->connect('/register',
                 ['controller' => 'Authentication', 'action' => 'register', '_method' => 'POST']);
 
+            // logout routes
+            $routes->connect('/logout',
+                ['controller' => 'Authentication', 'action' => 'logout', '_method' => 'POST']);
+
         });
 
         $routes->setExtensions(['json']);
