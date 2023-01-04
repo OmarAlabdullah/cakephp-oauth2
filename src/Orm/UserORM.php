@@ -5,6 +5,7 @@ namespace App\Orm;
 use App\Model\Entity\User;
 use App\Model\Table\ClientsTable;
 use App\Model\Table\UsersTable;
+use Authentication\PasswordHasher\DefaultPasswordHasher;
 use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Entities\UserEntityInterface;
@@ -32,7 +33,7 @@ class UserORM implements UserRepositoryInterface {
 
         $userEntity = new Entity([
             'email' => $email,
-            'password' => $password,
+            'password' => $this->hashPassword($password),
             'username' => $username
         ]);
 
@@ -52,6 +53,7 @@ class UserORM implements UserRepositoryInterface {
         $userEntity = new User();
         $userEntity->setIdentifier($user->get('identifier'));
         $userEntity->setEmail($user->get('email'));
+
 
         return $userEntity;
     }
@@ -74,5 +76,25 @@ class UserORM implements UserRepositoryInterface {
 
         return $userEntity;
     }
+    public function getUserByEmailAndPassword(string $email, string $password): User {
+        $user = $this->usersTable->find()
+            ->where(["username" => $email,
+                "password" => $password])
+            ->firstOrFail();
 
+        $userEntity = new User();
+        $userEntity->setIdentifier($user->get('identifier'));
+        $userEntity->setEmail($user->get('email'));
+
+        return $userEntity;
+    }
+
+
+    private function hashPassword(string $password) : ?string
+    {
+        if (strlen($password) > 0) {
+            return (new DefaultPasswordHasher())->hash($password);
+        }
+        return null;
+    }
 }
