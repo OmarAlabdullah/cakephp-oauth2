@@ -16,7 +16,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Authentication\Controller\Component\AuthenticationComponent;
 use Cake\Core\Configure;
+use Cake\Event\EventInterface;
 use Cake\Http\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use Xel\Cake\Util\ServiceInfo;
@@ -29,14 +31,14 @@ use Xel\Cake\Util\ServiceInfo;
  * @link https://book.cakephp.org/3.0/en/controllers/pages-controller.html
  */
 class PagesController extends AppController {
+
     private string $apiVersion = 'v1';
 
-    public function initialize(): void {
-        parent::initialize();
-        if (preg_match('/\/?(v\d+)\//', $this->request->getRequestTarget(), $matches)) {
-            $this->apiVersion = $matches[1];
-        }
-        $this->Auth->allow(['home', 'swagger', 'login', 'register']);
+    public function beforeFilter(EventInterface $event): void {
+
+        parent::beforeFilter($event);
+        $this->Authentication->allowUnauthenticated(['home', 'swagger', 'login', 'register']);
+
     }
 
     public function home() {

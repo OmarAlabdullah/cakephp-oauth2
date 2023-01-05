@@ -1,12 +1,22 @@
 <?php
 declare(strict_types=1);
-
 ?>
+
+
+<form action="/v1/logout" method="post" ">
+<?php
+if (!empty($_SESSION["username"])) {
+    echo "You're logged in as: " . $_SESSION["username"];
+    echo '<button style="float: right; type="submit" class="btn" value="Logout">Logout</button>';
+}
+?>
+</form><br><br>
+
 <div id="loginFormId">
     <form action="/v1/login" method="post">
 
         <h1>Login</h1>
-        <input type="email" placeholder="Email" name="username" id="username" aria-label="username"/>
+        <input type="email" placeholder="Email" name="email" id="email" aria-label="email"/>
         <input type="password" placeholder="Password" name="password" src="password" aria-label="password"/>
         <input type="text" hidden aria-label="query_response_type" name="query_response_type" id="query_response_type"/>
         <input type="text" hidden aria-label="query_client_id" name="query_client_id" id="query_client_id"/>

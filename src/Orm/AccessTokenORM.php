@@ -2,7 +2,7 @@
 
 namespace App\Orm;
 
-use App\Domain\LeagueEntities\AccessToken;
+use App\Model\Entity\AccessToken;
 use App\Model\Table\AccessTokensTable;
 use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\AccessTokenEntityInterface;

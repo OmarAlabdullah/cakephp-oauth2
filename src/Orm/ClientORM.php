@@ -2,7 +2,7 @@
 
 namespace App\Orm;
 
-use App\Domain\LeagueEntities\Client;
+use App\Model\Entity\Client;
 use App\Model\Table\ClientsTable;
 use Cake\Datasource\EntityInterface;
 use League\OAuth2\Server\Entities\ClientEntityInterface;

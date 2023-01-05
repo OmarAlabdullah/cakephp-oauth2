@@ -2,17 +2,15 @@
 
 namespace App\Orm;
 
-use App\Domain\LeagueEntities\User;
+use App\Model\Entity\User;
 use App\Model\Table\ClientsTable;
 use App\Model\Table\UsersTable;
-use Cake\Http\Exception\NotFoundException;
+use Authentication\PasswordHasher\DefaultPasswordHasher;
 use Cake\ORM\Entity;
-use Lcobucci\JWT\Token;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Entities\UserEntityInterface;
 use League\OAuth2\Server\Repositories\UserRepositoryInterface;
-use phpDocumentor\GraphViz\Exception;
-use Xel\Common\Exception\ServiceException;
+use Xel\Common\Exception\UnauthorizedException;
 
 class UserORM implements UserRepositoryInterface {
     private UsersTable $usersTable;
@@ -32,9 +30,10 @@ class UserORM implements UserRepositoryInterface {
 
 
     public function saveUser(string $email, string $username, string $password): void {
+
         $userEntity = new Entity([
             'email' => $email,
-            'password' => $password,
+            'password' => $this->hashPassword($password),
             'username' => $username
         ]);
 
@@ -55,6 +54,7 @@ class UserORM implements UserRepositoryInterface {
         $userEntity->setIdentifier($user->get('identifier'));
         $userEntity->setEmail($user->get('email'));
 
+
         return $userEntity;
     }
 
@@ -66,7 +66,7 @@ class UserORM implements UserRepositoryInterface {
         $accessTokenId = $jwtPayload->jti;
 
         if ($this->accessTokenORM->isAccessTokenRevoked($accessTokenId)) {
-            throw new ServiceException('Access token is revoked');
+            throw new UnauthorizedException('Access token is revoked');
         }
 
         $user = $this->usersTable->get($userId);
@@ -76,5 +76,25 @@ class UserORM implements UserRepositoryInterface {
 
         return $userEntity;
     }
+    public function getUserByEmailAndPassword(string $email, string $password): User {
+        $user = $this->usersTable->find()
+            ->where(["username" => $email,
+                "password" => $password])
+            ->firstOrFail();
 
+        $userEntity = new User();
+        $userEntity->setIdentifier($user->get('identifier'));
+        $userEntity->setEmail($user->get('email'));
+
+        return $userEntity;
+    }
+
+
+    private function hashPassword(string $password) : ?string
+    {
+        if (strlen($password) > 0) {
+            return (new DefaultPasswordHasher())->hash($password);
+        }
+        return null;
+    }
 }

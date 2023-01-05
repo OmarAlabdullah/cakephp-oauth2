@@ -8,6 +8,7 @@ use App\Orm\ClientORM;
 use App\Orm\RefreshTokenORM;
 use App\Orm\ScopesORM;
 use App\Orm\UserORM;
+use Cake\Core\Configure;
 use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Grant\AuthCodeGrant;
 use League\OAuth2\Server\Grant\ImplicitGrant;
@@ -27,9 +28,11 @@ class AuthorizationServerProvider implements ProviderInterface {
     }
 
     public function get(): AuthorizationServer {
+        $privateKeyPath = Configure::readOrFail('Xel.PhpOauth2.PrivateKeyPath');
+        $encryptionKey = Configure::readOrFail('Xel.PhpOauth2.EncryptionKey');
         $authServer = new AuthorizationServer($this->clientRepository, $this->accessTokenRepository, $this->scopeRepository,
-            dirname(__FILE__) . DS . 'id_rsa',
-            dirname(__FILE__) . DS . 'id_rsa.pub'
+            $privateKeyPath,
+            $encryptionKey
         );
 
         $authCodeTTL = new \DateInterval("P1D");

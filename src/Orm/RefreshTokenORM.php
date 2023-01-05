@@ -2,7 +2,7 @@
 
 namespace App\Orm;
 
-use App\Domain\LeagueEntities\RefreshToken;
+use App\Model\Entity\RefreshToken;
 use App\Model\Table\RefreshTokensTable;
 use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\RefreshTokenEntityInterface;

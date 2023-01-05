@@ -2,25 +2,26 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\LeagueEntities;
+namespace App\Model\Entity;
 
+use Cake\ORM\Entity;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Entities\Traits\ClientTrait;
 use League\OAuth2\Server\Entities\Traits\EntityTrait;
 
-final class Client implements ClientEntityInterface {
+final class Client extends Entity implements ClientEntityInterface {
     use ClientTrait;
     use EntityTrait;
 
     /**
      * @var bool
      */
-    private $allowPlainTextPkce = false;
+    private bool $allowPlainTextPkce = false;
 
     /**
      * @var string
      */
-    private $grant;
+    private string $grant;
 
     public function setName(string $name): void {
         $this->name = $name;

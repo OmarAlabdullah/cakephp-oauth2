@@ -76,6 +76,11 @@ return static function (RouteBuilder $routes) {
         $routes->connect('oauth/token',
             ['controller' => 'Token', 'action' => 'accessToken', '_method' => 'POST']);
 
+
+        // user info routes
+        $routes->connect('oauth/userinfo',
+            ['controller' => 'Authentication', 'action' => 'userInfo', '_method' => 'GET']);
+
         $routes->scope('/v1/', function (RouteBuilder $routes) {
             // Setup default route for V1 'home':
             $routes->connect(
@@ -96,6 +101,10 @@ return static function (RouteBuilder $routes) {
             // register routes
             $routes->connect('/register',
                 ['controller' => 'Authentication', 'action' => 'register', '_method' => 'POST']);
+
+            // logout routes
+            $routes->connect('/logout',
+                ['controller' => 'Authentication', 'action' => 'logout', '_method' => 'POST']);
 
         });
 
