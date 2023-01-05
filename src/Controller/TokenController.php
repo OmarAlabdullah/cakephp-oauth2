@@ -24,8 +24,7 @@ class TokenController extends AppController {
      * @param AuthorizationServer $server
      * @return void
      */
-    public function inject(AuthorizationServer $server
-    ) {
+    public function inject(AuthorizationServer $server) {
         $this->server = $server;
     }
 

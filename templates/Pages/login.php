@@ -6,8 +6,8 @@ declare(strict_types=1);
 <form action="/v1/logout" method="post" ">
 <?php
 if (!empty($_SESSION["username"])) {
-    echo "You are logged as: " . $_SESSION["username"];
-    echo '<button style="float: right; type="submit" class="btn" value="Login">Logout</button>';
+    echo "You're logged in as: " . $_SESSION["username"];
+    echo '<button style="float: right; type="submit" class="btn" value="Logout">Logout</button>';
 }
 ?>
 </form><br><br>
